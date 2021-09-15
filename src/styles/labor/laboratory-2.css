@@ -1,0 +1,62 @@
+:root {
+  --bs-light-rgb: 245, 251, 255;
+  --bs-dark-rgb: 31, 41, 46;
+  --bs-body-line-height: 1.333;
+}
+
+.linear-gradient-1 {
+  min-height: 80vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#E9F4F7), color-stop(50%, #FBF8E9));
+  background-image: linear-gradient(#E9F4F7, #FBF8E9 50%);
+}
+
+.svg-container {
+  min-height: 120vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-image: linear-gradient(170deg, #f7fcf8, #e8f7eb 40%, #f6f4da 90%);
+  overflow: hidden;
+}
+
+.svg-shape {
+  margin: -.5rem 0;
+}
+
+.svg-shape svg {
+  position: relative;
+  width: 120%;
+  height: 15vh;
+  overflow: hidden;
+  -webkit-transform: translateX(-5%);
+          transform: translateX(-5%);
+}
+
+.svg-shape svg path {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+@media (min-width: 992px) {
+  .svg-shape svg {
+    position: relative;
+    width: 125%;
+    overflow: hidden;
+    -webkit-transform: translateX(-15%);
+            transform: translateX(-15%);
+  }
+  .svg-shape svg path {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+  }
+}
+/*# sourceMappingURL=laboratory-2.css.map */

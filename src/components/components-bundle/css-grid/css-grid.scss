@@ -1,0 +1,104 @@
+// @import '../custom-bootstrap/';
+@import '../../../styles/variables';
+@import '../../../../node_modules/bootstrap/scss/variables';
+
+
+$css-grid-gap: 2rem;
+$css-grid--min-height: calc(100vh - #{2*$css-grid-gap}); // --css-grid--min-height
+
+
+.css-grid-row {
+  $css-grid--min-height-sm: $css-grid--min-height; // --css-grid--min-height-sm
+  // $css-grid--padding: map-get($spacers, 5);
+  display: grid;  
+  grid-auto-flow: dense;
+
+  gap: $css-grid-gap;
+  grid-gap: $css-grid-gap;
+  padding: $css-grid-gap/2 0;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  
+  .css-grid--column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &.text {
+      padding: var(--css-grid--padding, map-get($spacers, 3));
+    }
+  }
+
+  .img-grid {
+    height: 50vh; // TODO ADD SCSS VARIABLE
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+
+  @media screen and (min-width: map-get($grid-breakpoints, md)) {
+    
+    padding: $css-grid-gap/2 $css-grid-gap;
+
+    .css-grid--column {
+      grid-area: var(--grid-column-position, left);
+      &.text {
+        padding: var(--css-grid--padding, map-get($spacers, 4));
+      }
+    }
+    grid-template-rows: unset;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left right";
+
+    .img-grid {
+      height: var(--css-grid--min-height, $css-grid--min-height);
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+  }
+
+  @media screen and (min-width: map-get($grid-breakpoints, lg)) {
+    .css-grid--column {
+      grid-area: var(--grid-column-position, left);
+      &.text {
+        padding: var(--css-grid--padding, map-get($spacers, 5));
+      }
+    }
+
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "left right right";
+  }
+  
+
+}
+
+
+
+/* ============
+    TYPOGRAPHY
+To trzeba przenieść z tąd!
+===============*/
+.big-blockquote {
+  color: $color-teal--medium;
+  blockquote.blockquote {
+    font-size: inherit;
+    padding-bottom: 1.5em;
+    line-height: 1.2;
+    * {
+      line-height: 1.2;
+    }
+  
+  }
+  
+  .blockquote-footer {
+    font-size: 1 / 1.618 + em;
+    color: inherit;
+  }
+}

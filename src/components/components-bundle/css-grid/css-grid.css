@@ -1,0 +1,111 @@
+@charset "UTF-8";
+:root {
+  --bs-light-rgb: 245, 251, 255;
+  --bs-dark-rgb: 31, 41, 46;
+  --bs-body-line-height: 1.333;
+}
+
+.css-grid-row {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: dense;
+  gap: 2rem;
+  grid-gap: 2rem;
+  padding: 1rem 0;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+}
+
+.css-grid-row .css-grid--column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.css-grid-row .css-grid--column.text {
+  padding: var(--css-grid--padding, 1rem);
+}
+
+.css-grid-row .img-grid {
+  height: 50vh;
+}
+
+.css-grid-row .img-grid img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .css-grid-row {
+    padding: 1rem 2rem;
+    -ms-grid-rows: unset;
+        grid-template-rows: unset;
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "left right";
+  }
+  .css-grid-row .css-grid--column {
+    grid-area: var(--grid-column-position, left);
+  }
+  .css-grid-row .css-grid--column.text {
+    padding: var(--css-grid--padding, 1.5rem);
+  }
+  .css-grid-row .img-grid {
+    height: var(--css-grid--min-height, calc(100vh - 4rem));
+  }
+  .css-grid-row .img-grid img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .css-grid-row {
+    -ms-grid-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "left right right";
+  }
+  .css-grid-row .css-grid--column {
+    grid-area: var(--grid-column-position, left);
+  }
+  .css-grid-row .css-grid--column.text {
+    padding: var(--css-grid--padding, 3rem);
+  }
+}
+
+/* ============
+    TYPOGRAPHY
+To trzeba przenieść z tąd!
+===============*/
+.big-blockquote {
+  color: #6AA4AC;
+}
+
+.big-blockquote blockquote.blockquote {
+  font-size: inherit;
+  padding-bottom: 1.5em;
+  line-height: 1.2;
+}
+
+.big-blockquote blockquote.blockquote * {
+  line-height: 1.2;
+}
+
+.big-blockquote .blockquote-footer {
+  font-size: 0.61805em;
+  color: inherit;
+}
+/*# sourceMappingURL=css-grid.css.map */

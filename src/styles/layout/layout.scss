@@ -1,0 +1,258 @@
+@import '../variables';
+@import '../typography';
+
+
+/* 
+
+  TOC:
+  1 Typography
+  2 Layout
+  3 Components
+    3.1 Navbar
+    3.2 Hero area
+    3.2 Buttons
+  4. Utilities
+
+*/
+
+
+// =================
+// 
+//            LAYOUT
+// 
+// =================
+
+main {
+  min-height: 40rem;
+}
+
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+
+
+
+.navbar {
+  .navbar-brand {
+    color: inherit;
+    text-transform: uppercase;
+    line-height: $line-height-narrow;
+  }
+}
+
+
+.btn {
+  max-width: fit-content;
+}
+
+.collapsibleNavbar {
+  opacity: 1;
+  top: 0;
+  &.hidden {
+    transition: all 500ms, opacity 1000ms;
+    visibility: hidden;
+    opacity: 0;
+    top: -4rem;
+  }  
+}
+
+
+
+
+
+
+
+// ================
+// 
+//      COMPONENTS
+// 
+// ================
+// LABOR 1 -->
+
+// NAVBAR >>
+.my-navbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.my-navbar {
+
+  &.bg-transparent-dark {
+    transition: background-color 1000ms;
+    background: rgba(0, 0, 0, 0.5);
+    &.show {
+      background: rgba(0, 0, 0, .8);
+    }
+  }
+  .navbar-collapse {
+    padding-top: map-get($spacers, 3);
+    @media (min-width: $navbar-expand) {
+      padding-top: 0;
+    }
+    &.collapsing, &.show {
+      .navbar-nav {
+        padding-top: map-get($spacers, 5);
+        @media (min-width: $navbar-expand) {
+          padding-top: 0;
+        }
+        * {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+.navbar-transparent-light {
+  color: black;
+  .navbar-brand, .nav-link {
+    color: inherit;
+  }
+}
+
+
+.navbar-brand {
+  padding: 0;
+  font-size: .9em;
+  display: flex;
+  flex-direction: row;
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+.logo-light {
+  max-width: 3em;
+  height: auto;
+  margin-right: .5em;
+}
+
+// HERO AREA >>
+.hero-area {
+  background-position: 70% bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 120vh;
+
+  &.text-shadow {
+    text-shadow: $color-teal 0 0 2rem, 
+                   $color-teal 0 0 3rem, 
+                   $color-teal 0 0 4rem,
+                   $color-teal 0 0 5rem;
+  }  
+
+  .hero-area-inner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10vh;
+  }
+
+}
+
+.container-box {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+// BUTTONS >>
+.btn-light, .btn-light:focus {
+  transition: all 100ms;
+  background-color: $color-light;
+  border-width: 0;
+
+  &:hover, &:active {
+    background-color: $color-light;
+    box-shadow: 
+        rgba(17, 128, 145, 0.1) -.1rem -.2rem 2rem,
+        rgba(0, 110, 255, .1) 0 0 .5rem .2rem,
+        rgba(0, 0, 0, 0.2) .1rem .2rem 1rem;
+    transform: scale(1.05);
+  }
+  &:focus:active {
+    transform: scale(.95);
+  }
+}
+
+
+// ================
+//   UTILITIES
+// ================
+
+.bg-dark {
+  color: $color-light;
+}
+
+.bg-transparent-dark {
+  color: $color-light;
+}
+
+.navbar-space {
+  height: 5rem;
+}
+
+
+
+
+.shadow-3d--short {
+  box-shadow: 
+    white 0 0 0.2rem 0rem,
+    rgba(0, 0, 0, 0.1) .001rem .002rem,
+    rgba(0, 0, 0, 0.1) .002rem .004rem,
+    rgba(0, 0, 0, 0.1) .005rem .01rem,
+    rgba(0, 0, 0, 0.1) .01rem .02rem,
+    rgba(0, 0, 0, 0.1) .02rem .04rem,
+    rgba(0, 0, 0, 0.1) .05rem .1rem,
+    rgba(0, 0, 0, 0.1) .1rem .2rem,
+    rgba(0, 0, 0, 0.1) .15rem .3rem,
+    rgba(0, 0, 0, 0.1) .2rem .4rem;
+}
+
+
+.btn-dark, .btn-dark:focus {
+  transition: all 100ms;
+  background-color: $color-dark;
+  box-shadow: none;
+  border-width: 0;
+              
+              
+
+  &:hover, &:active {
+    background-color: $color-dark;
+    box-shadow: inset rgba(var(--bs-dark-rgb), .1) .3rem .3rem .5rem,
+          inset rgba(255, 255, 255, .1) -.3rem -.3rem 1rem,
+          rgb(255, 255, 255) -.1rem -.1rem .2rem ,
+        rgba(0, 0, 0, .4) 0 .1rem .2rem .05rem,
+        rgba(0, 0, 0, .1) .1rem .1rem .75rem 0;
+    
+        
+        
+    transform: scale(1.05);
+  }
+  &:focus:active {
+    // background-color: red;
+    transform: scale(.95);
+
+  }
+  
+}
+

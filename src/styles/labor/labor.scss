@@ -1,0 +1,41 @@
+
+
+.hero-area-test {
+  position: relative;
+  div:first-child {
+    z-index: 2;
+  }
+  &>div{
+    position: absolute;
+    // top: 0;
+    // bottom: 0;
+    left: 0;
+    right: 0;
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+main>div {
+  position: relative
+}
+
+
+.background-image {
+  position: absolute;
+  // z-index: 0;
+  div {
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+    position: absolute;
+
+  }
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
