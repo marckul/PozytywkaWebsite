@@ -7,7 +7,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import { HeroArea } from '../components/components-bundle'
+import { HeroArea } from '../components/components-bundle/components-bundle'
 
 const IndexPage = () => (
   <Layout>

@@ -28,19 +28,26 @@ $screen-size-lg: 992px;
 $color-light: rgb(245, 251, 255);
 $color-active: hsl(204, 100%, 85%);
 $color-light-rgb: 245, 251, 255;
-$color-green-light: #e7ff93;
+
+$color-green-lg: hsl(73, 60%, 98%);
+$color-green-md: hsl(73, 100%, 79%);
+
+// $color: rgb(251, 253, 247);
 $color-skyblue: rgb(0, 174, 255);
 // $color-dark: hsl(198, 19%, 15%);
-$color-dark: #003759;
+$color-dark: #003759; // #002033
+$color-dark-sat1: #002033; // hsl(203, 40%, 15%);
 
 $color-teal: #21747A;
 $color-teal--medium: #6AA4AC;
 
 
 
+
+
 :root {
   --bs-light-rgb: 245, 251, 255;
-  --bs-dark-rgb: 31, 41, 46;
+  --bs-dark-rgb: 0, 31, 51; // 31, 41, 46;
   --bs-body-line-height: 1.333;
 }
 

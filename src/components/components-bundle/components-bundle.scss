@@ -1,0 +1,64 @@
+
+
+// @import '../custom-bootstrap/';
+@import '../../styles/variables';
+@import '../../../node_modules/bootstrap/scss/variables';
+
+// .svg-container {  }
+
+
+
+// .linear-gradient-1 {
+//   min-height: 80vh;
+//   background-image: linear-gradient(#E9F4F7, #FBF8E9 50%);
+//   // margin-bottom: 10rem;
+// }
+
+$screen-size-lg: map-get($grid-breakpoints, lg); 
+
+.svg-container {
+  min-height: 120vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: linear-gradient(170deg, hsl(132, 50%, 98%), hsl(132, 50%, 94%) 40%, hsl(57, 60%, 91%) 90%);;
+  overflow: hidden;
+  .svg-shape {
+    .svg-space {
+      background-color: var(--background-color, transparent);
+    }
+    
+    margin: -.5rem 0;
+    // background-color: var(--background-color, transparent);
+    svg {
+      position: relative;
+      width: 120%;
+      height: 15vh;
+      overflow: hidden;
+      transform: translateX(-5%);
+      
+      path {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        // --background-color: red;
+      }
+    }
+    @media (min-width: $screen-size-lg) {
+      svg {
+        position: relative;
+        width: 125%;
+        overflow: hidden;
+        transform: translateX(-15%);
+        
+        path {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          // --background-color: red;
+        }
+      }
+    }
+  }
+}
+

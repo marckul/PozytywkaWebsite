@@ -5,7 +5,7 @@
 /* 
 
   TOC:
-  1 Typography
+  1 Apperance
   2 Layout
   3 Components
     3.1 Navbar
@@ -15,6 +15,9 @@
 
 */
 
+.navbar-brand {
+  
+}
 
 // =================
 // 
@@ -134,6 +137,14 @@ main {
   max-width: 3em;
   height: auto;
   margin-right: .5em;
+  svg {
+    width: 3em;
+    position: relative; 
+    path {
+      top: 0;
+      bottom: 0;
+    }
+  }
 }
 
 // HERO AREA >>
@@ -143,7 +154,7 @@ main {
   background-size: cover;
   min-height: 120vh;
 
-  &.text-shadow {
+  &.bg-dark.text-shadow {
     text-shadow: $color-teal 0 0 2rem, 
                    $color-teal 0 0 3rem, 
                    $color-teal 0 0 4rem,
@@ -168,6 +179,7 @@ main {
 }
 
 .btn {
+  font-size: 1em;
   a {
     color: inherit;
     text-decoration: none;
@@ -176,7 +188,8 @@ main {
 
 // BUTTONS >>
 .btn-light, .btn-light:focus {
-  transition: all 100ms;
+  color: $color-teal--medium;
+  transition: all 200ms;
   background-color: $color-light;
   border-width: 0;
 
@@ -198,13 +211,26 @@ main {
 //   UTILITIES
 // ================
 
-.bg-dark {
-  color: $color-light;
+.index-page-gradient {
+  background-image: linear-gradient(170deg, #E9F4F7 10%, #F7FCFC 48%, #FBF8E9 62%);
+  // background-image: linear-gradient(170deg, #E9F4F7 10%, #F7FCFC 50%, #FBF8E9 65%, hsl(51deg, 90%, 93%) 75%);
+  // background-image: linear-gradient(#E9F4F7 10%, #F7FCFC 70%, #FBF8E9, #fcf9e8 );
+  // background-image: linear-gradient(170deg, #E9F4F7 10%, #F7FCFC 70%, #FBF8E9 85%, hsl(51deg 90% 93%) 95%);
+  // linear-gradient(160deg, #E9F4F7 10%, #F7FCFC 65%, #FBF8E9, #fcf9e8)
 }
 
+.bg-dark {
+  color: $color-light;
+  background-color: $color-dark-sat1 !important;
+}
 .bg-transparent-dark {
   color: $color-light;
 }
+
+.bg-green-lg {
+  background-color: $color-green-lg;
+}
+
 
 .navbar-space {
   height: 5rem;

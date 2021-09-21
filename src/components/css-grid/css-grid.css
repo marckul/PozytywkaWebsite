@@ -1,7 +1,7 @@
 @charset "UTF-8";
 :root {
   --bs-light-rgb: 245, 251, 255;
-  --bs-dark-rgb: 31, 41, 46;
+  --bs-dark-rgb: 0, 31, 51;
   --bs-body-line-height: 1.333;
 }
 

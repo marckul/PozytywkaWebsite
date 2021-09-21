@@ -6,11 +6,13 @@
 
 // .svg-container {  }
 
-.linear-gradient-1 {
-  min-height: 80vh;
-  background-image: linear-gradient(#E9F4F7, #FBF8E9 50%);
-  // margin-bottom: 10rem;
-}
+
+
+// .linear-gradient-1 {
+//   min-height: 80vh;
+//   background-image: linear-gradient(#E9F4F7, #FBF8E9 50%);
+//   // margin-bottom: 10rem;
+// }
 
 $screen-size-lg: map-get($grid-breakpoints, lg); 
 
@@ -23,7 +25,12 @@ $screen-size-lg: map-get($grid-breakpoints, lg);
   overflow: hidden;
 }
 .svg-shape {
+  .svg-space {
+    background-color: var(--background-color, transparent);
+  }
+  
   margin: -.5rem 0;
+  // background-color: var(--background-color, transparent);
   svg {
     position: relative;
     width: 120%;

@@ -20,15 +20,15 @@
   overflow: hidden;
 }
 
-.svg-shape {
+.svg-container .svg-shape {
   margin: -.5rem 0;
 }
 
-.svg-shape .svg-space {
+.svg-container .svg-shape .svg-space {
   background-color: var(--background-color, transparent);
 }
 
-.svg-shape svg {
+.svg-container .svg-shape svg {
   position: relative;
   width: 120%;
   height: 15vh;
@@ -37,24 +37,24 @@
           transform: translateX(-5%);
 }
 
-.svg-shape svg path {
+.svg-container .svg-shape svg path {
   position: absolute;
   top: 0;
   bottom: 0;
 }
 
 @media (min-width: 992px) {
-  .svg-shape svg {
+  .svg-container .svg-shape svg {
     position: relative;
     width: 125%;
     overflow: hidden;
     -webkit-transform: translateX(-15%);
             transform: translateX(-15%);
   }
-  .svg-shape svg path {
+  .svg-container .svg-shape svg path {
     position: absolute;
     top: 0;
     bottom: 0;
   }
 }
-/*# sourceMappingURL=laboratory-2.css.map */
+/*# sourceMappingURL=components-bundle.css.map */
