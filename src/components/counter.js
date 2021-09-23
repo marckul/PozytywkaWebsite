@@ -3,7 +3,7 @@ import * as React from 'react'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import VisibilitySensor from 'react-visibility-sensor'
 
-const IS_BROWSER = window !== undefined;
+const IS_BROWSER = typeof window !== `undefined`;
 
 class Counter extends React.Component {
   constructor(props) {
