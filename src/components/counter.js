@@ -91,9 +91,9 @@ const CounterBox = ({number, text}) => {
   return (
     <VisibilitySensor onChange={setIsVisible} offset={offset} >
       <div className="col-md text-center">
-        <h1>
+        <p className="h1">
           <Counter number={number} toTurnOn={isVisible} onChange={isVisible} />
-        </h1>
+        </p>
         <p>{text}</p>
       </div>
     </VisibilitySensor>

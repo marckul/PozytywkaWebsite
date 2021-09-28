@@ -82,11 +82,7 @@ function Phone({ children, tel, size }) {
   )
 }
 
-function NavbarSpace() {
-  return (
-    <div className="navbar-space"></div>
-  )
-}
+
 
 function BgGradient({ children }) {
   return (
@@ -128,7 +124,6 @@ export {
   HeroImageArea, 
   Container, 
   Phone, 
-  NavbarSpace, 
   BgGradient, 
   WavesContainer
 } 

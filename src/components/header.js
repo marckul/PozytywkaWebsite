@@ -101,7 +101,7 @@ const Navigation = ({className, variant, ...props}) => {
             <NavLink to="/oferta">Oferta</NavLink>
             <NavLink to="/nasz-zespol">Nasz Zespół</NavLink>
             <NavLink to="/kontakt">Kontakt</NavLink>
-            <Link className="nav-link" to="/aktualnosci">Aktualności</Link>
+            <Link className="nav-link" to="/artykul">Aktualności</Link>
           </Nav>
           <Nav>
           <Link className={`btn btn-${button}`} to="/rejestracja" role="button">Rejestracja</Link>
@@ -178,7 +178,7 @@ const HeaderCollapsible = ({ siteTitle, screensOnHide }) => {
   }
   return(
     <div className={`collapsibleNavbar fixed-top ${triggerClass}`} style={styles}>
-      <Navigation />
+      <Navigation className="my-navbar" />
     </div>
   )
 }
@@ -200,5 +200,19 @@ const Header = ({ siteTitle, ...props }) => (
   </header>
 )
 
+function NavbarSpace({addSpace, className}) {
+  if (addSpace) {
+    className += " navbar-space"
+  }
+  return (
+    <div className={className}></div>
+  )
+}
+NavbarSpace.defaultProps = {
+  addSpace: false,
+  className: ""
+}
 
-export {HeaderCollapsible, Header}
+
+
+export {HeaderCollapsible, Header, NavbarSpace}

@@ -8,7 +8,7 @@ import HeroImage from '../assets/images/offer-page-hero--prod.jpg'
 
 const OfferPage = () => {  
   return(
-    <Layout>
+    <Layout header="transparent-light">
       <HeroImageArea variant="light" backgroundImage={HeroImage} >
         <h1 className="py-4">Nasza Oferta</h1>
         <p className="lead">

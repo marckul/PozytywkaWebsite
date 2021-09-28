@@ -9,7 +9,7 @@ import { HeroImageArea, Container } from '../components/components-bundle/compon
 const IndexPage = () => {
 
   return(
-    <Layout header="transparent-dark">
+    <Layout header="light">
       <Seo title="Typografia"/>
       <HeroImageArea variant="light">
         <h1 className="py-4">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>

@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../custom-bootstrap/custom-bootstrap.scss';
 @import '../typography';
 
 
@@ -93,35 +94,42 @@ main {
 }
 
 .my-navbar {
+  &.bg-light {
+    @extend .border-bottom;
+  }
 
   &.bg-transparent-dark {
-    transition: background-color 1000ms;
+    // --border-color: #{rgba($color-darker, 0.5)};
+    // transition: background-color 500ms;
     background: rgba(0, 0, 0, 0.5);
     &.show {
       background: rgba(0, 0, 0, .8);
     }
   }
-  .navbar-collapse {
-    padding-top: map-get($spacers, 3);
-    @media (min-width: $navbar-expand) {
-      padding-top: 0;
-    }
-    &.collapsing, &.show {
-      .navbar-nav {
-        padding-top: map-get($spacers, 5);
-        @media (min-width: $navbar-expand) {
-          padding-top: 0;
-        }
-        * {
-          margin-left: auto;
-        }
-      }
-    }
-  }
+
+  // .navbar-collapse {
+  //   padding-top: map-get($spacers, 3);
+  //   @media (min-width: $navbar-expand) {
+  //     padding-top: 0;
+  //   }
+  //   &.collapsing, &.show {
+  //     .navbar-nav {
+  //       padding-top: map-get($spacers, 5);
+  //       @media (min-width: $navbar-expand) {
+  //         padding-top: 0;
+  //       }
+  //       * {
+  //         margin-left: auto;
+  //       }
+  //     }
+  //   }
+  // }
+  
 }
 
+
 .navbar-transparent-light {
-  color: black;
+  // color: black;
   .navbar-brand, .nav-link {
     color: inherit;
   }
@@ -153,6 +161,7 @@ main {
     }
   }
 }
+
 
 // HERO AREA >>
 .hero-area {
@@ -269,7 +278,7 @@ a.color-shine {
 
 
 // .shadow-sm
-.shadow-z1-lg {
+.shadow-z1-md {
   // inset 0 0 1rem white, 0 0.2rem 0.2rem rgb(0 0 0 / 15%), 0 0.1rem 0.3rem rgb(0 0 0 / 50%)
   box-shadow: 
     $shadow-white-md,
@@ -322,4 +331,9 @@ a.color-shine {
   }
   
 }
+
+
+// @import '../../components/article/article.scss'
+
+
 
