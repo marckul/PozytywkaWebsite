@@ -1,55 +1,240 @@
-import * as React from "react"
+import * as React from 'react'
+import Layout from '../components/layout'
 
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-
-import Seo from "../components/seo"
-import Layout from "../components/layout"
-
-import { HeroImageArea, Container, BgGradient, WavesContainer } from '../components/components-bundle/components-bundle'
-import { CounterBox } from '../components/counter'
+import { Container } from '../components/components-bundle/components-bundle'
+import { Link } from 'gatsby'
 
 import * as Grid from '../components/css-grid/css-grid'
-
-import boyImg from  '../assets/images/Boy-under-stars.jpg'
 import boyOnMolo from '../assets/images/chlopczyk-na-molo.jpg'
 import spacerWGorach from '../assets/images/spacer-w--gorach--30.jpg'
-// import '../styles/labor/laboratory-2.css'
+
+// import HeroImage from '../assets/images/offer-page-hero--prod.jpg'
+
+// import {MyCarousel, CardBootTemplate} from '../components/cards-&-carousel/cards-&-carousel'
+
+// function Container({ children, rootElem, ...props }) {
+//   props.className += " container-box py-5"
+
+//   const template = <div className="container my-5">{children}</div>
+//   const element = React.createElement(
+//     rootElem, props, template
+//   )
+//   return(element)
+// }
+
+// class Container2 extends React.Component {
+
+// }
+
+Container.defaultProps = {
+  className: "",
+  rootElem: "div"
+}
 
 
-
-const LaboratoryPage2 = () => {
-
+const Wrapper = ({children, ...props}) => {
   return(
-    <Layout header="transparent-dark">
-      {/* <Seo title="Start"/> */}
-      <HeroImageArea variant="dark" backgroundImage={boyImg} >
-        <h1 className="py-4">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
-        <p className="lead">
-          Data: 14 09 21:30
-          Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat w wyjątkowy sposób. 
-        </p>
-      </HeroImageArea>
-      <BgGradient>
-        <Container>
-          <h2>Zaufaj naszemu doświadczeniu</h2>
-          <p className="lead">Pozytywka to już 6 lat pracy z dziecmi z deficytami rozwoju, jednak nasze doświadczenie sięga  o wiele dalej.</p>
-          <div className="row py-5"></div>       
-          <div className="row">
-            <CounterBox
-              number={14}
-              text={"Lorem ipsum"}
-            />
-            <CounterBox
-              number={1413}
-              text={"Lorem ipsum"}
-            />
-            <CounterBox
-              number={323}
-              text={"Lorem ipsum"}
-            />
-          </div> 
-        </Container>
+    <section {...props} >
+      {children}
+    </section>
+  )
+}
+
+
+function ConditionalTag({tag}) {
+  const Tag = tag
+
+  // debugger
+
+
+  return (
+    <Tag className="hello" >
+      Conditional rendering
+    </Tag>
+  )
+
+}
+
+/**
+ * @param { object } props.style - the parent element styles 
+ * @param { object } props.minPadding - minimal padding for the element
+ */
+class EqualPadding extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      padding: this.props.minPadding
+    }    
+
+    this.setMinPadding(this.props.minPadding)
+    this.textStyles = {  }
+
+    this.wrapperStyles = props.style
+    this.wrapperStyles.padding = this.props.minPadding
+    
+    
+    this.refsWrapper = React.createRef()
+    this.refsText = React.createRef()
+  }
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      this.fetchChildrenStyles()
+      this.fetchParentStyles()
+      this.addEqualPadding()
+
+      
+      window.addEventListener(
+        'resize', 
+        () => this.updateEqualPadding()
+      )
+    }
+  }
+  setMinPadding(string) {
+    this.minPadding = parseInt(string)
+  }
+
+  wrapperData = {
+    proportion: undefined,
+    wrapperWidth: undefined
+  }
+  
+  fetchChildrenStyles() {
+    const stylesText = window.getComputedStyle(this.refsText.current)
+    
+    const textWidth = parseInt(stylesText.width)
+    const textHeight = parseInt(stylesText.height)
+    const textArea = textWidth * textHeight
+
+    this.textRequiredArea = textArea;
+  }
+  fetchParentStyles() {
+    const stylesWrapper = window.getComputedStyle(this.refsWrapper.current)
+
+    const wrapperWidth = parseInt(stylesWrapper.width)
+    const wrapperHeight = parseInt(stylesWrapper.height)
+
+    const allWrapperPaddings = this.getPaddingNumbers(stylesWrapper.padding)
+    const minWrapperPadding = Math.min(...allWrapperPaddings)
+    const wrapperArea = wrapperWidth * wrapperHeight
+    
+    const proportion = wrapperHeight / wrapperWidth
+
+    this.wrapperData = {
+      proportion: proportion,
+      wrapperWidth: wrapperWidth
+    }
+
+  }
+
+  
+
+  updateEqualPadding() {
+    console.log("### UPDATE EQUAL PADDING ###");
+    // RAW RENDERING
+    this.setNewPadding(0)
+
+    // FETCHING STYLES AND 
+    this.fetchChildrenStyles()
+    this.fetchParentStyles()
+
+    this.addEqualPadding()
+
+  }
+  addEqualPadding() {
+    console.log("EqualPadding.addEqualPadding()");
+
+    const { proportion, wrapperWidth } = this.wrapperData
+
+    const requiredArea = this.textRequiredArea
+
+    const newHeight = Math.sqrt(proportion * requiredArea)
+    const newWidth = requiredArea / newHeight
+    const newPadding = (wrapperWidth - newWidth) / 2
+
+    if (this.minPadding < newPadding) {
+
+      this.setNewPadding(newPadding)
+      // console.log(this.textStyles)
+    }
+  }
+
+  /**
+   * @param { number } newPadding 
+   */
+  setNewPadding(newPadding) {
+
+    this.wrapperStyles = {
+      ...this.wrapperStyles,
+      padding: `${newPadding}px`,
+    }
+    this.setState({
+      padding: newPadding
+    })
+
+  }
+
+  /**
+   * 
+   * @param { string } paddingStr 
+   */
+  getPaddingNumbers(paddingStr) {
+
+    const numbers = [];
+    paddingStr.split(" ").forEach( string => {
+      const number = parseFloat(string)
+      // return number;
+
+      if (!isNaN(number)) {
+        numbers.push(number)
+      }
+    })
+
+    return numbers
+  }
+  
+  render() {
+    return(
+      <div  ref={this.refsWrapper} className={`${this.props.className} equal-padding`} style={this.wrapperStyles}>
+        <div  ref={this.refsText} style={this.textStyles}>
+          {this.props.children}
+        </div>
+      </div>
+    )
+  }
+}
+EqualPadding.defaultProps = {
+  minPadding: "0px"
+}
+
+
+
+const styles = {
+  "min-height": "90vh",
+  "padding": "10vh",
+  "background-color": "teal",
+}
+
+
+const LaboratoryPage2 = () => {  
+  return(
+    <Layout header="transparent-light" topSpace={true} >
+      <Container rootElement="section" >
+        <h1>Testing conditional rendering</h1>
+        <ConditionalTag tag="h3" />
+      </Container>
+      <Container rootElement="section" >
+        <EqualPadding className=" my-5" style={styles} minPadding="2rem">
+          <h3 className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum ab minima nihil maxime eligendi ullam voluptate. Odio, similique deserunt.</h3>
+        </EqualPadding>
+        <div className="row">
+          <div className="col-md-6" style={styles}>
+            <h3 className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum ab minima nihil maxime eligendi ullam voluptate. Odio, similique deserunt.</h3>
+          </div>
+          <div className="col-md-6" >
+            Tekst
+          </div>
+        </div>
 
         <div className="container-box py-5">
           <Grid.Row>
@@ -80,32 +265,6 @@ const LaboratoryPage2 = () => {
             </Grid.Column>
           </Grid.Row>
         </div>
-
-        <WavesContainer>
-          <div className="container">
-            <h2>Nasze usługi 2</h2>
-            <div className="row py-5">
-              <div className="col-md-4">
-                <h5>Diagnozy</h5>
-                <p>Dolor sit amet consectetur adipisicing elit. Voluptas accusantium at voluptatem tenetur illo est praesentium dolorum aliquid a nemo vel repellat perspiciatis quidem corrupti dignissimos</p>
-              </div>
-              <div className="col-md-4">
-                <h5>Terapie</h5>
-                <p>Dolor sit amet consectetur adipisicing elit. Voluptas accusantium at voluptatem tenetur illo est praesentium dolorum aliquid a nemo vel repellat perspiciatis quidem corrupti dignissimos</p>
-              </div>
-              <div className="col-md-4">
-                <h5>Konsultacje i Szkolenia</h5>              
-                <p>Dolor sit amet consectetur adipisicing elit. Voluptas accusantium at voluptatem tenetur illo est praesentium dolorum aliquid a nemo vel repellat perspiciatis quidem corrupti dignissimos</p>
-              </div>
-            </div>
-            <Link className="d-block btn btn-light mx-auto" to="/oferta">Zobacz Więcej</Link>
-          </div>
-        </WavesContainer>
-      </BgGradient>
-
-      <Container className="bg-green-lg">
-        <h2>Nagłówek 2</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, atque doloribus. Quidem odit, eos accusamus omnis quam asperiores facilis necessitatibus consectetur porro laudantium aperiam nemo reiciendis, laborum quae illum. Nisi rerum provident explicabo libero illum placeat repellat esse at harum vitae et deleniti, quaerat nesciunt eligendi fugiat doloribus fugit! Quod ab tempore esse nostrum eos aperiam iste placeat asperiores! Dolorem, totam et fugiat unde autem impedit, hic animi explicabo ad omnis, est ullam ipsum architecto laudantium cupiditate deserunt aperiam sint fuga? Dignissimos dicta neque quidem libero expedita exercitationem. Provident doloremque cupiditate ipsum tempore nesciunt! Corrupti minima atque ipsam, labore perferendis alias. Aliquid fugit error odit consequuntur incidunt inventore? Deleniti quisquam, similique cumque quibusdam laudantium quod aperiam. Cumque et perspiciatis totam tempora itaque perferendis nesciunt nihil facilis earum consectetur. Nostrum, quaerat dolore. Eveniet delectus, dolore, quisquam minus voluptatem asperiores voluptatum blanditiis, voluptas aliquid earum neque maxime fugiat harum cum officiis impedit hic dignissimos. Aliquam sunt ratione deserunt soluta nostrum possimus doloremque quos rem quisquam, sint, repellendus animi voluptatem repudiandae reprehenderit hic corporis iusto excepturi. Corrupti labore incidunt autem reiciendis aliquam repudiandae quod! Nostrum, voluptas facere, illo doloribus excepturi, cum quibusdam a fugiat ullam molestias similique. Expedita fuga libero voluptate est cumque harum sint distinctio suscipit similique quasi maxime delectus, voluptatem animi? Voluptas impedit, quod, architecto maxime nemo, inventore iure dolor maiores nostrum laboriosam odit natus eligendi rem provident facilis saepe illo fugiat voluptatum adipisci ex voluptates. Distinctio est accusamus fuga provident ipsam quaerat vitae in similique ab saepe eaque, eius dignissimos labore doloribus iusto! Consectetur porro eius, ullam est error quod commodi dignissimos praesentium! Aspernatur, debitis vel dolore minima ipsum officia eaque eius maxime expedita recusandae non laboriosam, repudiandae fugiat necessitatibus sequi et, eligendi aliquam. Veniam doloribus culpa sunt, accusantium corrupti recusandae molestiae amet numquam maiores suscipit ex architecto minima magnam eaque debitis libero fugit voluptate. Voluptatum inventore ipsum ratione iusto tenetur dolorum, error culpa obcaecati quae neque ab itaque. Dolorum accusantium sed minus dignissimos maiores debitis in. Quasi voluptates dolorem non cum qui accusamus beatae sapiente amet praesentium eos sit error, reprehenderit cupiditate consequuntur atque velit! Accusantium harum atque laborum laudantium sed ducimus expedita dolor esse, nisi consequuntur ea doloremque vitae, officia sit quisquam consequatur cumque earum nam rem neque sapiente culpa! Aperiam temporibus, sed aliquid, ut quibusdam, laudantium ipsa quae tenetur adipisci blanditiis autem velit! Qui tempora voluptatum nostrum nam ab pariatur, adipisci soluta? Officia exercitationem sunt in qui eum deleniti molestiae eligendi quo ipsum expedita minus incidunt aperiam tempora, repudiandae molestias placeat eos deserunt consectetur, rerum perferendis. Vel nam in recusandae aspernatur porro labore doloribus dolore dolorem qui minima eaque ad reprehenderit suscipit magnam, aut corporis eligendi voluptatibus temporibus eius natus dolor impedit amet aperiam! Incidunt molestias maxime, vel magnam voluptatem a quasi repudiandae error voluptate at autem ab nesciunt animi unde recusandae quisquam aliquam natus aliquid cum iusto? Quod omnis atque perspiciatis, quo illum iure in ipsa minima a aspernatur vitae laudantium sapiente, mollitia culpa quis repellat inventore aliquam! Quisquam laboriosam, optio soluta ullam autem explicabo est.</p>
       </Container>
     </Layout>
   )

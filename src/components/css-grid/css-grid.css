@@ -36,7 +36,7 @@
 }
 
 .css-grid-row .img-grid {
-  height: 50vh;
+  min-height: 50vh;
 }
 
 .css-grid-row .img-grid img {

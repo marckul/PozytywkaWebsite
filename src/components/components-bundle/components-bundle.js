@@ -52,16 +52,27 @@ HeroImageArea.defaultProps = {
 
 
 
-function Container({ children, className, ...props }) {
-  return (
-    <div {...props} className={`${className} container-box py-5`}>
-      <div className="container my-5">{children}</div>
-    </div>
+// function Container({ children, className, ...props }) {
+//   return (
+//     <div {...props} className={`${className} container-box py-5`}>
+//       <div className="container my-5">{children}</div>
+//     </div>
+//   )
+// }
+function Container({ children, rootElement, ...props }) {
+  props.className += " container-box py-5"
+  const template = <div className="container my-5">{children}</div>
+
+  const element = React.createElement(
+    rootElement, props, template
   )
+  return(element)
 }
 Container.defaultProps = {
-  className: ""
+  className: "",
+  rootElement: "div"
 }
+
 
 function Phone({ children, tel, size }) {
   let propsSize = ""
@@ -119,11 +130,32 @@ function WavesContainer({ children }) {
   )
 }
 
+
+
+function Figure({alt, src, caption, indented, className}) {
+  if (indented) {
+    className += " indented-figure" 
+  }
+
+  return(
+    <figure className={`figure border p-2 ${className} `}>
+      <img src={src} alt={alt} className="figure-img img-fluid "/>
+      <figcaption class="small text-center">{caption}</figcaption>
+    </figure>
+  )
+}
+Figure.defaultProps = {
+  className: "",
+  indented: false,
+}
+
+
 export { 
   HeroArea, 
   HeroImageArea, 
   Container, 
   Phone, 
   BgGradient, 
-  WavesContainer
+  WavesContainer,
+  Figure
 } 

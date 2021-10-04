@@ -7,6 +7,7 @@ import '../components/article/article.css'
 import ImagePlaceholder from '../assets/images/artykul-zdjecie.jpg'
 import ImagePlaceholder2 from '../assets/images/offer-page-hero--prod.jpg'
 import ImagePlaceholder3 from '../assets/images/spacer-w--gorach--30.jpg'
+import { Figure } from '../components/components-bundle/components-bundle'
 
 
 
@@ -20,22 +21,7 @@ function Layout2({children, ...props}) {
   
 }
 
-function Figure({figcaption, alt, src, caption, indented, className}) {
-  if (indented) {
-    className += " indented-figure" 
-  }
 
-  return(
-    <figure className={`figure border p-2 ${className} `}>
-      <img src={src} alt={alt} className="figure-img img-fluid "/>
-      <figcaption class="small text-center">{caption}</figcaption>
-    </figure>
-  )
-}
-Figure.defaultProps = {
-  className: "",
-  indented: false,
-}
 
 
 
@@ -61,7 +47,7 @@ const ArticleTemplate = () => {
               </div>
               <h2 className="h4"> Nagłówek Pierwszy </h2>
               <p className="drop-cap">
-                Uekst dziełowy inaczej nazywany również głównym lub rzadziej chlebowym jest kwintesencją każdej publikacji. Kupujemy książki właśnie z uwagi na interesującą treść, która zajmuje w strukturze książki największą jej część. Aby tekst dziełowy stanowił zgrabną i przejrzystą strukturę musi być podporządkowany pewnym zasadom kompozycyjnym. Podstawową jednostką kompozycji w tekście jest akapit, czasem zwany ustępem. Pomaga on czytelnikowi właściwie odczytać i rozumieć cały tekst.
+                Tekst dziełowy inaczej nazywany również głównym lub rzadziej chlebowym jest kwintesencją każdej publikacji. Kupujemy książki właśnie z uwagi na interesującą treść, która zajmuje w strukturze książki największą jej część. Aby tekst dziełowy stanowił zgrabną i przejrzystą strukturę musi być podporządkowany pewnym zasadom kompozycyjnym. Podstawową jednostką kompozycji w tekście jest akapit, czasem zwany ustępem. Pomaga on czytelnikowi właściwie odczytać i rozumieć cały tekst.
                 Akapit składa się z wierszy. Ustalono wygodną dla czytelnika długość wiersza akapitu w układzie jednołamowym, złożonego szeryfowym krojem pisma w stopniu tekstowym. Przyjrzyjmy się poniższemu wyszczególnieniu:
               </p>
               <Figure

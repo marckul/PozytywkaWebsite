@@ -33,6 +33,13 @@
 // 
 // =================
 
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  min-width: 100%;
+}
+
 main {
   min-height: 40rem;
 }

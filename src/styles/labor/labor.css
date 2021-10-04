@@ -4,102 +4,32 @@
   --bs-body-line-height: 1.333;
 }
 
-.offer-card-col {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.some-class {
+  min-height: 50vh;
+  background-color: rgba(218, 165, 32, 0.4);
 }
 
-.sticky-note {
-  background-color: #dbf1f2;
-  border: 1px solid #b5e2e5;
-  display: inline-block;
-  padding: .5em;
-  -webkit-box-shadow: 0 0.15rem 0.2rem rgba(0, 0, 0, 0.15);
-          box-shadow: 0 0.15rem 0.2rem rgba(0, 0, 0, 0.15);
-}
-
-.offer-card {
-  min-width: 20em;
-  max-width: 20em;
-  min-height: 32.36em;
-  max-height: 32.36em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  background-image: url("../../assets/images/offer-plant--prod.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.offer-card, .offer-card .card-inner {
-  padding: 1.5rem;
-}
-
-.offer-card .card-title {
-  color: #21747A;
-}
-
-.offer-card .card-inner {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  background: rgba(255, 255, 255, 0.8);
-  border: 0.1115em solid rgba(33, 116, 122, 0.25);
-}
-
-.offer-card h1, .offer-card h2, .offer-card h3, .offer-card h4, .offer-card h5, .offer-card h6 {
-  color: #21747A;
-}
-
-.react-carousel-container .card-container {
+.centered-content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.react-carousel-container .cards-dots-controls {
-  position: static;
-  margin-top: 1.5rem;
+.oneline {
+  white-space: nowrap;
+  float: left;
+  display: inline;
 }
 
-.react-carousel-container .cards-dots-controls .react-multi-carousel-dot button, .react-carousel-container .cards-dots-controls .react-multi-carousel-dot button:hover:active {
-  border-radius: 0;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  width: 30px;
-  height: 3px;
-  padding: 0;
-  margin-right: 3px;
-  margin-left: 3px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: black;
-  background-clip: padding-box;
-  border: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  opacity: .5;
-  -webkit-transition: opacity .6s ease;
-  transition: opacity .6s ease;
-}
-
-.react-carousel-container .cards-dots-controls .react-multi-carousel-dot--active button, .react-carousel-container .cards-dots-controls .react-multi-carousel-dot--active button:hover:active {
-  opacity: 1;
+.oneline * {
+  white-space: nowrap;
+  float: left;
+  display: inline;
 }
 /*# sourceMappingURL=labor.css.map */

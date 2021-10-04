@@ -1,149 +1,25 @@
 
 @import '../variables';
-// @import '../layout/layout.scss';
 
+.some-class {
+  min-height: 50vh;
+  background-color: rgba(218, 165, 32, 0.4);
+}
 
-.offer-card-col {
-  // width: 20em !important;
-  // max-width: 20em !important;
-  // height: 1.2*20em !important;
-  // max-height: 1.5*20em !important;
-  
+.centered-content {
   display: flex;
-  flex-direction: column;
-
+  justify-content: center;
+  align-items: center;
   
 }
 
-.sticky-note {
-  background-color: desaturate(lighten($color-teal, 60%), 10%);
-  border: 1px solid desaturate(lighten($color-teal, 50%), 10%);
-  display: inline-block;
-  padding: .5em;
-  box-shadow: 
-    $shadow-key-md;
-}
-
-.offer-card {
-  $padding: map-get($spacers, 4 );
-  $offer-card-color: $color-teal;
-  $width: 20em;
-
-  min-width: $width;
-  max-width: $width;
-  min-height: 1.618*$width;
-  max-height: 1.618*$width;
-
-  // position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
-  
-  background-image: url('../../assets/images/offer-plant--prod.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  &, .card-inner {
-    padding: $padding;
-  }
-  .card-title {
-    color: $offer-card-color;
-  }
-  .card-inner {
-    flex-grow: 1;
-    background: rgba(255, 255, 255, 0.8);
-    border: .1115em solid rgba($offer-card-color, 0.25);
-  }
-  @include headings {
-    color: $offer-card-color;
+.oneline {
+  white-space: nowrap;
+  float: left;
+  display: inline;
+  * {
+    white-space: nowrap;
+    float: left;
+    display: inline;
   }
 }
-
-
-
-
-// KARUZELA Z KARTAMI
-.react-carousel-container {
-  .card-container {
-    display: flex;  
-    justify-content: center;
-  }  
-  .cards-dots-controls {
-    position: static;
-    margin-top: map-get($spacers, 4 ); 
-
-    .react-multi-carousel-dot {
-      button, button:hover:active {
-        border-radius: 0;
-        box-sizing: content-box;
-        // flex: 0 1 auto;
-        width: 30px;
-        height: 3px;
-        padding: 0;
-        margin-right: 3px;
-        margin-left: 3px;
-        text-indent: -999px;
-        cursor: pointer;
-        background-color: rgb(0, 0, 0);
-        background-clip: padding-box;
-        border: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        opacity: .5;
-        transition: opacity .6s ease;
-      }
-      
-    }
-    .react-multi-carousel-dot--active {
-      button, button:hover:active {
-        opacity: 1;
-
-        // background: teal;
-        // width: 1rem;
-        // background: black;
-        
-      }
-    }
-  }
-}
-
-// .hero-area-test {
-//   position: relative;
-//   div:first-child {
-//     z-index: 2;
-//   }
-//   &>div{
-//     position: absolute;
-//     // top: 0;
-//     // bottom: 0;
-//     left: 0;
-//     right: 0;
-//     img {
-//       object-fit: cover;
-//       height: 100%;
-//       width: 100%;
-//     }
-//   }
-// }
-
-// main>div {
-//   position: relative
-// }
-
-
-// .background-image {
-//   position: absolute;
-//   // z-index: 0;
-//   div {
-//     top: 0;
-//     bottom: 0;
-//     z-index: 0;
-//     position: absolute;
-
-//   }
-//   top: 0;
-//   bottom: 0;
-//   left: 0;
-//   right: 0;
-// }

@@ -28,31 +28,30 @@ import '../styles/layout/layout.css'
 /**
  * 
  * @param {*} props
- * @param {*} props.header - object constins header props
- * @param {*} props.header.variant - object constins header variant
- * @param {*} props.header.space - object constins header variant
  */
-const Layout = ({ children, header, mainClassName, topSpace }) => {
+function Layout({ children, header, mainClassName, topSpace }) {
 
   return (
     <>
       <div className="main-wrapper">
         <Header variant={header} />
-        <NavbarSpace addSpace={topSpace}/>
+        <NavbarSpace addSpace={topSpace} />
         <HeaderCollapsible />
         <main className={mainClassName}>{children}</main>
       </div>
-      <Footer></Footer>
-      {/* <footer className="bg-dark "> FOOTER </footer> */}
+      <Footer/>
     </>
   )
 }
 Layout.defaultProps = {
   topSpace: false,
+  header: "light",
 }
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  header: PropTypes.node.isRequired,
 }
+
 
 export default Layout
 // export { Layout }

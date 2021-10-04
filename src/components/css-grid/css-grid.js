@@ -20,7 +20,8 @@ Row.defaultProps = {
  * @param { object } props 
  * @param { object } props.position - left or right 
  */
-const Column = ({children, position, className}) => {
+const Column = React.forwardRef(
+  ({children, position, className}, ref) => {
 
   if (children !== undefined ) {
     if (children.type === "img") {
@@ -38,31 +39,49 @@ const Column = ({children, position, className}) => {
   }
 
   return(
-    <div className={`${className} css-grid--column`} style={style}>
+    <div ref={ref} className={`${className} css-grid--column`} style={style}>
       {children}
     </div>
   )
-}
+})
 
 Column.defaultProps = {
   className: ""
 }
 
 
+const Quotation = React.forwardRef(
+  (props, ref) => {
+    const { children } = props
+    
+    return(
+      <figure ref={ref} {...props} className="h4 big-blockquote">
+        {/* <h3> </h3> */}
+        <blockquote  className="blockquote">
+          {children}
+        </blockquote >
+        <figcaption className="blockquote-footer lead">
+          Hans Asperger <i>Neuroplemiona</i>
+        </figcaption>
+      </figure>
+    )
+  }
+);
 
-const Quotation = ({children}) => {
-  return(
-    <figure className="h4 big-blockquote">
-      {/* <h3> </h3> */}
-      <blockquote  className="blockquote">
-        {children}
-      </blockquote >
-      <figcaption className="blockquote-footer lead">
-        Hans Asperger <i>Neuroplemiona</i>
-      </figcaption>
-    </figure>
-  )
-}
+
+// const Quotation = ({children, ref, ...props}) => {
+//   return(
+//     <figure ref={ref} {...props} className="h4 big-blockquote">
+//       {/* <h3> </h3> */}
+//       <blockquote  className="blockquote">
+//         {children}
+//       </blockquote >
+//       <figcaption className="blockquote-footer lead">
+//         Hans Asperger <i>Neuroplemiona</i>
+//       </figcaption>
+//     </figure>
+//   )
+// }
 
 
 

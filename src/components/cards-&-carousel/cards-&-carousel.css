@@ -1,0 +1,192 @@
+:root {
+  --bs-light-rgb: 245, 251, 255;
+  --bs-dark-rgb: 0, 31, 51;
+  --bs-body-line-height: 1.333;
+}
+
+@media (max-width: 370px) {
+  .react-carousel-container {
+    margin: 0 -0.75rem;
+  }
+  .react-carousel-container .react-carousel-info {
+    margin: 0 0.75rem;
+  }
+}
+
+.react-carousel-container .react-carousel-info .info {
+  display: block;
+  text-align: right;
+}
+
+.react-carousel-container .react-carousel-info .info-touch {
+  display: none;
+  text-align: center;
+}
+
+@media (hover: none) {
+  .react-carousel-container .react-carousel-info .info {
+    display: none;
+  }
+  .react-carousel-container .react-carousel-info .info-touch {
+    display: block;
+  }
+}
+
+.offer-card-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1.5rem 0.25rem;
+}
+
+.offer-card-col .offer-card {
+  min-height: 32.36rem;
+}
+
+@media (min-width: 330px) {
+  .offer-card-col {
+    padding: 1.5rem 0.5rem;
+  }
+  .offer-card-col .offer-card {
+    min-width: 20rem;
+    max-width: 20rem;
+    min-height: 32.36rem;
+    max-height: 32.36rem;
+  }
+}
+
+.offer-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-image: url("../../assets/images/offer-plant--prod.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.offer-card, .offer-card .card-inner {
+  padding: 1.5rem;
+}
+
+.offer-card .card-inner {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: rgba(255, 255, 255, 0.8);
+  border: 0.1115em solid rgba(33, 116, 122, 0.25);
+}
+
+.offer-card .card-title {
+  color: #21747A;
+}
+
+.offer-card h1, .offer-card h2, .offer-card h3, .offer-card h4, .offer-card h5, .offer-card h6 {
+  color: #21747A;
+}
+
+.offer-card .card-head {
+  margin-bottom: 1rem;
+  -webkit-box-flex: 2;
+      -ms-flex: 2 1 auto;
+          flex: 2 1 auto;
+}
+
+.offer-card .card-body {
+  -webkit-box-flex: 3;
+      -ms-flex: 3 1 auto;
+          flex: 3 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+}
+
+.offer-card .sticky-note {
+  background-color: #e6f5f6;
+  border: 1px solid #d0e3e4;
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 100%;
+  padding: .5em;
+  -webkit-box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.4);
+}
+
+.react-carousel-container .react-multiple-carousel__arrow--left::before {
+  margin-right: 0.16rem;
+}
+
+.react-carousel-container .react-multiple-carousel__arrow--right::before {
+  margin-left: 0.16rem;
+}
+
+.react-carousel-container .card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.react-carousel-container .cards-dots-controls {
+  position: static;
+  margin-top: 1.5rem;
+}
+
+.react-carousel-container .cards-dots-controls .react-multi-carousel-dot button, .react-carousel-container .cards-dots-controls .react-multi-carousel-dot button:hover:active {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  width: 30px;
+  height: 3px;
+  padding: 0;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: black;
+  background-clip: padding-box;
+  border: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: .5;
+  -webkit-transition: opacity .6s ease;
+  transition: opacity .6s ease;
+}
+
+.react-carousel-container .cards-dots-controls .react-multi-carousel-dot--active button, .react-carousel-container .cards-dots-controls .react-multi-carousel-dot--active button:hover:active {
+  opacity: 1;
+}
+/*# sourceMappingURL=cards-&-carousel.css.map */

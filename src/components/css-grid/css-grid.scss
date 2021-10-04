@@ -30,7 +30,7 @@ $css-grid--min-height: calc(100vh - #{2*$css-grid-gap}); // --css-grid--min-heig
   }
 
   .img-grid {
-    height: 50vh; // TODO ADD SCSS VARIABLE
+    min-height: 50vh; // TODO ADD SCSS VARIABLE
     img {
       width: 100%;
       height: 100%;
