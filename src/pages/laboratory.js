@@ -10,7 +10,7 @@ import * as Grid from '../components/css-grid/css-grid'
 import boyOnMolo from '../assets/images/chlopczyk-na-molo.jpg'
 import spacerWGorach from '../assets/images/spacer-w--gorach--30.jpg'
 
-import { CenteredContent } from '../components/centered-content/centered-content'
+import { RatioContent } from '../components/ratio-content/ratio-content'
 
 
 
@@ -55,8 +55,10 @@ const LaboratoryPage = () => {
           <img src={`${boyOnMolo}`} alt="" className="img-grid"/>
         </Grid.Column>
         <Grid.Column position="right" className="">
-          <CenteredContent>        
-          </CenteredContent>
+          <RatioContent className="test" childComponent={Grid.Quotation} >        
+            <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
+            <span>Hans Asperger <i>Neuro</i></span>
+          </RatioContent>
         </Grid.Column>
       </Grid.Row>
       

@@ -1,9 +1,13 @@
 import * as React from 'react'
 
 import * as Grid from '../css-grid/css-grid'
+import PropTypes from 'prop-types';
+
+import * as CSS from './.module.css'
 
 
-class CenteredContent2 extends React.Component {
+// TO REMOVE 
+class CenteredContent0 extends React.Component {
   constructor(props) {
     super(props)
 
@@ -146,35 +150,35 @@ class CenteredContent2 extends React.Component {
 
 }
 
+
+function randomNumber(lower = 0, upper = 1) {
+  const range = upper - lower
+  return range*Math.random() + lower
+    
+}
+
+
+
 /**
- * Class definition
- * @property { object } algoSteps - propriety description
- * ...
+ * RatioContent - here will be definition
+ * 
+ * @param { } props
+ * @param { } props.childComponent - Component wrapping child 
+ * 
  */
+class RatioContent extends React.Component {
 
-
-/**
- * CenteredComponent - here will be definition
- * @class
- * @constructor
- * @public
- */
-class CenteredContent extends React.Component {
-  constructor(props) {
-    console.log("CONSTRUCTOR CenteredContent");
-    super(props)
-
-    this.refsParent = React.createRef()
-    this.refsChild = React.createRef()
-
-    this.state.step = this.algoSteps.step1
-    this.childStyles = {}
-    // this.setStep(this.algoSteps.step1)
+  static propTypes = {
+    children: PropTypes.string,
+    childComponent: PropTypes.elementType,
+    debugMode: PropTypes.bool,
   }
-
+  
   state = {
     step: undefined,
+    counter: 0
   }
+
   /** parentRatio - aspect ratio of parent component 
    * @type { number } */
   parentRatio = undefined
@@ -188,20 +192,57 @@ class CenteredContent extends React.Component {
     step3: "finding minimum error",
     STOP: true,
   }
-  algo = {
+
+  algoInitial = {
     sign: undefined,
-    lambda: .01
+    lambda: .01,
+    minError: {
+      /** absolute error */
+      absErr: Infinity,
+      /** element width in px */
+      width: "",
+    },
+    STOP: false
   }
 
+  algo = this.algoInitial
+  
+  /**
+   * 
+   * @param { object } props
+   * @param { string } props.childComponent
+   * 
+   */
+  constructor(props) {
+    console.log("CONSTRUCTOR CenteredContent");
+    super(props)
+
+    this.refsParent = React.createRef()
+    this.refsChild = React.createRef()
+
+    this.state.step = this.algoSteps.step1
+    this.childStyles = {}
+    // this.setStep(this.algoSteps.step1)
+  }
+
+  printLogs(...args) {
+    if (this.props.debugMode) {
+      console.log(...args)
+    }
+  }
+
+
   setStep(step) {
-    console.log("SETING STEP");
-    console.log(step);
+    this.printLogs("SETING STEP");
+    this.printLogs(step);
     
     this.setState({
       step: step,
     })
 
     if (step === this.algoSteps.step1) {
+      this.algo = this.algoInitial
+      this.state.counter = 0
       this.childStyles = {}
     }
 
@@ -211,30 +252,22 @@ class CenteredContent extends React.Component {
   }
 
 
-  componentDidMount() {
-    this.getMeasures()
-    // this.algoritmRouter()
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log("\n COMPONENT DID UPDATE");
-
-    // if (this.state.STOP) {
-      
-    // }
-    this.getROI(prevProps, prevState)
-  }
-
-  getROI(prevProps, prevState) {
-    console.log("getROI");
+  minimizeRatioError() {
+    this.printLogs("getROI");
+    if (this.algo.STOP) {
+      this.printLogs("STOP");    
+      this.printLogs("childStyles", this.childStyles);
+      return  
+    }
+    
     const childRatio = this.getAspectRatio(this.refsChild)
     
-    
-    const L = this.algo.lambda
+    let L = this.algo.lambda
 
     const error = (this.parentRatio - childRatio) / this.parentRatio
     const errorAbs = Math.abs(error)
 
-    console.log("RATIOS", 
+    this.printLogs("RATIOS", 
       this.parentRatio, 
       this.childStyles,
       childRatio, 
@@ -243,9 +276,26 @@ class CenteredContent extends React.Component {
       `${Math.round(error*10000)/100}%`
     );
 
-    
-    if (errorAbs < .05) {
+    const childWidthStr = getComputedStyle(this.refsChild.current).width
+    this.printLogs(childWidthStr);
 
+    if (this.algo.minError.absErr > errorAbs) {
+      this.algo.minError.width = childWidthStr
+      this.algo.minError.absErr = errorAbs
+    }
+    
+    this.printLogs(this.algo.minError);
+
+    if (errorAbs < .02 || this.state.counter >= 49) {
+      this.childStyles = {
+        width: this.algo.minError.width
+      }
+
+      this.algo.STOP = true
+      this.setState({
+        counter: this.state.counter + 1,
+      })
+      
       // bez set state komponent się nie wyrenderuje
       this.algo.sign = undefined;
       return;
@@ -264,36 +314,37 @@ class CenteredContent extends React.Component {
       prevSign = S
     }
     this.algo.sign = S
-    const childWidth = parseInt(getComputedStyle(this.refsChild.current).width)
+    
+    
+    const childWidth = parseFloat(childWidthStr)
 
     if (typeof childWidth !== "number" ) {
       throw Error("childWidth should be a number")      
     }
 
     
-    if (S === prevSign) {
-      // const dW = S*L*childWidth // dW can be positive or negative
-      
-      const newWidth = childWidth*(1 + S*L)
-      console.log(childWidth, newWidth, L);
-      // newWidth = childWidth + dW
-
-      this.childStyles = {
-        "width": `${newWidth}px`
-      }
-
-      this.setState({
-        counter: this.state++
-      })
-      
+    if (S !== prevSign) {
+      L = L/2
+      this.algo.lambda = L      
     } 
-    else {
-      // preparation for next algorith run
-      this.algo.lambda = this.algo.lambda/2
-      this.getROI(prevProps, prevState)
-      // this.algo.sign = undefined;
-    }
     
+    const dW = S*L*childWidth // dW can be positive or negative
+    const newWidth = childWidth + dW
+    this.printLogs(childWidth, newWidth, L);
+
+    
+    
+
+    this.childStyles = {
+      "width": `${newWidth }px`
+    }
+
+    // this.printLogs(this.state);
+    
+    this.setState({
+      counter: this.state.counter + 1
+    })
+
   }
 
   getAspectRatio(refs) {
@@ -308,16 +359,16 @@ class CenteredContent extends React.Component {
     return ratio    
   }
   getMeasures() {
-    console.log("GET MEASURES");
+    this.printLogs("GET MEASURES");
 
     
     const ratio = this.getAspectRatio(this.refsParent)
     
-    console.log("ratio", ratio);
+    this.printLogs("ratio", ratio);
 
     // debugger
-    const childStyle = getComputedStyle(this.refsChild.current)
-    // console.log("childStyle", childStyle);
+    const childStyle = getComputedStyle(this.refsChild.current);
+    // this.printLogs("childStyle", childStyle);
     
     const childSize = {
       w: parseFloat(childStyle.width),
@@ -333,49 +384,73 @@ class CenteredContent extends React.Component {
     } 
     this.parentRatio = ratio
 
-    console.log("childSize", childSize);
-    console.log(this.childStyles);
-
-    
-    this.setState({
-      step: this.algoSteps.step2,
-    })
-
-
-    
+    this.printLogs("childSize", childSize);
+    this.printLogs(this.childStyles); 
     
   }
 
-  algoritmRouter() {
-    console.log("ALGORITM SWITCH");
-    console.log(this.getCurrentStep());
+  runAlgoritm() {
+    this.printLogs("\n\nRESIZE WINDOW");
+    this.printLogs("ALGORITM INIT");
+    
+    this.setStep(this.algoSteps.step1)
+    this.rawState()
+  }
+  algoritmRouter() {    
+    this.printLogs(
+      `%c\n  CURRENT STEP ${this.getCurrentStep()}`, 
+      "color: #00a879"
+    );   
     if (this.getCurrentStep() === this.algoSteps.step1 ) {
-      this.rawState()
+      this.getMeasures()
+      this.setStep(this.algoSteps.step2)
+    }
+    else if (this.getCurrentStep() === this.algoSteps.step2 ) { 
+      this.minimizeRatioError()
     }
   }
 
   rawState() {
-    console.log("LUNCHING RAW STATE");    
+    this.printLogs("LUNCHING RAW STATE"); 
+    this.childStyles = { }  
   }
 
+  
+  componentDidMount() {
+    this.getMeasures()
+    this.setStep(this.algoSteps.step2)
 
-
-  render() {
-    const ParentTag = "div"
-
-    return(
-      <ParentTag ref={this.refsParent} className="centered-content flex-grow-1 " >
-        <Grid.Quotation ref={this.refsChild} style={this.childStyles}>
-          Wydaje mi się, że do sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego
-        </Grid.Quotation>
-      </ParentTag>
+    window.addEventListener(
+      "resize", () => this.runAlgoritm()
     )
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    this.algoritmRouter()
+  }
+
+  render() {
+    const ParentTag = "div"
+    const {children, childComponent, ...props} = this.props
+    const ChildComponent = childComponent;
+
+    return(
+      <ParentTag ref={this.refsParent} className={`${CSS.centered} flex-grow-1`} style={this.parentStyles} >
+        <ChildComponent {...props} ref={this.refsChild} style={this.childStyles}>
+          {children}
+        </ChildComponent>
+      </ParentTag>
+    )
+  }
+}
+
+
+RatioContent.defaultProps = {
+  children: "",
+  childComponent: "div"
 }
 
 
 
 
-
-export {CenteredContent2, CenteredContent}
+export { RatioContent }

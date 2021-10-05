@@ -10,6 +10,7 @@ import { HeroImageArea, Container, BgGradient, WavesContainer } from '../compone
 import { CounterBox } from '../components/counter'
 
 import * as Grid from '../components/css-grid/css-grid'
+import { RatioContent } from '../components/ratio-content/ratio-content'
 
 import boyImg from  '../assets/images/Boy-under-stars.jpg'
 import boyOnMolo from '../assets/images/chlopczyk-na-molo.jpg'
@@ -53,9 +54,10 @@ const IndexPage = () => {
               <img src={`${boyOnMolo}`} alt="" className="img-grid"/>
             </Grid.Column>
             <Grid.Column position="right">
-              <Grid.Quotation>
-                Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego
-              </Grid.Quotation>
+              <RatioContent childComponent={Grid.Quotation} debugMode={true}>
+                <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
+                <span>Hans Asperger <i>Neuroplemiona</i></span>
+              </RatioContent>
             </Grid.Column>
           </Grid.Row>
 
