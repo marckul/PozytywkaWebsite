@@ -1,5 +1,4 @@
 @import '../variables';
-@import '../custom-bootstrap/custom-bootstrap.scss';
 @import '../typography';
 
 
@@ -24,6 +23,32 @@
 
 .navbar-brand {
   
+}
+
+@include headings {
+
+  u {
+    position: relative;
+    z-index: 5;
+    text-decoration: none;
+    &::after {
+
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 1em;
+      bottom: 0;
+      left: -.3em;
+      right: -.3em;
+      display: block;
+      background-image: url("/underline.svg");
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 3rem;
+
+    }
+  }
 }
 
 
@@ -101,19 +126,41 @@ main {
 }
 
 .my-navbar {
-  &.bg-light {
-    @extend .border-bottom;
+  &.navbar-dark {
+    .active {
+      color: $color-active !important;  
+      font-weight: 500;
+    }
+  }
+  &.navbar-light {
+    .active {
+      color: $color-dark !important;
+      font-weight: 500;
+    }
   }
 
+  &.bg-light {
+    // @extend .border-bottom;
+  }
+
+  &.bg-transparent-light, 
   &.bg-transparent-dark {
-    // --border-color: #{rgba($color-darker, 0.5)};
-    // transition: background-color 500ms;
+    backdrop-filter: blur(.1rem);
+  }
+  &.bg-transparent-dark {
     background: rgba(0, 0, 0, 0.5);
     &.show {
       background: rgba(0, 0, 0, .8);
     }
   }
 
+  &.bg-transparent-light {
+    background: rgba(255, 255, 255, 0.5);
+    
+    &.show {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
   // .navbar-collapse {
   //   padding-top: map-get($spacers, 3);
   //   @media (min-width: $navbar-expand) {

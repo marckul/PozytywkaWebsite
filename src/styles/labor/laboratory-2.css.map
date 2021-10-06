@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AC2DA,AAAA,KAAK,CAAC;EACJ,cAAc,CAAA,cAAC;EACf,aAAa,CAAA,UAAC;EACd,qBAAqB,CAAA,MAAC;CACvB",
+    "mappings": "AC4DA,AAAA,KAAK,CAAC;EACJ,cAAc,CAAA,cAAC;EACf,aAAa,CAAA,UAAC;EACd,qBAAqB,CAAA,MAAC;CACvB",
     "sources": [
         "laboratory-2.scss",
         "../_variables.scss",

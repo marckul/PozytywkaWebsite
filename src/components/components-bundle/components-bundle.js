@@ -60,7 +60,7 @@ HeroImageArea.defaultProps = {
 //   )
 // }
 function Container({ children, rootElement, ...props }) {
-  props.className += " container-box py-5"
+  props.className += " container-box py-6"
   const template = <div className="container my-5">{children}</div>
 
   const element = React.createElement(

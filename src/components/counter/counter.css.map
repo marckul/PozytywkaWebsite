@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "AC4DA,AAAA,KAAK,CAAC;EACJ,cAAc,CAAA,cAAC;EACf,aAAa,CAAA,UAAC;EACd,qBAAqB,CAAA,MAAC;CACvB;;AD9DD,AAAA,oBAAoB,CAAC;EACnB,KAAK,EC+Cc,OAAO;CDzC3B;;AAPD,AAEE,oBAFkB,CAElB,OAAO,CAAC;EACN,SAAS,EAAE,OAAO;EAClB,aAAa,EAAE,IAAI;CAEpB",
+    "sources": [
+        "counter.scss",
+        "../../styles/_variables.scss",
+        "../../../node_modules/bootstrap/scss/_functions.scss",
+        "../../../node_modules/bootstrap/scss/_variables.scss"
+    ],
+    "names": [],
+    "file": "counter.css"
+}

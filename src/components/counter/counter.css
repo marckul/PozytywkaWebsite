@@ -1,0 +1,15 @@
+:root {
+  --bs-light-rgb: 245, 251, 255;
+  --bs-dark-rgb: 0, 31, 51;
+  --bs-body-line-height: 1.333;
+}
+
+.dynamic-counter-box {
+  color: #6AA4AC;
+}
+
+.dynamic-counter-box .number {
+  font-size: 1.618em;
+  margin-bottom: .1em;
+}
+/*# sourceMappingURL=counter.css.map */

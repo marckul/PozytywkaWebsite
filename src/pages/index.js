@@ -3,11 +3,12 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
+
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 
 import { HeroImageArea, Container, BgGradient, WavesContainer } from '../components/components-bundle/components-bundle'
-import { CounterBox } from '../components/counter'
+import { CounterBox } from '../components/counter/counter'
 
 import * as Grid from '../components/css-grid/css-grid'
 import { RatioContent } from '../components/ratio-content/ratio-content'
@@ -29,19 +30,22 @@ const IndexPage = () => {
       </HeroImageArea>
       <BgGradient>
         <Container>
-          <h2>Zaufaj naszemu doświadczeniu</h2>
+          <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
           <p className="lead">Pozytywka to już 6 lat pracy z dziecmi z deficytami rozwoju, jednak nasze doświadczenie sięga  o wiele dalej.</p>
           <div className="row py-5"></div>       
           <div className="row">
-            <CounterBox
+            <CounterBox 
+              counterClassName="h1"
               number={14}
               text={"Lorem ipsum"}
             />
             <CounterBox
+              counterClassName="h1"
               number={1413}
               text={"Lorem ipsum"}
             />
             <CounterBox
+              counterClassName="h1"
               number={323}
               text={"Lorem ipsum"}
             />
@@ -66,7 +70,7 @@ const IndexPage = () => {
               <img src={`${spacerWGorach}`} alt="" className=""/>
             </Grid.Column>
             <Grid.Column position="left">
-              <h3>W Pozytywce wierzymy, że każdy człowiek ma coś do zaoferowania światu</h3>
+              <h3>W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do zaoferowania światu</h3>
               <p className="lead">
                 Wiele jest serc które czekają na ewangelę, a w każdym dziecku tkwi potencjał. 
               </p>
@@ -74,14 +78,14 @@ const IndexPage = () => {
                 Pomóż nam go odnaleźć. 
               </p>
               <p>Umów się na konsultacje lub na diagnozę</p>
-              <Link className="btn btn-light" to="/kontakt">Zarejestruj się</Link>
+              <Link className="btn btn-dark" to="/kontakt">Zarejestruj się</Link>
             </Grid.Column>
           </Grid.Row>
         </div>
 
         <WavesContainer>
           <div className="container">
-            <h2>Nasze usługi 2</h2>
+            <h2>Nasze <u>usługi</u></h2>
             <div className="row py-5">
               <div className="col-md-4">
                 <h5>Diagnozy</h5>
@@ -96,7 +100,7 @@ const IndexPage = () => {
                 <p>Dolor sit amet consectetur adipisicing elit. Voluptas accusantium at voluptatem tenetur illo est praesentium dolorum aliquid a nemo vel repellat perspiciatis quidem corrupti dignissimos</p>
               </div>
             </div>
-            <Link className="d-block btn btn-light mx-auto" to="/oferta">Zobacz Więcej</Link>
+            <Link className="d-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
           </div>
         </WavesContainer>
       </BgGradient>

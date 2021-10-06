@@ -3,7 +3,11 @@ import * as React from 'react'
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 import VisibilitySensor from 'react-visibility-sensor'
 
+import './counter.css'
+
 const IS_BROWSER = typeof window !== `undefined`;
+
+
 
 class Counter extends React.Component {
   constructor(props) {
@@ -85,16 +89,16 @@ if (IS_BROWSER) {
 } 
 
 
-const CounterBox = ({number, text}) => {
+const CounterBox = ({number, text, counterClassName}) => {
   const [isVisible, setIsVisible] = React.useState(false)
 
   return (
     <VisibilitySensor onChange={setIsVisible} offset={offset} >
-      <div className="col-md text-center">
-        <p className="h1">
+      <div className={`dynamic-counter-box col-md text-center ${counterClassName}`}>
+        <p className={`number `}>
           <Counter number={number} toTurnOn={isVisible} onChange={isVisible} />
         </p>
-        <p>{text}</p>
+        <p className="lead">{text}</p>
       </div>
     </VisibilitySensor>
   );
