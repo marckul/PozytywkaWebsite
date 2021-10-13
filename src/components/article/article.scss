@@ -1,0 +1,68 @@
+
+// @import '../../styles/custom-bootstrap/custom-bootstrap.scss';
+@import '../../styles/variables';
+
+.article-container {
+  padding-top: map-get($spacers, 4);
+  padding-bottom: map-get($spacers, 4);
+  justify-content: center;
+  // padding-top: map-get($spacers, 6);
+  @media (min-width: map-get($grid-breakpoints, md )) {
+    padding-top: map-get($spacers, 6);
+    padding-bottom: map-get($spacers, 6);
+  }
+  
+}
+
+article.article {
+  .drop-cap::first-letter {
+    float: left;
+    // margin: 0;
+    // margin-top: .08em;
+    // margin-right: .11em;
+    
+    // font-size: 2.5em;
+    font-weight: 600;
+    // line-height: .9;
+
+    font-size: 2.5rem;
+    line-height: 0.65;
+    margin: 0.15em 0.1em 0.1em 0;
+  }
+
+  .article-header {
+    margin-bottom: map-get($spacers, 5);
+  }
+
+  &.readable-width {
+    max-width: 40em;
+    p {
+      text-align: justify;
+    }
+  }
+
+  .indented-figure {
+    $margin: map-get($spacers, 4);
+    @media (min-width: map-get($grid-breakpoints, md )) {
+      $indentation: -#{map-get($spacers, 5)};
+      --fig-indentation: $indentation;
+
+      width: 61.8%;
+      margin: $margin;
+      &:nth-child(even) {
+        float: left;
+        margin-left: var(--fig-indentation, $indentation);
+      }
+
+      &:nth-child(odd) {
+        float: right;
+        margin-right: var(--fig-indentation, $indentation);
+      }
+    }
+    
+    @media (min-width: map-get($grid-breakpoints, lg)) {
+      --fig-indentation: -#{map-get($spacers, 6)};
+    }
+  }
+  
+}

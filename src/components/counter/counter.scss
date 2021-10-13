@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.dynamic-counter-box {
+  color: $color-teal--medium;
+  .number {
+    font-size: 1.618em;
+    margin-bottom: .1em;
+    // transform: scale(1.618);
+  }
+}

@@ -13,12 +13,15 @@ import { useState } from "react"
 import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import logoLight from '../assets/images/logo-light.png'
+import LogoSVG from '../assets/svg/logo.svg'
+
+
 
 const Logo = () => {
   return(
     <Link className="navbar-brand" to="/">
       <div className="logo-light">
-        <img src={`${logoLight}`} alt="" className="img-fluid"/>
+        <LogoSVG />        
       </div>
       <div className="logo-text">
         Pozytywka<br/>ODT
@@ -28,19 +31,12 @@ const Logo = () => {
 }
 
 
+
 const NavLink = ({children, ...props}) => (
-  <Link {...props} className="nav-link">{children}</Link>
+  <Link activeClassName="active" {...props} className="nav-link">{children}</Link>
 )
 
 const Navigation = ({className, variant, ...props}) => {
-
-  // const [oldVariant, setVariant] = useState("light")
-
-  // if (oldVariant !== variant) {
-  //   setVariant(variant)
-  //   console.log("I'm changing navigation variant");    
-  // }
-  
   
   const allVariants = {
     "light": {
@@ -85,14 +81,14 @@ const Navigation = ({className, variant, ...props}) => {
     <Navbar {...props} className={`${className} ${stateClass} px-md-5`} expand="md" bg={bg} variant={text}>
       <Container fluid>
         <Logo/>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"  onClickCapture={eventhandler}/>
-        <Navbar.Collapse >
+        <Navbar.Toggle aria-controls="main-navbar"  onClickCapture={eventhandler}/>
+        <Navbar.Collapse id="main-navbar" >
           <Nav className="me-auto">
-            <Link className="nav-link" to="/">Start</Link>
+            <NavLink to="/">Start</NavLink>
             <NavLink to="/oferta">Oferta</NavLink>
             <NavLink to="/nasz-zespol">Nasz Zespół</NavLink>
             <NavLink to="/kontakt">Kontakt</NavLink>
-            <Link className="nav-link" to="/aktualnosci">Aktualności</Link>
+            <NavLink className="nav-link" to="/aktualnosci">Aktualności</NavLink>
           </Nav>
           <Nav>
           <Link className={`btn btn-${button}`} to="/rejestracja" role="button">Rejestracja</Link>
@@ -109,8 +105,10 @@ Navigation.defaultProps = {
 
 
 const convertRem2Px = (remValue) => {
-  const pxPerRem = parseFloat(getComputedStyle(document.documentElement).fontSize) // [px/rem]
-  return remValue*pxPerRem
+  if (typeof window !== 'undefined' ) {
+    const pxPerRem = parseFloat(getComputedStyle(document.documentElement).fontSize) // [px/rem]
+    return remValue*pxPerRem
+  }
 }
 
 /**
@@ -167,7 +165,7 @@ const HeaderCollapsible = ({ siteTitle, screensOnHide }) => {
   }
   return(
     <div className={`collapsibleNavbar fixed-top ${triggerClass}`} style={styles}>
-      <Navigation />
+      <Navigation className="my-navbar border-bottom " />
     </div>
   )
 }
@@ -189,5 +187,19 @@ const Header = ({ siteTitle, ...props }) => (
   </header>
 )
 
+function NavbarSpace({addSpace, className}) {
+  if (addSpace) {
+    className += " navbar-space"
+  }
+  return (
+    <div className={className}></div>
+  )
+}
+NavbarSpace.defaultProps = {
+  addSpace: false,
+  className: ""
+}
 
-export {HeaderCollapsible, Header}
+
+
+export {HeaderCollapsible, Header, NavbarSpace}

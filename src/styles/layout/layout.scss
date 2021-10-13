@@ -1,11 +1,11 @@
 @import '../variables';
-@import '../typography';
+// @import '../typography';
 
 
 /* 
 
   TOC:
-  1 Typography
+  1 Apperance
   2 Layout
   3 Components
     3.1 Navbar
@@ -15,12 +15,56 @@
 
 */
 
+// =================
+// 
+//         APPERANCE
+// 
+// =================
+
+.navbar-brand {
+  
+}
+
+@include headings {
+
+  u {
+    position: relative;
+    z-index: 5;
+    text-decoration: none;
+    &::after {
+
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 1em;
+      bottom: 0;
+      left: -.3em;
+      right: -.3em;
+      display: block;
+      background-image: url("/underline.svg");
+      background-position: bottom center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 3rem;
+
+    }
+  }
+}
+
 
 // =================
 // 
 //            LAYOUT
 // 
 // =================
+
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  min-width: 100%;
+  scroll-behavior: auto;
+}
 
 main {
   min-height: 40rem;
@@ -36,7 +80,7 @@ main {
 
 
 
-.navbar {
+nav { // było .navbar
   .navbar-brand {
     color: inherit;
     text-transform: uppercase;
@@ -83,35 +127,64 @@ main {
 }
 
 .my-navbar {
+  &.navbar-dark {
+    .active {
+      color: $color-active !important;  
+      font-weight: 500;
+    }
+  }
+  &.navbar-light {
+    .active {
+      color: $color-primary-dark !important;
+      font-weight: 500;
+    }
+  }
 
+  &.bg-light {
+    // @extend .border-bottom;
+  }
+
+  &.bg-transparent-light, 
   &.bg-transparent-dark {
-    transition: background-color 1000ms;
+    backdrop-filter: blur(.1rem);
+  }
+  &.bg-transparent-dark {
     background: rgba(0, 0, 0, 0.5);
     &.show {
       background: rgba(0, 0, 0, .8);
     }
   }
-  .navbar-collapse {
-    padding-top: map-get($spacers, 3);
-    @media (min-width: $navbar-expand) {
-      padding-top: 0;
-    }
-    &.collapsing, &.show {
-      .navbar-nav {
-        padding-top: map-get($spacers, 5);
-        @media (min-width: $navbar-expand) {
-          padding-top: 0;
-        }
-        * {
-          margin-left: auto;
-        }
-      }
+
+  &.bg-transparent-light {
+    background: rgba(255, 255, 255, 0.5);
+    
+    &.show {
+      background: rgba(255, 255, 255, 0.8);
     }
   }
+  // .navbar-collapse {
+  //   padding-top: map-get($spacers, 3);
+  //   @media (min-width: $navbar-expand) {
+  //     padding-top: 0;
+  //   }
+  //   &.collapsing, &.show {
+  //     .navbar-nav {
+  //       padding-top: map-get($spacers, 5);
+  //       @media (min-width: $navbar-expand) {
+  //         padding-top: 0;
+  //       }
+  //       * {
+  //         margin-left: auto;
+  //       }
+  //     }
+  //   }
+  // }
+  
 }
 
+
 .navbar-transparent-light {
-  color: black;
+  // color: black;
   .navbar-brand, .nav-link {
     color: inherit;
   }
@@ -134,31 +207,19 @@ main {
   max-width: 3em;
   height: auto;
   margin-right: .5em;
+  svg {
+    width: 3em;
+    position: relative; 
+    path {
+      top: 0;
+      bottom: 0;
+    }
+  }
 }
+
 
 // HERO AREA >>
-.hero-area {
-  background-position: 70% bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 120vh;
-
-  &.text-shadow {
-    text-shadow: $color-teal 0 0 2rem, 
-                   $color-teal 0 0 3rem, 
-                   $color-teal 0 0 4rem,
-                   $color-teal 0 0 5rem;
-  }  
-
-  .hero-area-inner {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 10vh;
-  }
-
-}
+// Styles are in components-bundle.scss
 
 .container-box {
   min-height: 100vh;
@@ -168,6 +229,7 @@ main {
 }
 
 .btn {
+  font-size: 1em;
   a {
     color: inherit;
     text-decoration: none;
@@ -176,7 +238,8 @@ main {
 
 // BUTTONS >>
 .btn-light, .btn-light:focus {
-  transition: all 100ms;
+  color: $color-teal--medium;
+  transition: all 200ms;
   background-color: $color-light;
   border-width: 0;
 
@@ -194,22 +257,131 @@ main {
 }
 
 
+$button-active-shadow: 
+  inset rgba(var(--bs-dark-rgb), .1) .3rem .3rem .5rem,
+  inset rgba(255, 255, 255, .1) -.3rem -.3rem 1rem,
+  rgb(255, 255, 255) -.1rem -.1rem .2rem ,
+  rgba(0, 0, 0, .4) 0 .1rem .2rem .05rem,
+  rgba(0, 0, 0, .1) .1rem .1rem .75rem 0;
+
+.btn-dark, .btn-dark:focus {
+  transition: all 100ms;
+  background-color: $color-primary-dark;
+  color: $color-light;
+  
+  box-shadow: none;
+  border-width: 0;
+
+  &:hover, &:active {
+    background-color: $color-primary-dark;
+    box-shadow: $button-active-shadow;
+    transform: scale(1.05);
+  }
+  &:focus:active {
+    // background-color: red;
+    transform: scale(.95);
+  }
+  &:visited {
+    color: $color-light;
+  }
+  
+}
+
+.btn-outline-dark {
+  font-weight: 500;
+  color: $color-primary-dark;
+  border-color: $color-primary-dark;
+
+  &:hover, &:active {
+    color: $color-light;
+    background-color: $color-primary-dark;
+    border-color: $color-primary-dark;
+    box-shadow: $button-active-shadow;
+    transform: scale(1.05);
+  }
+  &:focus {
+    // background-color: red;
+    transform: scale(.95);
+    box-shadow: $button-active-shadow;
+  }
+}
+
+
+
 // ================
 //   UTILITIES
 // ================
 
-.bg-dark {
-  color: $color-light;
+// BORDERS
+// $numbers: (
+//   '1': '',  '2': '',  '3': '',  '4': '',  '5': '',
+// );
+// @each $name, $number in $numbers {
+//   .border-#{$name} {
+//     border-color: var(--border-color, #{$border-color});
+//     border-style: solid;
+//   }
+// }
+
+// SHINY TEXT
+@keyframes color-shine {
+  0% {
+		background-position: center right;
+	}
+	30% {
+		background-position: center left;
+	}
+  100% {
+		background-position: center left;
+	}
 }
 
+a.color-shine {
+  color: transparent;
+  background: linear-gradient(90deg, ($color-primary-dark*2 + $color-skyblue) / 3 30%, ($color-teal + #fff)/2 50%, ($color-primary-dark + $color-skyblue*2)/3 70%);
+  background-clip: text !important;
+  background-size: 400%;
+  animation: color-shine 4s ease-out infinite;
+}
+
+
+
+// GRADIENT
+.index-page-gradient {
+  background-image: linear-gradient(170deg, #E9F4F7 10%, #F7FCFC 48%, #FBF8E9 62%);
+  // background-image: linear-gradient(170deg, #E9F4F7 10%, #F7FCFC 50%, #FBF8E9 65%, hsl(51deg, 90%, 93%) 75%);
+  // background-image: linear-gradient(#E9F4F7 10%, #F7FCFC 70%, #FBF8E9, #fcf9e8 );
+  // background-image: linear-gradient(170deg, #E9F4F7 10%, #F7FCFC 70%, #FBF8E9 85%, hsl(51deg 90% 93%) 95%);
+  // linear-gradient(160deg, #E9F4F7 10%, #F7FCFC 65%, #FBF8E9, #fcf9e8)
+}
+
+.bg-dark {
+  color: $color-light;
+  background-color: $color-primary-dark-sat1 !important;
+}
 .bg-transparent-dark {
   color: $color-light;
 }
+
+.bg-green-lg {
+  background-color: $color-green-lg;
+}
+
 
 .navbar-space {
   height: 5rem;
 }
 
+
+//  SHADOWS
+// .shadow-sm
+.shadow-z1-md {
+  // inset 0 0 1rem white, 0 0.2rem 0.2rem rgb(0 0 0 / 15%), 0 0.1rem 0.3rem rgb(0 0 0 / 50%)
+  box-shadow: 
+    $shadow-white-md,
+    $shadow-ambient-md, 
+    $shadow-key-md;
+}
 
 
 
@@ -228,31 +400,37 @@ main {
 }
 
 
-.btn-dark, .btn-dark:focus {
-  transition: all 100ms;
-  background-color: $color-dark;
-  box-shadow: none;
-  border-width: 0;
-              
-              
+.arrow-link {
+  $shift: -1.7em;
+  position: relative;
+  left: $shift;
+  &::after {
+    color: inherit;
+    content: "";
+    position: absolute;
+    // top: 0;
+    bottom: -1.5em*0.1;
+    right: $shift;
 
-  &:hover, &:active {
-    background-color: $color-dark;
-    box-shadow: inset rgba(var(--bs-dark-rgb), .1) .3rem .3rem .5rem,
-          inset rgba(255, 255, 255, .1) -.3rem -.3rem 1rem,
-          rgb(255, 255, 255) -.1rem -.1rem .2rem ,
-        rgba(0, 0, 0, .4) 0 .1rem .2rem .05rem,
-        rgba(0, 0, 0, .1) .1rem .1rem .75rem 0;
-    
-        
-        
-    transform: scale(1.05);
-  }
-  &:focus:active {
-    // background-color: red;
-    transform: scale(.95);
+    width: 1.5em;
+    height: 1.5em;
 
+    background-image: url('/arrow-right.svg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
-  
 }
+
+.arrow-link-2 {
+  width: 1.5em;
+  height: 1.5em;
+
+  margin-left: .5em;
+  margin-bottom: .1em;
+}
+
+// @import '../../components/article/article.scss'
+
+
 

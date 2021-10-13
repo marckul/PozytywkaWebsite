@@ -1,0 +1,301 @@
+
+
+// @import '../custom-bootstrap/';
+@import '../../styles/variables';
+@import '../../../node_modules/bootstrap/scss/variables';
+
+// .svg-container {  }
+
+
+
+// .linear-gradient-1 {
+//   min-height: 80vh;
+//   background-image: linear-gradient(#E9F4F7, #FBF8E9 50%);
+//   // margin-bottom: 10rem;
+// }
+
+$screen-size-lg: map-get($grid-breakpoints, lg); 
+
+.svg-container {
+  min-height: 120vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: linear-gradient(170deg, hsl(132, 50%, 98%), hsl(132, 50%, 94%) 40%, hsl(57, 60%, 91%) 90%);;
+  overflow: hidden;
+  .svg-shape {
+    .svg-space {
+      background-color: var(--background-color, transparent);
+    }
+    
+    margin: -.5rem 0;
+    // background-color: var(--background-color, transparent);
+    svg {
+      position: relative;
+      width: 120%;
+      height: 15vh;
+      overflow: hidden;
+      transform: translateX(-5%);
+      
+      path {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        // --background-color: red;
+      }
+    }
+    @media (min-width: $screen-size-lg) {
+      svg {
+        position: relative;
+        width: 125%;
+        overflow: hidden;
+        transform: translateX(-15%);
+        
+        path {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          // --background-color: red;
+        }
+      }
+    }
+  }
+}
+
+
+
+// HERO AREA >>
+.hero-area {
+  // background-image: url("");
+  background-position: 70% bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 120vh;
+  &.bg-dark .text-shadow {
+    $readable-text-shadow-color: rgba(var(--readable-shadow-color-rgb, #{$color-teal-rgb} ), .6 );
+    // $readable-text-shadow-color: var(--readable-shadow-color-rgb, $color-teal-rgb);
+    $variant-on: 
+      drop-shadow(0 0 .05em $readable-text-shadow-color)
+      drop-shadow(0 0 .1rem $readable-text-shadow-color)
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+
+      drop-shadow(0 0 2rem $readable-text-shadow-color);
+
+    $variant-on: 
+      drop-shadow(0 0 .05em $readable-text-shadow-color)
+      drop-shadow(0 0 .1rem $readable-text-shadow-color)
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 2rem $readable-text-shadow-color)
+      drop-shadow(0 0 3rem $readable-text-shadow-color);
+    
+    $variant-3: 
+      drop-shadow(0 0 .05em $readable-text-shadow-color)
+      drop-shadow(0 0 .1rem $readable-text-shadow-color)
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 2rem $readable-text-shadow-color)
+      drop-shadow(0 0 4rem $readable-text-shadow-color);
+    > * {
+      filter: 
+        $variant-on;
+    }
+  }  
+
+  
+
+  &.bg-light .text-shadow {
+    // --readable-shadow-color: var(--readable-text-shadow-rgb, (255, 255, 255) ) ;
+    $readable-text-shadow-color: rgba(var(--readable-shadow-color-rgb, (255, 255, 255) ), .9 );
+    $variant-on: 
+      drop-shadow(0 0 .05em $readable-text-shadow-color)
+      drop-shadow(0 0 .1rem $readable-text-shadow-color)
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+
+      drop-shadow(0 0 2rem $readable-text-shadow-color);
+
+    $variant-2: 
+      drop-shadow(0 0 .05em $readable-text-shadow-color)
+      drop-shadow(0 0 .1rem $readable-text-shadow-color)
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 2rem $readable-text-shadow-color)
+      drop-shadow(0 0 3rem $readable-text-shadow-color);
+    
+    $variant-3: 
+      drop-shadow(0 0 .05em $readable-text-shadow-color)
+      drop-shadow(0 0 .1rem $readable-text-shadow-color)
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $readable-text-shadow-color)
+      
+      drop-shadow(0 0 2rem $readable-text-shadow-color)
+      drop-shadow(0 0 4rem $readable-text-shadow-color);
+    > * {
+      filter: 
+        $variant-on;
+    }
+  }  
+
+  .hero-area-inner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10vh;
+  }
+  
+}
+
+
+
+
+// AKTUALNOSCI
+
+
+
+
+.post-short--archive2 {
+  // --border-color: #{$gray-600};
+  $padding: map-get($spacers, 4);
+  --background-color: #{$color-snow};
+  // &, * {
+  //   background-color: var(--background-color);
+  // }
+
+
+  display: flex;
+  flex-direction: column;
+  max-width: 20rem;
+
+  // border: none;
+  // border-radius: .25rem;
+  border-width: 0;
+  
+  margin: 0 auto map-get($spacers, 5);
+  margin-left: auto;
+  margin-right: auto;
+  @media (min-width: map-get($grid-breakpoints, sm )) {
+    max-width: 70rem;    
+  }
+  // min-height: 15rem;
+  // max-height: 15rem;
+
+  
+  .row {
+    
+    @media (min-width: map-get($grid-breakpoints, md )){     
+      flex-wrap: nowrap;
+    }
+  }
+  .post-content {
+    
+  }
+  .post-short--head {
+    justify-content: end;
+  }
+  .card-body {
+
+  }
+  .post-short--row {
+    flex: 1 1 auto;
+  }
+  .post-img-container {
+    // max-width: 20rem;
+    @media (min-width: map-get($grid-breakpoints, md )){      
+      max-width: 17rem;
+    }
+    @media (min-width: map-get($grid-breakpoints, lg )){      
+      max-width: 18rem;
+    }    
+    @media (min-width: map-get($grid-breakpoints, xl )){      
+      max-width: 18rem;
+    }
+  }
+  
+  .post-content {
+    padding: $padding;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+    
+  }
+  
+  .post-date {
+    font-weight: 500;
+    font-size: $small-font-size;
+    margin: 0;
+  }
+
+  .read-more {
+    display: block;
+    width: fit-content;
+    font-weight: 500;
+    font-size: $small-font-size;
+    margin-left: auto;
+
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.img-cover {
+  max-width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+
+.aspect-ratio-component {
+  position: relative;
+  padding-top: var(--padding-top, 0);
+  // background: $yellow;
+  .inner-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .post-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
+}
+
+
+@function shadow-z2-md-inset() {
+  $dist: 2px;
+  $dist2: $dist + 1px;
+  $dist3: -#{$dist};
+  $result: 
+    // inset  $dist $dist 0 rgba($color-primary-dark, 0.05),
+    inset  $dist2 $dist2 5px white,
+    inset  $dist3 $dist3 0 rgba($color-primary-dark, 0.15),
+  ;
+  @return $result;
+}
+
+.shadow-z2-md--card {
+  // https://codepen.io/sdthornton/pen/wBZdXq
+  box-shadow: 
+    shadow-z2-md-inset(),
+    0 10px 28px rgba($color-darker,0.2), 
+    0 5px 10px 1px rgba($color-darker,0.3);
+}
+
+

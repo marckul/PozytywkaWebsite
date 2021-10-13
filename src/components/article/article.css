@@ -1,0 +1,72 @@
+:root {
+  --bs-light-rgb: 245, 251, 255;
+  --bs-dark-rgb: 0, 31, 51;
+  --bs-body-line-height: 1.333;
+  --color-active-hex: #b3e0ff;
+  --color-green-lg: #fcfdf7;
+  --color-green-md: #e8ff94;
+  --color-skyblue: #00aeff;
+  --color-dark: #003759;
+  --color-darker: #002033;
+  --color-primary-dark-sat1: #002033;
+  --color-teal: #21747A;
+  --color-teal--medium: #6AA4AC;
+}
+
+.article-container {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .article-container {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+article.article .drop-cap::first-letter {
+  float: left;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 0.65;
+  margin: 0.15em 0.1em 0.1em 0;
+}
+
+article.article .article-header {
+  margin-bottom: 3rem;
+}
+
+article.article.readable-width {
+  max-width: 40em;
+}
+
+article.article.readable-width p {
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  article.article .indented-figure {
+    --fig-indentation: $indentation;
+    width: 61.8%;
+    margin: 1.5rem;
+  }
+  article.article .indented-figure:nth-child(even) {
+    float: left;
+    margin-left: var(--fig-indentation, -3rem);
+  }
+  article.article .indented-figure:nth-child(odd) {
+    float: right;
+    margin-right: var(--fig-indentation, -3rem);
+  }
+}
+
+@media (min-width: 992px) {
+  article.article .indented-figure {
+    --fig-indentation: -6rem;
+  }
+}
+/*# sourceMappingURL=article.css.map */

@@ -1,0 +1,122 @@
+:root {
+  --bs-light-rgb: 245, 251, 255;
+  --bs-dark-rgb: 0, 31, 51;
+  --bs-body-line-height: 1.333;
+  --color-active-hex: #b3e0ff;
+  --color-green-lg: #fcfdf7;
+  --color-green-md: #e8ff94;
+  --color-skyblue: #00aeff;
+  --color-dark: #003759;
+  --color-darker: #002033;
+  --color-primary-dark-sat1: #002033;
+  --color-teal: #21747A;
+  --color-teal--medium: #6AA4AC;
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+a {
+  color: #005c99;
+}
+
+a:visited {
+  color: #005c99;
+}
+
+a:active {
+  color: #52a7e0;
+}
+
+.bg-dark a {
+  color: #b3e0ff;
+}
+
+.icon-relative {
+  text-align: center;
+  width: 1em;
+  height: 1em;
+}
+
+.icon-relative + #text {
+  width: auto;
+  height: 1em;
+  color: red;
+}
+
+.bi {
+  display: inline-block;
+  vertical-align: -.125em;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --bs-body-color: #003759;
+}
+
+footer {
+  color: #fff;
+}
+
+footer ol, footer ul {
+  padding-left: 1rem;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+  font-weight: 600;
+  line-height: 1;
+}
+
+h1 em, h2 em, h3 em, h4 em, h5 em,
+.h1 em, .h2 em, .h3 em, .h4 em, .h5 em {
+  font-style: normal;
+  font-weight: normal;
+  color: #e8ff94;
+}
+
+h1, .h1 {
+  font-size: 3.05176em;
+}
+
+h2, .h2 {
+  font-size: 2.44141em;
+}
+
+h3, .h3 {
+  font-size: 1.95312em;
+}
+
+h4, .h4 {
+  font-size: 1.5625em;
+}
+
+h5, .h5 {
+  font-size: 1.25em;
+}
+
+@media (min-width: 992px) {
+  h1, .h1 {
+    font-size: 4.20873em;
+  }
+  h2, .h2 {
+    font-size: 3.15733em;
+  }
+  h3, .h3 {
+    font-size: 2.36859em;
+  }
+  h4, .h4 {
+    font-size: 1.77689em;
+  }
+  h5, .h5 {
+    font-size: 1.333em;
+  }
+}
+/*# sourceMappingURL=typography.css.map */

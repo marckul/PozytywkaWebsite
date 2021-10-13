@@ -1,51 +1,91 @@
 import * as React from 'react'
+import Layout from '../components/layout'
+
+import { Container } from '../components/components-bundle/components-bundle'
 import { Link } from 'gatsby'
 
-import Layout from '../components/layout'
-import { HeroImageArea, Container } from '../components/components-bundle'
-import { CounterBox } from '../components/components-bundle/counter'
 
-import * as Grid from '../components/components-bundle/css-grid/css-grid'
-
+import '../styles/labor/labor.css'
+import * as Grid from '../components/css-grid/css-grid'
 import boyOnMolo from '../assets/images/chlopczyk-na-molo.jpg'
 import spacerWGorach from '../assets/images/spacer-w--gorach--30.jpg'
 
+import { RatioContent } from '../components/ratio-content/ratio-content'
 
-const LaboratoryPage = () => {
+
+
+Container.defaultProps = {
+  className: "",
+  rootElem: "div"
+}
+
+
+const Wrapper = ({children, ...props}) => {
   return(
-    <Layout header="light">
-      <HeroImageArea variant="hello">
-        <h1>Test</h1>
-        <p className="lead">Opis Data: 14 09 19:00</p>
-      </HeroImageArea>
+    <section {...props} >
+      {children}
+    </section>
+  )
+}
+
+
+function ConditionalTag({tag}) {
+  const Tag = tag
+
+  // debugger
+
+
+  return (
+    <Tag className="hello" >
+      Conditional rendering
+    </Tag>
+  )
+
+}
+
+const LaboratoryPage = () => {  
+  return(
+    <Layout header="transparent-light" topSpace={true} >
+      <Container rootElement="section" >
+        <h1>Testing conditional rendering</h1>
+        <ConditionalTag tag="h3" />
+      </Container>
       <Grid.Row>
         <Grid.Column position="left"> 
           <img src={`${boyOnMolo}`} alt="" className="img-grid"/>
         </Grid.Column>
-        <Grid.Column position="right">
+        <Grid.Column position="right" className="">
+          <RatioContent className="test" childComponent={Grid.Quotation} >        
+            <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
+            <span>Hans Asperger <i>Neuro</i></span>
+          </RatioContent>
+        </Grid.Column>
+      </Grid.Row>
+      
+      
+
+      <Grid.Row>
+        <Grid.Column position="left"> 
+          <img src={`${boyOnMolo}`} alt="" className="img-grid"/>
+        </Grid.Column>
+        <Grid.Column position="right" className="oneline">
           <Grid.Quotation>
             Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego
           </Grid.Quotation>
         </Grid.Column>
       </Grid.Row>
+      <Container rootElement="section" >
 
-      <Grid.Row>
-        <Grid.Column position="right"> 
-          <img src={`${spacerWGorach}`} alt="" className=""/>
-        </Grid.Column>
-        <Grid.Column position="left">
-          <h3>W Pozytywce wierzymy, że każdy człowiek ma coś do zaoferowania światu</h3>
-          <p className="lead">
-            Wiele jest serc które czekają na ewangelę, a w każdym dziecku tkwi potencjał. 
-          </p>
-          <p className="lead">
-            Pomóż nam go odnaleźć. 
-          </p>
-          <p>Umów się na konsultacje lub na diagnozę</p>
-          <Link className="btn btn-light" to="/">Zarejestruj się</Link>
-        </Grid.Column>
-      </Grid.Row>
+        <div className="row">
+          <div className="col-md-6">
+            <h3 className="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam dolorum ab minima nihil maxime eligendi ullam voluptate. Odio, similique deserunt.</h3>
+          </div>
+          <div className="col-md-6" >
+            Tekst
+          </div>
+        </div>
 
+      </Container>
     </Layout>
   )
 }
