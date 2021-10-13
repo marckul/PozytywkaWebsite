@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Pozytywka ODT`,
     description: `Zajmujemy się terapią autyzmu`,
-    author: `@gatsbyjs`,
+    author: `@marcinkula`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [

@@ -114,9 +114,24 @@ const IndexPage = () => {
           <div className="container">
             <h2>Nasze <u>usługi</u></h2>
             <div className="row g-md-6">
-              <CircleImgCard imgSrc={diagnozy} />
-              <CircleImgCard imgSrc={terapie} />
-              <CircleImgCard imgSrc={szkolenia} />
+              <CircleImgCard 
+                title="Diagnozy"
+                imgSrc={diagnozy} 
+              >
+                Ex similique qui, consequuntur fuga, ad, commodi fugiat error ratione ab voluptas officia laudantium possimus. Impedit odit, illo tempora doloribus nam reiciendis.
+              </CircleImgCard>
+              <CircleImgCard 
+                title="Terapie"
+                imgSrc={terapie} 
+              >
+                Autem, temporibus ea neque aspernatur molestiae sed mollitia sequi libero sit odio sapiente minus, incidunt dolorem doloribus ratione explicabo, quis rem placeat.
+              </CircleImgCard>
+              <CircleImgCard 
+                title="Szkolenia"
+                imgSrc={szkolenia} 
+              >
+                Ex similique qui, consequuntur fuga, ad, commodi fugiat error ratione ab voluptas officia laudantium possimus. Impedit odit, illo tempora doloribus nam reiciendis.
+              </CircleImgCard>
             </div>
             <Link className="d-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
           </div>
