@@ -6,8 +6,6 @@
  */
 
 
- 
-
 
 import * as React from "react"
 import PropTypes from "prop-types"
@@ -24,6 +22,9 @@ import "../styles/start/start.css"
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/custom-bootstrap/custom-bootstrap.css'
+import '../styles/typography/typography.css'
+
+
 import '../styles/layout/layout.css'
 
 // console.log("$$$$$ underline", underline);

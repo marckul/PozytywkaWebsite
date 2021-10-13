@@ -1,8 +1,9 @@
-
+@import '../variables';
 
 // =================
 //   TYPOGRAPHY
 // =================
+
 
 @media (min-width: $screen-size-lg) {
   html {
@@ -26,10 +27,23 @@ a {
 }
 
 .icon-relative {
+  text-align: center;
+  width: 1em;
+  height: 1em;
+  // margin: 0 .5em;
+  // margin-bottom: .15em;
+}
+
+.icon-relative + #text {
   width: auto;
   height: 1em;
-  margin: 0 .5em;
-  margin-bottom: .15em;
+  // margin: 0 .5em;
+  // margin-bottom: .15em;
+  color: red;
+}
+.bi {
+  display: inline-block;
+  vertical-align: -.125em;
 }
 
 

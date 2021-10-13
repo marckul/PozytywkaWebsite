@@ -1,5 +1,6 @@
 import * as React from "react"
-import  Container from "react-bootstrap/Container"
+import PropTypes from 'prop-types'
+// import  Container from "react-bootstrap/Container"
 
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
@@ -7,23 +8,122 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import {  HeroImageArea } from '../components/components-bundle/components-bundle'
+import {  HeroImageArea, Container, PostShort2 } from '../components/components-bundle/components-bundle'
 import HeroImage from '../assets/images/aktualnosci-hero.jpg'
 
-const IndexPage = () => (
+import img1 from '../assets/images/artykul-zdjecie.jpg'
+import img2 from '../assets/images/chlopczyk-na-molo.jpg'
+
+
+// const PostShort0 = ({title, publishDate, imgSrc, children}) => {
+//   return(
+//     <div className="post-short--archive shadow-z1-md my-5">
+//       <div className="row">
+//         <div className="col-12 col-md-4 col-lg-3 post-image">
+//             <img src={imgSrc} alt="" className="img-cover" />
+//         </div>
+//         <div className="post-content col-12 col-md p-4">
+//           <div className="post-short--head mb-5">
+//             <h4 className="mb-2">{title}</h4>
+//             <p className="post-date small">{publishDate}</p>
+//           </div>
+//           <div className="post-short--body">
+//             <p>
+//               {children}
+//             </p>
+//             <Link className="read-more" to="/artykul">
+//               Czytaj więcej
+//             </Link>
+
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
+
+// PostShort0.propsTypes = {
+//   imgSrc: PropTypes.string,
+// }
+
+
+// const PostShort = ({title, publishDate, imgSrc, children}) => {
+//   return(
+//     <div className="post-short--archive1 shadow-z1-md my-5">
+//       <div className="d-flex flex-row p-3">
+
+//         <div className="post-image col-12 col-md-4 col-lg-3">
+//           <img src={imgSrc} alt="" className="img-cover" />
+//           {/* <div className="aspect-ratio">
+//             <div className="aspect-ratio--inner">  </div>
+//           </div> */}
+//         </div>
+
+//         <div className="post-content col-12 col-md p-4">
+//           <div className="post-short--head mb-5">
+//             <h4 className="mb-2">{title}</h4>
+//             <p className="post-date small">{publishDate}</p>
+//           </div>
+//           <div className="post-short--body">
+//             <p>
+//               {children}
+//             </p>
+//             <Link className="read-more" to="/artykul">
+//               Czytaj więcej
+//             </Link>
+
+//           </div>
+//         </div>
+
+//       </div>
+//     </div>
+//   )
+// }
+
+// PostShort.propsTypes = {
+//   imgSrc: PropTypes.string,
+// }
+
+
+
+
+const NewsPage = () => (
   <Layout header="transparent-light">
     <Seo title="Start"/>
-    <HeroImageArea  backgroundImage={HeroImage}>
+    <HeroImageArea  backgroundImage={HeroImage} variant="light">
       <h1><u>Aktualności</u></h1>
       <p className="lead">
         Quas unde fugiat accusantium voluptatibus facilis dolor distinctio dignissimos quidem iste labore.
       </p>
     </HeroImageArea>
     <Container>
-      <h1>Strona Aktualności</h1>
-      <p>Ex iusto deleniti, earum enim dignissimos assumenda omnis quis suscipit laboriosam autem, necessitatibus possimus placeat corrupti ipsum totam. Commodi consequuntur recusandae quos quam, mollitia autem. Reprehenderit, velit. Tenetur consequuntur sequi suscipit exercitationem itaque aut deserunt totam, aspernatur nam cupiditate doloribus? Laudantium consectetur at consequatur adipisci. A, quidem! Aliquid ipsa, corrupti quia dolor possimus reiciendis doloribus dolores aut hic nam repudiandae aperiam error, itaque cupiditate, unde molestiae incidunt? Rem deleniti qui ea. Maiores facilis, laboriosam vero laborum quidem iusto cum ipsa aperiam. Quod repellendus optio necessitatibus, quam minus quo tempora quaerat assumenda enim labore distinctio voluptatum quidem, aperiam quibusdam aliquam dolores a. Unde ratione rem amet nihil a veritatis, aut ab accusantium porro officia modi dolorem suscipit ad voluptatum eum illum, culpa dicta ex! Corrupti tempore similique deleniti impedit ut eveniet, voluptate illo necessitatibus dolorum consequuntur beatae adipisci ipsam dignissimos perspiciatis voluptatum atque blanditiis ipsa iste accusamus accusantium sit provident praesentium. Mollitia laudantium asperiores laboriosam magni qui assumenda eaque, soluta officia quod beatae sit libero nam totam ea tempora vel incidunt aut ut ullam voluptatum corrupti. Pariatur aut obcaecati nostrum fugit vitae sed modi illo, soluta alias temporibus! Illo quibusdam repellendus perspiciatis culpa.</p>
+      <div className="posts-archive-2 row">
+        <PostShort2
+          title="Pierwszy post"
+          publishDate="Piątek, 20 Sierpnia 2020"
+          imgSrc={img1}         
+        >
+          Sunt quae impedit deleniti illum hic minima maiores est, voluptatem, perspiciatis, eius quaerat eveniet fuga! Repellendus ad voluptatem rem asperiores...
+        </PostShort2>
+
+        <PostShort2
+          title="Pierwszy post"
+          publishDate="Piątek, 20 Sierpnia 2020"
+          imgSrc={img2}         
+        >
+          Beatae eius maxime temporibus ipsam necessitatibus dolore, iste blanditiis ex architecto quidem debitis illo error inventore rerum eveniet explicabo odit suscipit!...
+        </PostShort2>
+
+        <PostShort2
+          title="Pierwszy post"
+          publishDate="Piątek, 20 Sierpnia 2020"
+          imgSrc={""}         
+        >
+          Beatae eius maxime temporibus ipsam necessitatibus dolore, iste blanditiis ex architecto quidem debitis illo error inventore rerum eveniet explicabo odit suscipit!...
+        </PostShort2>
+      </div>
     </Container>
   </Layout>
 )
 
-export default IndexPage
+export default NewsPage

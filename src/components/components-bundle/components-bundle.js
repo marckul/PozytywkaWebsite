@@ -1,4 +1,7 @@
 import * as React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+
 import './components-bundle.css'
 
 function HeroArea({ children, className, ...props }) {
@@ -15,20 +18,30 @@ function HeroArea({ children, className, ...props }) {
 /** Hero Area Component
  * 
  * @param { object } props
- * @param { reactComponent } props.children
  * @param { string } props.className
  * @param { string } props.variant
  * @param { string } props.backgroundImage 
  */
-function HeroImageArea({ children, className, variant, backgroundImage, ...props }) {
+function HeroImageArea(
+    { 
+      children, 
+      className, 
+      variant, 
+      backgroundImage, 
+      textShadow,
+      ...props 
+    }
+  ) {
+  if (textShadow) {
+    const textShadow = "text-shadow"
+  }
   const styles = {
     backgroundImage: `url("${backgroundImage}")`
   }
   if (backgroundImage !== undefined) {
-    className += " text-shadow"
+    // className += " text-shadow"
   }
   className += ` bg-${variant}`
-
 
   return (
     <div {...props}
@@ -36,8 +49,8 @@ function HeroImageArea({ children, className, variant, backgroundImage, ...props
       style={styles}
     >
       <div className="container hero-area-inner">
-        <div className="row">
-          <div className="col-md-10">
+        <div className="row pb-5">
+          <div className={`col-md-10  ${textShadow}`}>
             {children}
           </div>
         </div>
@@ -49,29 +62,55 @@ HeroImageArea.defaultProps = {
   className: ""
 }
 
+HeroImageArea.propTypes = {
+  children: PropTypes.node.isRequired,
+  // PropTypes.oneOfType([
+  //   PropTypes.arrayOf(PropTypes.node),
+  //   PropTypes.node
+  // ]).isRequired, 
 
-
-
-// function Container({ children, className, ...props }) {
-//   return (
-//     <div {...props} className={`${className} container-box py-5`}>
-//       <div className="container my-5">{children}</div>
-//     </div>
-//   )
-// }
-function Container({ children, rootElement, ...props }) {
-  props.className += " container-box py-6"
-  const template = <div className="container my-5">{children}</div>
-
-  const element = React.createElement(
-    rootElement, props, template
-  )
-  return(element)
+  className: PropTypes.string, 
+  variant: PropTypes.string, 
+  backgroundImage: PropTypes.string
 }
+
+
+function Container({ children, rootElement, paddingY, ...props }) {
+  // debugger
+
+  const paddingYClass = {
+    "small": "py-5", 
+    "medium": "py-6", 
+    "big": "py-7"
+  }
+
+  props.className += ` container-box`
+  props.className += ` ${paddingYClass[paddingY]}`
+
+  // const template = <div className="container my-5">{children}</div>
+  // const RootComponent = rootElement
+
+  // const element = React.createElement(
+  //   rootElement, props, template
+  // )
+  // return(element)
+  return(
+    <div {...props} >
+      <div className="container my-5">{children}</div>
+    </div>
+  )
+}
+
 Container.defaultProps = {
   className: "",
-  rootElement: "div"
+  rootElement: "div",
+  paddingY: "medium"
 }
+
+Container.propTypes = {
+  paddingY: PropTypes.oneOf(["small", "medium", "big"]),
+}
+
 
 
 function Phone({ children, tel, size }) {
@@ -84,7 +123,8 @@ function Phone({ children, tel, size }) {
 
   // debugger;
   return (
-    <a href={`tel:${tel}`} className="link-light text-nowrap mr-4 d-block">
+    <a href={`tel:${tel}`} className=" text-nowrap mr-4 d-block">
+      {/* link-light */}
       <svg xmlns="http://www.w3.org/2000/svg" width={propsSize} height={propsSize} fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
         <path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
       </svg>
@@ -132,14 +172,14 @@ function WavesContainer({ children }) {
 
 
 
-function Figure({alt, src, caption, indented, className}) {
+function Figure({alt, src, caption, indented, className, imgClassName}) {
   if (indented) {
     className += " indented-figure" 
   }
 
   return(
     <figure className={`figure border p-2 ${className} `}>
-      <img src={src} alt={alt} className="figure-img img-fluid "/>
+      <img src={src} alt={alt} className={`${imgClassName} figure-img img-fluid`}/>
       <figcaption class="small text-center">{caption}</figcaption>
     </figure>
   )
@@ -150,6 +190,82 @@ Figure.defaultProps = {
 }
 
 
+
+
+const AspectRatio = ({children, aspectRatio}) => {
+
+  const paddingTop = 1/aspectRatio*100
+  const style = {
+    "--padding-top": `${paddingTop}%`
+  }
+
+  return(
+    <div className="aspect-ratio-component" style={style}>
+      <div className="inner-container">
+        {children}
+      </div>
+    </div>
+  )
+}
+AspectRatio.defaultProps = {
+  aspectRatio: 1
+}
+
+const PostShort2 = ({title, publishDate, imgSrc, children}) => {
+
+  const ImageElement = () => {
+    if (imgSrc && imgSrc !== "") {
+      return(
+        <div className="post-img-container "> 
+          <AspectRatio aspectRatio={1}>
+            <img src={imgSrc} alt="" className="post-img" />
+          </AspectRatio>
+        </div>
+      )
+    } else {
+      return ""
+    }
+  }
+
+  return(
+    <div className="col-sm-6 col-md-12">
+      <div className="post-short--archive2 card shadow-z2-md--card  p-md-3" >
+        <div className="post-short--row row g-0">
+          <ImageElement />
+          <div className="post-content">
+            {/* col-md-7 col-lg-8 */}
+            <div className="post-short--head mb-3">
+              <h4 className="mb-2">{title}</h4>
+              <p className="post-date small">{publishDate}</p>
+            </div>
+            <div className="post-short--body">
+              <p>
+                {children}
+              </p>
+              <Link className="read-more" to="/artykul">
+                Czytaj więcej 
+                <svg className="arrow-link-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                  <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                </svg>
+              </Link>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+PostShort2.propsTypes = {
+  imgSrc: PropTypes.string,
+}
+
+
+
+
+
 export { 
   HeroArea, 
   HeroImageArea, 
@@ -157,5 +273,6 @@ export {
   Phone, 
   BgGradient, 
   WavesContainer,
-  Figure
+  Figure,
+  PostShort2
 } 

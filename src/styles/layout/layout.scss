@@ -1,5 +1,5 @@
 @import '../variables';
-@import '../typography';
+// @import '../typography';
 
 
 /* 
@@ -63,6 +63,7 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
   min-width: 100%;
+  scroll-behavior: auto;
 }
 
 main {
@@ -79,7 +80,7 @@ main {
 
 
 
-.navbar {
+nav { // było .navbar
   .navbar-brand {
     color: inherit;
     text-transform: uppercase;
@@ -134,7 +135,7 @@ main {
   }
   &.navbar-light {
     .active {
-      color: $color-dark !important;
+      color: $color-primary-dark !important;
       font-weight: 500;
     }
   }
@@ -218,28 +219,7 @@ main {
 
 
 // HERO AREA >>
-.hero-area {
-  background-position: 70% bottom;
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 120vh;
-
-  &.bg-dark.text-shadow {
-    text-shadow: $color-teal 0 0 2rem, 
-                   $color-teal 0 0 3rem, 
-                   $color-teal 0 0 4rem,
-                   $color-teal 0 0 5rem;
-  }  
-
-  .hero-area-inner {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-bottom: 10vh;
-  }
-
-}
+// Styles are in components-bundle.scss
 
 .container-box {
   min-height: 100vh;
@@ -277,9 +257,71 @@ main {
 }
 
 
+$button-active-shadow: 
+  inset rgba(var(--bs-dark-rgb), .1) .3rem .3rem .5rem,
+  inset rgba(255, 255, 255, .1) -.3rem -.3rem 1rem,
+  rgb(255, 255, 255) -.1rem -.1rem .2rem ,
+  rgba(0, 0, 0, .4) 0 .1rem .2rem .05rem,
+  rgba(0, 0, 0, .1) .1rem .1rem .75rem 0;
+
+.btn-dark, .btn-dark:focus {
+  transition: all 100ms;
+  background-color: $color-primary-dark;
+  color: $color-light;
+  
+  box-shadow: none;
+  border-width: 0;
+
+  &:hover, &:active {
+    background-color: $color-primary-dark;
+    box-shadow: $button-active-shadow;
+    transform: scale(1.05);
+  }
+  &:focus:active {
+    // background-color: red;
+    transform: scale(.95);
+  }
+  &:visited {
+    color: $color-light;
+  }
+  
+}
+
+.btn-outline-dark {
+  font-weight: 500;
+  color: $color-primary-dark;
+  border-color: $color-primary-dark;
+
+  &:hover, &:active {
+    color: $color-light;
+    background-color: $color-primary-dark;
+    border-color: $color-primary-dark;
+    box-shadow: $button-active-shadow;
+    transform: scale(1.05);
+  }
+  &:focus {
+    // background-color: red;
+    transform: scale(.95);
+    box-shadow: $button-active-shadow;
+  }
+}
+
+
+
 // ================
 //   UTILITIES
 // ================
+
+// BORDERS
+// $numbers: (
+//   '1': '',  '2': '',  '3': '',  '4': '',  '5': '',
+// );
+// @each $name, $number in $numbers {
+//   .border-#{$name} {
+//     border-color: var(--border-color, #{$border-color});
+//     border-style: solid;
+//   }
+// }
 
 // SHINY TEXT
 @keyframes color-shine {
@@ -292,16 +334,16 @@ main {
   100% {
 		background-position: center left;
 	}
-
 }
 
 a.color-shine {
   color: transparent;
-  background: linear-gradient(90deg, ($color-dark*2 + $color-skyblue) / 3 30%, ($color-teal + #fff)/2 50%, ($color-dark + $color-skyblue*2)/3 70%);
+  background: linear-gradient(90deg, ($color-primary-dark*2 + $color-skyblue) / 3 30%, ($color-teal + #fff)/2 50%, ($color-primary-dark + $color-skyblue*2)/3 70%);
   background-clip: text !important;
   background-size: 400%;
   animation: color-shine 4s ease-out infinite;
 }
+
 
 
 // GRADIENT
@@ -315,7 +357,7 @@ a.color-shine {
 
 .bg-dark {
   color: $color-light;
-  background-color: $color-dark-sat1 !important;
+  background-color: $color-primary-dark-sat1 !important;
 }
 .bg-transparent-dark {
   color: $color-light;
@@ -331,6 +373,7 @@ a.color-shine {
 }
 
 
+//  SHADOWS
 // .shadow-sm
 .shadow-z1-md {
   // inset 0 0 1rem white, 0 0.2rem 0.2rem rgb(0 0 0 / 15%), 0 0.1rem 0.3rem rgb(0 0 0 / 50%)
@@ -339,7 +382,6 @@ a.color-shine {
     $shadow-ambient-md, 
     $shadow-key-md;
 }
-
 
 
 
@@ -358,34 +400,35 @@ a.color-shine {
 }
 
 
-.btn-dark, .btn-dark:focus {
-  transition: all 100ms;
-  background-color: $color-dark;
-  box-shadow: none;
-  border-width: 0;
-              
-              
+.arrow-link {
+  $shift: -1.7em;
+  position: relative;
+  left: $shift;
+  &::after {
+    color: inherit;
+    content: "";
+    position: absolute;
+    // top: 0;
+    bottom: -1.5em*0.1;
+    right: $shift;
 
-  &:hover, &:active {
-    background-color: $color-dark;
-    box-shadow: inset rgba(var(--bs-dark-rgb), .1) .3rem .3rem .5rem,
-          inset rgba(255, 255, 255, .1) -.3rem -.3rem 1rem,
-          rgb(255, 255, 255) -.1rem -.1rem .2rem ,
-        rgba(0, 0, 0, .4) 0 .1rem .2rem .05rem,
-        rgba(0, 0, 0, .1) .1rem .1rem .75rem 0;
-    
-        
-        
-    transform: scale(1.05);
-  }
-  &:focus:active {
-    // background-color: red;
-    transform: scale(.95);
+    width: 1.5em;
+    height: 1.5em;
 
+    background-image: url('/arrow-right.svg');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
   }
-  
 }
 
+.arrow-link-2 {
+  width: 1.5em;
+  height: 1.5em;
+
+  margin-left: .5em;
+  margin-bottom: .1em;
+}
 
 // @import '../../components/article/article.scss'
 

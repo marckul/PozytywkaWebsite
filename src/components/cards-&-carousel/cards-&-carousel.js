@@ -126,4 +126,24 @@ function MyCarousel({children, ...props}) {
 }
 
 
-export {MyCarousel, CardBootTemplate}
+
+function CircleImgCard({ imgSrc, children }) {
+  const style = {
+    "--border-color": "var(--color-teal--medium)"
+    // $color-teal--medium
+  }
+  return (
+    <div className="circle-image-card col-md-4 py-5"
+      style={style}
+    >
+      <div className="pb-5">
+        <img src={imgSrc} alt="" className="img-fluid shadow-z1-md border border-5 rounded-circle" />
+      </div>
+      <h4>Tytuł</h4>
+      <p>Laudantium assumenda necessitatibus accusamus impedit, fuga expedita, adipisci magnam cupiditate consectetur veniam similique beatae? Debitis vero dolorum reprehenderit nihil deleniti voluptatibus optio doloribus, odit pariatur autem minus, praesentium dolor.</p>
+    </div>
+  )
+}
+
+
+export {MyCarousel, CardBootTemplate, CircleImgCard}

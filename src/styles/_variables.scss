@@ -3,6 +3,8 @@
 @import "../../node_modules/bootstrap/scss/variables";
 
 
+
+
 @function pow($number, $exponent) {
   $value: 1;
 
@@ -31,10 +33,18 @@ $screen-size-md: 768px;
 $screen-size-lg: 992px;
 
 // COLORS
+$color-snow: ($gray-100 + $gray-100 + $gray-200)/3;
 
 $color-light: rgb(245, 251, 255);
 $color-active: hsl(204, 100%, 85%);
 $color-active-hex: #b3e0ff;
+
+$color-active-dark: hsl(204, 100%, 30%);
+$color-active-dark-active: hsl(204, 70%, 60%);
+$color-disactive-dark: hsl(184, 100%, 20%);
+
+
+
 $color-light-rgb: 245, 251, 255;
 
 $color-green-lg: hsl(73, 60%, 98%);
@@ -43,11 +53,19 @@ $color-green-md: hsl(73, 100%, 79%);
 // $color: rgb(251, 253, 247);
 $color-skyblue: rgb(0, 174, 255);
 // $color-dark: hsl(198, 19%, 15%);
-$color-dark: #003759; // #002033
+// $color-dark
+$color-primary-dark: #003759; // #002033
+$color-primary-darker: #002033; // #002033
+$color-primary: #003759; // #002033
+$color-dark: red; // #002033
+
 $color-darker: #002033; // hsl(203, 40%, 15%);
-$color-dark-sat1: #002033; // hsl(203, 40%, 15%);
+$color-primary-dark-sat1: #002033; // hsl(203, 40%, 15%);
+$color-dark-sat1: red; // hsl(203, 40%, 15%);
 
 $color-teal: #21747A;
+$color-teal-hsl: hsl(184, 57%, 30%);
+$color-teal-rgb: 33, 116, 122;
 $color-teal--medium: #6AA4AC;
 
 //  SHADOWS
@@ -62,7 +80,24 @@ $shadow-key-md: 0 .1rem .3rem rgba(0, 0, 0, .4);
   --bs-light-rgb: 245, 251, 255;
   --bs-dark-rgb: 0, 31, 51; // 31, 41, 46;
   --bs-body-line-height: 1.333;
+
+  --color-active-hex: #{$color-active-hex};
+
+  
+  --color-green-lg: #{$color-green-lg};
+  --color-green-md: #{$color-green-md};
+
+  --color-skyblue: #{$color-skyblue};
+
+  --color-dark: #{$color-primary}; 
+  --color-darker: #{$color-darker};
+  --color-primary-dark-sat1: #{$color-primary-dark-sat1};
+
+  --color-teal: #{$color-teal};
+  --color-teal--medium: #{$color-teal--medium};
+
 }
+
 
 
 

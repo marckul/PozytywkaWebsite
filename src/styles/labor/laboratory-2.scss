@@ -2,6 +2,132 @@
 
 @import '../variables';
 
+// laboratory - offcanvas navbar
+.new-test-class {
+  .offcanvas-header {
+    // padding-top: ;
+  }
+  .offcanvas-body {
+    font-weight: 400;
+  }
+}
 
+
+.post-short--archive {
+  $padding: map-get($spacers, 3);
+  .post-image {
+    min-height: 20rem - $padding;
+  }
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  // height: 20rem;
+  
+
+  border: $border-width solid $border-color;
+  border-radius: $border-radius-lg;
+  
+
+  padding: $padding;
+  .row {
+    flex-grow: 1;
+  }
+  .post-short--head {
+    justify-content: end;
+  }
+  .post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    > div {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      
+    }
+  }
+  .post-date {
+    font-weight: 500;
+    font-size: $small-font-size;
+    margin: 0;
+  }
+  .read-more {
+    display: block;
+    width: fit-content;
+    font-weight: 500;
+    font-size: $small-font-size;
+    margin-left: auto;
+
+    color: inherit;
+    text-decoration: none;
+  }
+  .post-image {
+    div {
+      overflow: hidden;
+    }
+  }
+}
+
+
+
+.post-short--archive1 {
+  .flex-row {
+    flex-wrap: wrap;
+  }
+
+  .post-image {
+    min-height: 20rem;
+    
+    background: $yellow;
+    .aspect-ratio {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      background: rgba(218, 165, 32, 0.452);
+      .aspect-ratio--inner {
+        position: absolute;
+        background: $green;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+    
+  }
+
+
+  .post-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .post-short--head {
+      justify-content: end;
+    }
+
+    > div {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .post-date {
+      font-weight: 500;
+      font-size: $small-font-size;
+      margin: 0;
+    }
+    .read-more {
+      display: block;
+      width: fit-content;
+      font-weight: 500;
+      font-size: $small-font-size;
+      margin-left: auto;
+  
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
 
 

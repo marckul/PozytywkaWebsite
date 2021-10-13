@@ -2,6 +2,15 @@
   --bs-light-rgb: 245, 251, 255;
   --bs-dark-rgb: 0, 31, 51;
   --bs-body-line-height: 1.333;
+  --color-active-hex: #b3e0ff;
+  --color-green-lg: #fcfdf7;
+  --color-green-md: #e8ff94;
+  --color-skyblue: #00aeff;
+  --color-dark: #003759;
+  --color-darker: #002033;
+  --color-primary-dark-sat1: #002033;
+  --color-teal: #21747A;
+  --color-teal--medium: #6AA4AC;
 }
 
 .article-container {

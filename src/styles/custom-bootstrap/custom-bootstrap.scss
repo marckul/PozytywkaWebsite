@@ -3,10 +3,11 @@
 @import '../variables';
 
 // $white: $color-light;
-$dark: $color-dark;
-// $light: red;
+$dark: $color-primary-dark;
 
+$enable-smooth-scroll: false;
 
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+@import '../custom-bootstrap/fontawesome.min.css'
 
 /* KONIEC */ 

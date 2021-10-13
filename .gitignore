@@ -76,4 +76,4 @@ yarn-error.log
 # Exceptions
 # https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
 
-!/node_modules/bootstrap/scss/_variables.scss
+!node_modules/bootstrap/scss/_variables.scss

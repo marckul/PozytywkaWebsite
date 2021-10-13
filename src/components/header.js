@@ -81,8 +81,8 @@ const Navigation = ({className, variant, ...props}) => {
     <Navbar {...props} className={`${className} ${stateClass} px-md-5`} expand="md" bg={bg} variant={text}>
       <Container fluid>
         <Logo/>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"  onClickCapture={eventhandler}/>
-        <Navbar.Collapse >
+        <Navbar.Toggle aria-controls="main-navbar"  onClickCapture={eventhandler}/>
+        <Navbar.Collapse id="main-navbar" >
           <Nav className="me-auto">
             <NavLink to="/">Start</NavLink>
             <NavLink to="/oferta">Oferta</NavLink>
@@ -165,7 +165,7 @@ const HeaderCollapsible = ({ siteTitle, screensOnHide }) => {
   }
   return(
     <div className={`collapsibleNavbar fixed-top ${triggerClass}`} style={styles}>
-      <Navigation className="my-navbar" />
+      <Navigation className="my-navbar border-bottom " />
     </div>
   )
 }

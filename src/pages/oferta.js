@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Layout from '../components/layout'
+import Seo from '../components/seo'
 
 import { HeroImageArea, Container } from '../components/components-bundle/components-bundle'
 import { Link } from 'gatsby'
@@ -41,6 +42,7 @@ const OfferPage = () => {
 
   return(
     <Layout header="transparent-light">
+      <Seo title="Oferta"/>
       <HeroImageArea variant="light" backgroundImage={HeroImage} >
         <h1 className="py-4">Nasza Oferta</h1>
         <p className="lead">

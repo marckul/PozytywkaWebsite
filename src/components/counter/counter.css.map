@@ -1,11 +1,12 @@
 {
     "version": 3,
-    "mappings": "AC4DA,AAAA,KAAK,CAAC;EACJ,cAAc,CAAA,cAAC;EACf,aAAa,CAAA,UAAC;EACd,qBAAqB,CAAA,MAAC;CACvB;;AD9DD,AAAA,oBAAoB,CAAC;EACnB,KAAK,EC+Cc,OAAO;CDzC3B;;AAPD,AAEE,oBAFkB,CAElB,OAAO,CAAC;EACN,SAAS,EAAE,OAAO;EAClB,aAAa,EAAE,IAAI;CAEpB",
+    "mappings": "AC8EA,AAAA,KAAK,CAAC;EACJ,cAAc,CAAA,cAAC;EACf,aAAa,CAAA,UAAC;EACd,qBAAqB,CAAA,MAAC;EAEtB,kBAAkB,CAAA,QAAC;EAGnB,gBAAgB,CAAA,QAAC;EACjB,gBAAgB,CAAA,QAAC;EAEjB,eAAe,CAAA,QAAC;EAEhB,YAAY,CAAA,QAAC;EACb,cAAc,CAAA,QAAC;EACf,yBAAyB,CAAA,QAAC;EAE1B,YAAY,CAAA,QAAC;EACb,oBAAoB,CAAA,QAAC;CAEtB;;ADhGD,AAAA,oBAAoB,CAAC;EACnB,KAAK,ECiEc,OAAO;CD3D3B;;AAPD,AAEE,oBAFkB,CAElB,OAAO,CAAC;EACN,SAAS,EAAE,OAAO;EAClB,aAAa,EAAE,IAAI;CAEpB",
     "sources": [
         "counter.scss",
         "../../styles/_variables.scss",
         "../../../node_modules/bootstrap/scss/_functions.scss",
-        "../../../node_modules/bootstrap/scss/_variables.scss"
+        "../../../node_modules/bootstrap/scss/_variables.scss",
+        "../../styles/_variables_bootstrap.scss"
     ],
     "names": [],
     "file": "counter.css"
