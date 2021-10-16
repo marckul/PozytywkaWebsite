@@ -214,7 +214,7 @@ class RatioContent extends React.Component {
    * 
    */
   constructor(props) {
-    console.log("CONSTRUCTOR CenteredContent");
+    // console.log("CONSTRUCTOR CenteredContent");
     super(props)
 
     this.refsParent = React.createRef()

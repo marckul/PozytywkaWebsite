@@ -48,6 +48,15 @@ article.article.readable-width p {
   text-align: justify;
 }
 
+article.article figure img, article.article .figure img {
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+article.article figure figcaption, article.article .figure figcaption {
+  margin-top: 0.5rem;
+}
+
 @media (min-width: 768px) {
   article.article .indented-figure {
     --fig-indentation: $indentation;
@@ -66,6 +75,74 @@ article.article.readable-width p {
 
 @media (min-width: 992px) {
   article.article .indented-figure {
+    --fig-indentation: -6rem;
+  }
+}
+
+article.article .article-body.rich-text h1 {
+  font-size: 1.95312em;
+}
+
+article.article .article-body.rich-text h2 {
+  font-size: 1.5625em;
+}
+
+article.article .article-body.rich-text h3 {
+  font-size: 1.25em;
+}
+
+article.article .article-body.rich-text h4 {
+  font-size: 1em;
+}
+
+article.article .article-body.rich-text h5 {
+  font-size: 1em;
+}
+
+@media (min-width: 992px) {
+  article.article .article-body.rich-text h1 {
+    font-size: 2.36859em;
+  }
+  article.article .article-body.rich-text h2 {
+    font-size: 1.77689em;
+  }
+  article.article .article-body.rich-text h3 {
+    font-size: 1.333em;
+  }
+  article.article .article-body.rich-text h4 {
+    font-size: 1em;
+  }
+  article.article .article-body.rich-text h5 {
+    font-size: 1em;
+  }
+}
+
+article.article .article-body.rich-text .lonley-img {
+  max-width: 100%;
+  height: auto;
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  line-height: 1;
+}
+
+@media (min-width: 768px) {
+  article.article .article-body.rich-text p > img, article.article .article-body.rich-text .lonley-img, article.article .article-body.rich-text figure {
+    --fig-indentation: $indentation;
+    width: 61.8%;
+    margin: 1.5rem;
+  }
+  article.article .article-body.rich-text p > img.float-left, article.article .article-body.rich-text .lonley-img.float-left, article.article .article-body.rich-text figure.float-left {
+    float: left;
+    margin-left: var(--fig-indentation, -3rem);
+  }
+  article.article .article-body.rich-text p > img.float-right, article.article .article-body.rich-text .lonley-img.float-right, article.article .article-body.rich-text figure.float-right {
+    float: right;
+    margin-right: var(--fig-indentation, -3rem);
+  }
+}
+
+@media (min-width: 992px) {
+  article.article .article-body.rich-text p > img, article.article .article-body.rich-text .lonley-img, article.article .article-body.rich-text figure {
     --fig-indentation: -6rem;
   }
 }

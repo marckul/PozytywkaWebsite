@@ -173,13 +173,14 @@ function WavesContainer({ children }) {
 
 
 function Figure({alt, src, caption, indented, className, imgClassName}) {
+  console.log("Figure src", src);
   if (indented) {
     className += " indented-figure" 
   }
 
   return(
     <figure className={`figure border p-2 ${className} `}>
-      <img src={src} alt={alt} className={`${imgClassName} figure-img img-fluid`}/>
+      <img src={src} alt={alt} className={`${imgClassName} img-fluid`}/> {/* figure-img */}
       <figcaption class="small text-center">{caption}</figcaption>
     </figure>
   )

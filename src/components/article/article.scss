@@ -2,6 +2,59 @@
 // @import '../../styles/custom-bootstrap/custom-bootstrap.scss';
 @import '../../styles/variables';
 
+
+@mixin typeScale0($font-interval-ratio, $degradation) {
+  // https://type-scale.com/
+  h1 {
+    font-size: pow($font-interval-ratio, 5 - $degradation)+em;
+  }
+  h2 {
+    font-size: pow($font-interval-ratio, 4 - $degradation)+em;
+  }  
+  h3 {
+    font-size: pow($font-interval-ratio, 3 - $degradation)+em;
+  }  
+  h4 {
+    font-size: pow($font-interval-ratio, 2 - $degradation)+em;
+  }  
+  h5 {
+    font-size: pow($font-interval-ratio, 1 - $degradation)+em;
+  }  
+}
+
+
+@mixin typeScale($tags, $font-interval-ratio, $degradation) {
+  // https://type-scale.com/
+  $counter: 6;
+  @each $tag in $tags {
+    $number: $counter - 1;
+    #{$tag} {
+      font-size: pow($font-interval-ratio, $number - $degradation)+em;
+      // color: green ;
+    }
+    $counter: $counter - 1;
+  }
+}
+
+
+@mixin getFontSize($tags, $degradation) {
+  $font-interval-ratio: map-get($font-properties, size-interval-sm);
+  @include typeScale($tags, $font-interval-ratio, $degradation);
+  
+  @media (min-width: $screen-size-lg) {
+    $font-interval-ratio: map-get($font-properties, size-interval-lg);
+    @include typeScale($tags, $font-interval-ratio, $degradation);
+  }
+}
+
+
+
+
+
+
+
+
+
 .article-container {
   padding-top: map-get($spacers, 4);
   padding-bottom: map-get($spacers, 4);
@@ -41,6 +94,16 @@ article.article {
     }
   }
 
+  figure, .figure {
+    img {
+      line-height: 1;
+      margin-bottom: 0;
+    }
+    figcaption {
+      margin-top: map-get($spacers, 2);
+    }
+  }
+
   .indented-figure {
     $margin: map-get($spacers, 4);
     @media (min-width: map-get($grid-breakpoints, md )) {
@@ -63,6 +126,51 @@ article.article {
     @media (min-width: map-get($grid-breakpoints, lg)) {
       --fig-indentation: -#{map-get($spacers, 6)};
     }
-  }
+  }   
+}
+
+
+article.article { 
+
+  .article-body.rich-text {
+    
+    $headers: h1, h2, h3, h4, h5; 
+    // @include typeScale($headers, 1.333, 1);
+    @include getFontSize($headers, 2)
+
+    .lonley-img {
+      max-width: 100%;
+      height: auto;
+      padding: map-get($spacers, 2);
+      border: 1px solid $border-color;
+      line-height: 1;
+    }
+
+    p>img, .lonley-img, figure {
+      $margin: map-get($spacers, 4);
+      @media (min-width: map-get($grid-breakpoints, md )) {
+        $indentation: -#{map-get($spacers, 5)};
+        --fig-indentation: $indentation;
   
+        width: 61.8%;
+        margin: $margin;
+
+        &.float-left {
+          float: left;
+          margin-left: var(--fig-indentation, $indentation);
+        }
+  
+        &.float-right {
+          float: right;
+          margin-right: var(--fig-indentation, $indentation);
+        }
+      }
+      
+      @media (min-width: map-get($grid-breakpoints, lg)) {
+        --fig-indentation: -#{map-get($spacers, 6)};
+      }
+    }
+
+
+  }
 }

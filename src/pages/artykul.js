@@ -18,16 +18,12 @@ function Layout2({children, ...props}) {
       {children}
     </Layout>
   )
-  
 }
 
 
 
 
-
-
-
-const ArticleTemplate = () => {
+const ArticleStatic = () => {
   return(
     <Layout2 header="light">
       <div className="container">
@@ -73,5 +69,5 @@ const ArticleTemplate = () => {
   )
 }
 
-export default ArticleTemplate
+export default ArticleStatic
 

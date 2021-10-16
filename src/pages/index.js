@@ -85,7 +85,7 @@ const IndexPage = () => {
               <img src={`${boyOnMolo}`} alt="" className="img-grid"/>
             </Grid.Column>
             <Grid.Column position="right">
-              <RatioContent childComponent={Grid.Quotation} debugMode={true}>
+              <RatioContent childComponent={Grid.Quotation} debugMode={false}>
                 <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
                 <span>Hans Asperger <i>Neuroplemiona</i></span>
               </RatioContent>

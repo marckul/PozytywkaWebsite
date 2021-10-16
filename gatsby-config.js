@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Pozytywka ODT`,
@@ -36,6 +40,14 @@ module.exports = {
         rule: {
           include: /\.svg$/ // 349ns dpfb89 3tga!
         }
+      }
+    },
+    {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: process.env.STORYBLOK_API_KEY,
+        version: 'draft',
+        // languages: ['de', 'at'] // Optional parameter. Omission will retrieve all languages by default.
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
