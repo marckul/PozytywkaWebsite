@@ -23,12 +23,6 @@ const Components = {
 
 
 
-
-
-
-
-
-
 /**
  * 
  * @param {*} props 

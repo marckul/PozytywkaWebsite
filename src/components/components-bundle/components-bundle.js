@@ -21,6 +21,7 @@ function HeroArea({ children, className, ...props }) {
  * @param { string } props.className
  * @param { string } props.variant
  * @param { string } props.backgroundImage 
+ * @param { string } props.textShadow
  */
 function HeroImageArea(
     { 
@@ -32,8 +33,9 @@ function HeroImageArea(
       ...props 
     }
   ) {
+
   if (textShadow) {
-    const textShadow = "text-shadow"
+    textShadow = "text-shadow"
   }
   const styles = {
     backgroundImage: `url("${backgroundImage}")`
@@ -212,7 +214,7 @@ AspectRatio.defaultProps = {
   aspectRatio: 1
 }
 
-const PostShort2 = ({title, publishDate, imgSrc, children}) => {
+const PostShort2 = ({title, publishDate, imgSrc, postSlug, children}) => {
 
   const ImageElement = () => {
     if (imgSrc && imgSrc !== "") {
@@ -224,7 +226,11 @@ const PostShort2 = ({title, publishDate, imgSrc, children}) => {
         </div>
       )
     } else {
-      return ""
+      return(
+        <div className="post-img-container "> 
+          <AspectRatio aspectRatio={1}></AspectRatio>
+        </div>
+      )
     }
   }
 
@@ -243,7 +249,7 @@ const PostShort2 = ({title, publishDate, imgSrc, children}) => {
               <p>
                 {children}
               </p>
-              <Link className="read-more" to="/artykul">
+              <Link className="read-more" to={postSlug}>
                 Czytaj więcej 
                 <svg className="arrow-link-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>

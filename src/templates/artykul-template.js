@@ -11,11 +11,11 @@ import DynamicComponent from '../components-story/dynamicComponent'
 import Layout from '../components/layout'
 import * as UserInfo from '../components-story/userInfo'
 
-// import {NavbarSpace} from '../components/header'
 
 import '../components/article/article.css'
 import { Figure } from '../components/components-bundle/components-bundle'
 
+const IS_BROWSER = typeof window !== "undefined"
 
 
 function Layout2({children, ...props}) {
@@ -26,7 +26,6 @@ function Layout2({children, ...props}) {
   )
 }
 
-const IS_BROWSER = typeof window !== "undefined"
 
 
 
@@ -35,7 +34,6 @@ const IS_BROWSER = typeof window !== "undefined"
 const ArticleTemplate = ({data, location}) => {
   let story = data.storyblokEntry
   story = useStoryblok(story, location)
-  
   
   const allDynamicComponents = story.content.article_content.map( blok =>  {
     // debugger;
@@ -55,11 +53,6 @@ const ArticleTemplate = ({data, location}) => {
     'author', 'component', 'long_text'
   ]
 
-  // getContent(story.content, includeKeys)
-  // console.log(story.content.title);
-  // debugger
-  
-
   
   return(
     <Layout2 header="light">
@@ -71,6 +64,7 @@ const ArticleTemplate = ({data, location}) => {
               {allDynamicComponents}
             </article>
           </SbEditable>
+
         </div>
       </div>    
     </Layout2>
@@ -80,8 +74,8 @@ const ArticleTemplate = ({data, location}) => {
 export default ArticleTemplate
 
 export const query = graphql`
-  query PostQuery {
-    storyblokEntry(full_slug: {eq: "aktualnosci/post/szablon-artykulu"}) {
+  query ($fullSlug: String!) {
+    storyblokEntry (full_slug: {eq: $fullSlug}) {
       content
       name
     }

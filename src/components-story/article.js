@@ -8,9 +8,11 @@ import * as StringTools from '../functions/stringTools'
 
 
 function IsNotEmptyField(filed) {
-  if (filed === undefined || filed === "") {
+  // debugger;
+  if (filed === null || filed === undefined || filed === "") {
     return false    
   } 
+
   return !StringTools.ContainsOnlySpaces(filed)
 }
 
@@ -37,7 +39,7 @@ function Header({ blok }) {
 
   const publish_date = blok.publish_date;
 
-  let dateString = FormatDate(publish_date);
+  let dateString = StringTools.FormatDate(publish_date);
 
 
   console.log(dateString); // 9/17/2016
@@ -67,31 +69,5 @@ function Body({ blok }) {
 
 export {
   Header, Body
-}
-
-
-/**
- * 
- * @param {string} dateString 
- */
-function WordsSentenceCase(dateString) {
-  const allWords = dateString.split(" ")
-  const allWordsUpper = allWords.map( word => {
-    let wordUpper = word
-    if (word !== "") {
-      wordUpper = word[0].toUpperCase() + word.slice(1)
-    }
-    return wordUpper
-  })
-
-  return allWordsUpper.join(" ")    
-}
-function FormatDate(publish_date) {
-
-  let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  let formattedDate = new Date(publish_date);
-  let dateString = formattedDate.toLocaleDateString("pl-PL", options);
-
-  return WordsSentenceCase(dateString);
 }
 

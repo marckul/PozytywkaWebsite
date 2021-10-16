@@ -49,7 +49,7 @@ const IndexPage = () => {
   return(
     <Layout header="transparent-dark">
       <Seo title="Start"/>
-      <HeroImageArea variant="dark" backgroundImage={boyImg} >
+      <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
         <h1 className="py-4">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
           Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat w wyjątkowy sposób. 

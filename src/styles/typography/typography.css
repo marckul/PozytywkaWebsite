@@ -119,4 +119,19 @@ h5, .h5 {
     font-size: 1.333em;
   }
 }
+
+.rich-text .superscript {
+  top: -.5em;
+}
+
+.rich-text .subscript {
+  bottom: -.25em;
+}
+
+.rich-text .superscript, .rich-text .subscript {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
 /*# sourceMappingURL=typography.css.map */

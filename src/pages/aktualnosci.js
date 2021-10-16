@@ -2,8 +2,9 @@ import * as React from "react"
 import PropTypes from 'prop-types'
 // import  Container from "react-bootstrap/Container"
 
-import { Link } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import * as StringTools from '../functions/stringTools'
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -15,81 +16,101 @@ import img1 from '../assets/images/artykul-zdjecie.jpg'
 import img2 from '../assets/images/chlopczyk-na-molo.jpg'
 
 
-// const PostShort0 = ({title, publishDate, imgSrc, children}) => {
-//   return(
-//     <div className="post-short--archive shadow-z1-md my-5">
-//       <div className="row">
-//         <div className="col-12 col-md-4 col-lg-3 post-image">
-//             <img src={imgSrc} alt="" className="img-cover" />
-//         </div>
-//         <div className="post-content col-12 col-md p-4">
-//           <div className="post-short--head mb-5">
-//             <h4 className="mb-2">{title}</h4>
-//             <p className="post-date small">{publishDate}</p>
-//           </div>
-//           <div className="post-short--body">
-//             <p>
-//               {children}
-//             </p>
-//             <Link className="read-more" to="/artykul">
-//               Czytaj więcej
-//             </Link>
+/**
+ * 
+ * @param { array } componentsArray 
+ * @param { string } componentName 
+ */
+const GetComponentByName = (componentsArray, componentName) => {
+  let desiredComponent = undefined
+  componentsArray.forEach( component => {
+    if (component.component === componentName) {
+      desiredComponent = component
+    }
+  })
 
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
+  return desiredComponent
+}
 
-// PostShort0.propsTypes = {
-//   imgSrc: PropTypes.string,
-// }
+const STORY_BLOK_CONFIGS = {
+  image: {
+    assetPath: "https://a.storyblok.com",
+    imageServicePath: "https://img2.storyblok.com"
+  }
+}
 
-
-// const PostShort = ({title, publishDate, imgSrc, children}) => {
-//   return(
-//     <div className="post-short--archive1 shadow-z1-md my-5">
-//       <div className="d-flex flex-row p-3">
-
-//         <div className="post-image col-12 col-md-4 col-lg-3">
-//           <img src={imgSrc} alt="" className="img-cover" />
-//           {/* <div className="aspect-ratio">
-//             <div className="aspect-ratio--inner">  </div>
-//           </div> */}
-//         </div>
-
-//         <div className="post-content col-12 col-md p-4">
-//           <div className="post-short--head mb-5">
-//             <h4 className="mb-2">{title}</h4>
-//             <p className="post-date small">{publishDate}</p>
-//           </div>
-//           <div className="post-short--body">
-//             <p>
-//               {children}
-//             </p>
-//             <Link className="read-more" to="/artykul">
-//               Czytaj więcej
-//             </Link>
-
-//           </div>
-//         </div>
-
-//       </div>
-//     </div>
-//   )
-// }
-
-// PostShort.propsTypes = {
-//   imgSrc: PropTypes.string,
-// }
+/**
+ * 
+ * @param { string } imgSource - image source path
+ * @param { array } size - 2 elements array: [width, height]
+ * @param { boolean } smartCropping - 
+ * 
+ * https://www.storyblok.com/docs/image-service
+ */
+const ImageResizing = (imgSource, size, smartCropping) => {
+  // https://www.storyblok.com/docs/image-service
+  if (StringTools.IsNotEmpty(imgSource)) {
+    const { assetPath, imageServicePath} = STORY_BLOK_CONFIGS.image
 
 
+    
+    const parts = imgSource.split(assetPath)
+    
+    
+    if (parts[0] !== "") {
+      console.warn(`Unexpected image source URL. Image resource URL should starts with ${assetPath}.`)
+      return ""      
+    }
+
+    const smart = smartCropping ? "/smart" : ""
+
+    let param = `/${size[0]}x${size[1]}` 
+    param += smart
+
+    const resource = parts[1]
+    const newImgSource = `${imageServicePath}${param}${resource}`
+
+    return newImgSource
+  }
+  return ""
+  // debugger
+}
 
 
-const NewsPage = () => (
+const NewsPage = ({data}) => {
+  // let story = data.allStoryblokEntry
+  
+  const postsArchive = data.allStoryblokEntry.nodes.map( story => {
+    
+    const content = JSON.parse(story.content)
+    
+    console.log(content.article_content);
+    const articleHeader = GetComponentByName(content.article_content, "article-header")
+    console.log(articleHeader);
+    if (typeof articleHeader !== "undefined") {
+      // debugger    
+      const imageFilename = ImageResizing(articleHeader.image.filename, [400, 400], true)
+
+      const publishDate = StringTools.FormatDate(articleHeader.publish_date)
+
+      const fullSlug = StringTools.GetRelativePath(story.full_slug, "aktualnosci/")
+      return(
+        <PostShort2
+          title={articleHeader.title}
+          publishDate={publishDate}
+          imgSrc={imageFilename}         
+
+          postSlug={fullSlug}
+        >
+          Sunt quae impedit deleniti illum hic minima maiores est, voluptatem, perspiciatis, eius quaerat eveniet fuga! Repellendus ad voluptatem rem asperiores...
+        </PostShort2>
+      )
+    }
+  })
+
+  return(
   <Layout header="transparent-light">
-    <Seo title="Start"/>
+    <Seo title="Aktualnosci"/>
     <HeroImageArea  backgroundImage={HeroImage} variant="light">
       <h1><u>Aktualności</u></h1>
       <p className="lead">
@@ -98,7 +119,8 @@ const NewsPage = () => (
     </HeroImageArea>
     <Container>
       <div className="posts-archive-2 row">
-        <PostShort2
+        {postsArchive}
+        {/* <PostShort2
           title="Pierwszy post"
           publishDate="Piątek, 20 Sierpnia 2020"
           imgSrc={img1}         
@@ -120,10 +142,25 @@ const NewsPage = () => (
           imgSrc={""}         
         >
           Beatae eius maxime temporibus ipsam necessitatibus dolore, iste blanditiis ex architecto quidem debitis illo error inventore rerum eveniet explicabo odit suscipit!...
-        </PostShort2>
+        </PostShort2> */}
       </div>
     </Container>
   </Layout>
-)
+)}
 
 export default NewsPage
+
+export const query = graphql`
+  query {
+    allStoryblokEntry(filter: {full_slug: {regex: "/aktualnosci\/./"}}) {
+      nodes {
+        content
+        path
+        full_slug
+        slug
+      }
+    }
+  }
+`
+
+
