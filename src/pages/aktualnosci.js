@@ -75,6 +75,29 @@ const ImageResizing = (imgSource, size, smartCropping) => {
   return ""
   // debugger
 }
+/**
+ * 
+ * @param { string } text 
+ */
+function GetPostIntercept(text) {
+  // Poprawić usuwanie kropek na koncu zeby dzialalo tex dla 3 ...
+  const words = text.trim().split(" ")
+  const firstWords = words.slice(0,20)
+
+  const lastWordIdx = firstWords.length - 1
+  const lastWord = firstWords[lastWordIdx]
+  const lastSignIdx = lastWord.length - 1
+  const lastSign = lastWord[lastSignIdx]
+
+  if (lastSign === ".") {
+    firstWords[lastWordIdx] = lastWord.slice(0,lastWord.length - 1)
+  }
+
+  // debugger
+  
+  // if (lastWord)
+  return firstWords.join(" ")    
+}
 
 
 const NewsPage = ({data}) => {
@@ -94,6 +117,9 @@ const NewsPage = ({data}) => {
       const publishDate = StringTools.FormatDate(articleHeader.publish_date)
 
       const fullSlug = StringTools.GetRelativePath(story.full_slug, "aktualnosci/")
+
+      const intercept = GetPostIntercept(articleHeader.intro)
+
       return(
         <PostShort2
           title={articleHeader.title}
@@ -102,7 +128,7 @@ const NewsPage = ({data}) => {
 
           postSlug={fullSlug}
         >
-          Sunt quae impedit deleniti illum hic minima maiores est, voluptatem, perspiciatis, eius quaerat eveniet fuga! Repellendus ad voluptatem rem asperiores...
+          {intercept}...
         </PostShort2>
       )
     }
