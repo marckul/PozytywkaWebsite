@@ -110,14 +110,18 @@ const NewsPage = ({data}) => {
     console.log(content.article_content);
     const articleHeader = GetComponentByName(content.article_content, "article-header")
     console.log(articleHeader);
+
     if (typeof articleHeader !== "undefined") {
-      // debugger    
       const imageFilename = ImageResizing(articleHeader.image.filename, [400, 400], true)
-
       const publishDate = StringTools.FormatDate(articleHeader.publish_date)
+    
+      // const fullSlug = StringTools.GetRelativePath(story.full_slug, "aktualnosci/")
+      let fullSlug = story.full_slug;
+      if (fullSlug[0] !== "/") {
+        fullSlug = `/${fullSlug}`
+      }
 
-      const fullSlug = StringTools.GetRelativePath(story.full_slug, "aktualnosci/")
-
+      // debugger    
       const intercept = GetPostIntercept(articleHeader.intro)
 
       return(

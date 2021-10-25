@@ -1,12 +1,13 @@
 import * as React  from 'react'
 
+// ALL FOR STORYBLOK
 import { useStaticQuery, graphql } from 'gatsby'
+import { DynamicComponent } from '../components-story/dynamicComponent'
+import useStoryblok from '../../lib/storyblok'
 
 import Layout from '../components/layout'
 import PropTypes from 'prop-types'
-import DynamicComponent from '../components-story/dynamicComponent'
 
-import useStoryblok from '../../lib/storyblok'
 
 
 const IS_BROWSER = typeof window !== "undefined"

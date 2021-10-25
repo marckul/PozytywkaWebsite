@@ -14,7 +14,8 @@ const StringTools = require('./node-tools/stringTools')
   https://github.com/gatsbyjs/gatsby/issues/7810
 */
 const TemplatesRegister = {
-  "Post": "artykul-template.js"
+  "Post": "artykul-template.js",
+  "page": "page-template.js",
 }
 
 exports.createPages = async function ({ actions, graphql }) {

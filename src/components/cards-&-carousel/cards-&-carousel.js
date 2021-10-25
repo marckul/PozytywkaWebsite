@@ -30,7 +30,7 @@ const responsive = {
 
 function CardBootTemplate({title, topNote, children, bottomNote}) {
   return(
-    <div className="offer-card-col">
+    <div className="offer-card-col ">
       <div className="shadow-z1-md offer-card" >
         <div className=" card-inner">
           <div className="card-head">
@@ -68,8 +68,8 @@ function MyCarousel({children, ...props}) {
     <div className="react-carousel-container my-5" >
       <small className="react-carousel-info d-block text-muted">
         <em>
-          <p className="info my-0" >Aby zobaczyć dostępne opcje użyj strzałek</p>
-          <p className="info-touch my-0" >Aby zobaczyć dostępne opcje przesuwaj karty</p>
+          <p className="info my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij kartę</p>
+          <p className="info-touch my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij kartę</p>
         </em>
       </small>
       <Carousel 
@@ -81,7 +81,7 @@ function MyCarousel({children, ...props}) {
         autoPlaySpeed={500}
         keyBoardControl={true}
         containerClass="react-carousel"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={[ "tablet", "mobile"]}
         itemClass="card-container"
         dotListClass="cards-dots-controls"
         renderDotsOutside={true}

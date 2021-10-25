@@ -1,4 +1,6 @@
 import * as React from 'react'
+import ReactDOMServer from 'react-dom/server';
+
 import StoryblokClient from 'storyblok-js-client'
 
 function getContent(content, includeKeys) {
@@ -19,9 +21,7 @@ function getContent(content, includeKeys) {
         getContent(contentArray)        
       }
     }
-            
   }
-  
 }
 
 
@@ -43,7 +43,7 @@ function Image(tag) {
   console.log(imageCounter);
   const attrs = tag.attrs
   return `
-  <img alt="${attrs.alt}" src="${attrs.src}" title="${attrs.title}" class="${floatSide} lonley-img" />
+    <img alt="${attrs.alt}" src="${attrs.src}" title="${attrs.title}" class="${floatSide} lonley-img" />
   `
 }
 
@@ -55,17 +55,25 @@ function Paragraph(tag) {
     if (tag.content.length === 1 && tag.content[0].type === "image") {
       const floatSide = imageCounter % 2 == 0 ? "float-right" :  "float-left"
       imageCounter++
-      // debugger
-      
-      // '<img alt="" src="https://a.storyblok.com/f/130598/1440x961/a441bc0ff8/dziewczynka-na-plazy.jpg" title="" />'
-      // debugger;
       const attrs = tag.content[0].attrs
 
-      result = `
-        <figure class="${floatSide} figure border p-2  indented-figure ">
-          <img alt="${attrs.alt}" src="${attrs.src}" title="${attrs.title}" class="figure-img img-fluid" />
+      const getConsoleLog = () => {
+        console.log("FigureHTML")
+      }
+
+      const FigureHTML = ReactDOMServer.renderToString(
+        <figure onClick={getConsoleLog} className={`${floatSide} figure border p-2  indented-figure `}>
+          <img alt={`${attrs.alt}`} src={`${attrs.src}`} title={`${attrs.title}`} class="figure-img img-fluid" />
         </figure>
-      `
+      );
+      // debugger
+      
+      result = FigureHTML
+      // `
+      //   <figure class="${floatSide} figure border p-2  indented-figure ">
+      //     <img alt="${attrs.alt}" src="${attrs.src}" title="${attrs.title}" class="figure-img img-fluid" />
+      //   </figure>
+      // `
     } 
     else if (tag.content.length === 1) {
       result = Storyblok.richTextResolver.normalRenderNode(tag)
@@ -83,33 +91,63 @@ function Paragraph(tag) {
   return result
 }
 
+
+const Text = (tag) => {
+  if (Array.isArray(tag.marks)) {
+    
+    const marks = [] // tag.marks
+    for (let i = 0; i < marks.length; i++) {
+      const mark = marks[i];
+
+      if (mark.type === "link") {
+        const link = mark.attrs
+        // link.href
+        const href = ""
+        const parts = href.split("/")
+        const internalSlug = parts[0] === ""
+
+        if (internalSlug) {
+          marks.splice(i, 1)
+
+
+        }
+      }
+      
+    }
+    tag.marks.map( mark => {
+      
+    })
+  }
+  return null
+
+  
+}
+
+
+
 const NodesMap = {
   'paragraph': Paragraph, //paragraph
   'image': Image, //paragraph
+  'text': Text
 }
 
 let imageCounter;
 
 Storyblok.richTextResolver.renderNode = (tag) => {
-  let result = Storyblok.richTextResolver.normalRenderNode(tag)
+  // debugger
+  let result = null
   if (typeof NodesMap[tag.type] !== "undefined") {
     const RenderNode = NodesMap[tag.type]
     result = RenderNode(tag)
+  }
+
+  if ( result === null ) {
+    result = Storyblok.richTextResolver.normalRenderNode(tag)
   }
   return result
 }
 
 
-Storyblok.setComponentResolver( (component, blok) => {
-  switch(component) {
-    case 'image':
-      return `<button>${blok.button_text}</button>`
-      break;
-    case 'contact_form':
-      return `<a href="mailto:${blok.mail}">Mail me at: ${blok.mail}</a>`
-      break;
-  }
-})
 
  
 function createMarkup(storyblokHTML) {
@@ -131,6 +169,8 @@ const RichTextField = ({ data }) => {
   
   imageCounter = 1;
 
+  // ReactDOM.hydrate(element, container[, callback])
+
   return(
     <div 
       dangerouslySetInnerHTML={createMarkup(data)} 
@@ -140,5 +180,5 @@ const RichTextField = ({ data }) => {
 }
 
 
-export default RichTextField
+export { RichTextField, createMarkup}
  

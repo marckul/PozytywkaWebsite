@@ -6,7 +6,7 @@ import SbEditable from 'storyblok-react'
 
 
 
-import DynamicComponent from '../components-story/dynamicComponent'
+import { DynamicComponent } from '../components-story/dynamicComponent'
 
 import Layout from '../components/layout'
 import * as UserInfo from '../components-story/userInfo'

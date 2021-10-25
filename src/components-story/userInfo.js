@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 
 
 
-const Alert = ({children}) => {
+const Alert = ({children, ...props}) => {
   return (
-    <div className="alert alert-danger d-flex align-items-center" role="alert">
+    <div className="alert alert-danger d-flex align-items-center" role="alert" >
       {/* <svg className="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg> */}
       <p className="m-0"> 
         {children}
@@ -15,6 +15,19 @@ const Alert = ({children}) => {
 }
 
 Alert.propTypes = {}
+
+
+const NoContentAlert = () => {
+
+  
+  return(
+    <div className="container mt-6">
+      <Alert>
+        Nie dodano żadnej treści dodaj Treść strony aby zobaczyć jej podgląd
+      </Alert>
+    </div>
+  )
+}
 
 
 
@@ -33,4 +46,4 @@ NotDefined.propTypes = {}
 
 
 
-export { NotDefined, Alert }
+export { NotDefined, Alert, NoContentAlert }

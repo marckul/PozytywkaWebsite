@@ -77,41 +77,47 @@ HeroImageArea.propTypes = {
 }
 
 
-function Container({ children, rootElement, paddingY, ...props }) {
+class Container extends React.Component {
+// function Container({ children, rootElement, paddingY, ...props }) {
   // debugger
-
-  const paddingYClass = {
-    "small": "py-5", 
-    "medium": "py-6", 
-    "big": "py-7"
+  constructor(props) {
+    super(props)
   }
+  render() {
+    const { children, rootElement, paddingY, className, ...props } = this.props
+    // ({ children, rootElement, paddingY, ...props }) 
 
-  props.className += ` container-box`
-  props.className += ` ${paddingYClass[paddingY]}`
+    const paddingYClass = {
+      "small": "py-5", 
+      "medium": "py-6", 
+      "big": "py-7"
+    }
 
-  // const template = <div className="container my-5">{children}</div>
-  // const RootComponent = rootElement
+    // className += ` container-box`
+    // className += ` ${paddingYClass[paddingY]}`
 
-  // const element = React.createElement(
-  //   rootElement, props, template
-  // )
-  // return(element)
-  return(
-    <div {...props} >
-      <div className="container my-5">{children}</div>
-    </div>
-  )
+    const ParentComponent = rootElement;
+
+    return(
+      <div>
+        <ParentComponent className="container-box">
+          <div className="container my-5">{children}</div>
+        </ParentComponent>
+      </div>
+    )
+  }
 }
 
 Container.defaultProps = {
   className: "",
+  children: "",
   rootElement: "div",
   paddingY: "medium"
 }
 
-Container.propTypes = {
-  paddingY: PropTypes.oneOf(["small", "medium", "big"]),
-}
+// Container.propTypes = {
+//   paddingY: PropTypes.oneOf(["small", "medium", "big"]),
+// }
 
 
 
@@ -269,6 +275,50 @@ PostShort2.propsTypes = {
   imgSrc: PropTypes.string,
 }
 
+/** Checks if URL is  External URL
+ * @param { string } url 
+ */
+function IsExternalURL(url) {
+  const subStrings = url.split("://")
+  if (subStrings.length > 1) {
+    return true;  
+  }
+  return false;
+}
+
+
+
+/**
+ * 
+ * @param {*} props
+ * @param { boolean } props.addRoot - makes to prop a root relativ path (adds 
+ * / to start of string)
+ */
+function AnchorLink({ to, addRoot, children, ...props }) {
+  if (IsExternalURL(to)) {
+    return <a href={to} {...props}>{children}</a>
+  }
+
+  const writeProps = { }
+  if (to !== "") {
+    writeProps.to = to
+  }
+  if (addRoot) {
+    if (to[0] !== "/") {
+      to = `/${to}`
+    }
+  }
+
+
+  return <Link {...writeProps} {...props}>{children}</Link>
+}
+AnchorLink.defaultProps = {
+  addRoot: false,
+  to: "",
+}
+AnchorLink.propTypes = {
+  addRoot: PropTypes.bool
+}
 
 
 
@@ -281,5 +331,6 @@ export {
   BgGradient, 
   WavesContainer,
   Figure,
-  PostShort2
+  PostShort2,
+  AnchorLink
 } 
