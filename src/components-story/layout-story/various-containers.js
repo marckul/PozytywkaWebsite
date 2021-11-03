@@ -81,10 +81,15 @@ const SectionSb = ({ blok, ...props }) => {
 const ContainerSb = ({ blok, context, ...props }) => {
   console.log("ContainerSb");
   
-  let { default_container } = context
-  if (!default_container) {
-    default_container = "container"
+  let default_container = "container"
+  if (context) {
+    if (context.default_container) {
+      default_container = context.default_container
+    }
   }
+  // if (!default_container) {
+  //   default_container = "container"
+  // }
   // debugger
 
 
@@ -101,7 +106,7 @@ const ContainerSb = ({ blok, context, ...props }) => {
   // debugger
   
   return(
-    <div className={`${default_container} my-5`} >{components}</div>
+    <div className={`${default_container} py-5`} >{components}</div>
   )    
 }
 

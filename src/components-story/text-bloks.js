@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { RichTextRender } from './rich-text-new'
+import { RichTextRender, defaultRichText } from './rich-text-new'
 import {  NODE_PARAGRAPH } from 'storyblok-rich-text-react-renderer';
 
 
@@ -43,7 +43,7 @@ const TitlesRegister = {
   "page_title": H1,
   "section_title": H2,
   "container_title": H3,
-  "h4": H4,
+  "column_title": H4,
   "h5": H5,
 }
 
@@ -52,7 +52,10 @@ const TextHeader = ({ blok, context, rootTag, ...props }) => {
 
   
   let Header = HeadersRegister[rootTag];
-  if (blok.header_type) {    
+  if (blok.force_header_type) {    
+    Header = HeadersRegister[blok.force_header_type];
+  } 
+  else if (blok.header_type) {    
     Header = TitlesRegister[blok.header_type];
   }
   // debugger
@@ -80,4 +83,18 @@ const TextLead = ({ blok }) => {
 }
 
 
-export { TextHeader, TextLead }
+const RichTextBlok = ({ blok }) => {
+  return(
+    <div className="rich-text-blok">
+      {defaultRichText.render(blok.body)}
+    </div>
+  ) 
+}
+
+
+
+
+export { TextHeader, TextLead, RichTextBlok }
+
+
+

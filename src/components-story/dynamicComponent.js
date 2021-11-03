@@ -1,5 +1,4 @@
 import SbEditable from 'storyblok-react'
-import Teaser from './teaser'
 
 import * as React from "react"
 import PropTypes from 'prop-types'
@@ -7,13 +6,23 @@ import PropTypes from 'prop-types'
 import * as UserInfo from './userInfo'
 
 import * as Article from './article'
+// import { PostsArchive } from './posts-archive'
+import PostsArchive from './posts-archive'
+
 import HeroImageAreaSb from './HeroImageAreaSb'
 import * as TextBloks  from './text-bloks'
 
-import * as LayoutContainers from './layout-story/various-containers'
 import * as Carousel from './layout-story/carousel'
+import * as LayoutContainers from './layout-story/various-containers'
+import { ColumnsGridSb, ColumnSb } from './layout-story/column-grid'
 
 import { ButtonSb } from './buttons--story'
+
+import { ImageSb, ImageBlokSb } from './images'
+import GoogleMap from './google-map'
+
+
+
 
 
 
@@ -25,15 +34,19 @@ import { ButtonSb } from './buttons--story'
 // }
 
 const Components = {
-  'teaser': Teaser,
+  'teaser': GoogleMap,
   'article-header': Article.Header,
   'article-body': Article.Body,
+  'posts_archive': PostsArchive,
 
   // LAYOUT
   'hero_image_area': HeroImageAreaSb,
   'section': LayoutContainers.SectionSb,
   'container': LayoutContainers.ContainerSb,
-
+  
+  'columns_blok': ColumnsGridSb,
+  'column': ColumnSb,
+  
   // CAROUSEL
   'multi_carousel': Carousel.CarouselSb,
   'carousel_card': Carousel.OfferCard,
@@ -42,9 +55,16 @@ const Components = {
   // TEXT
   'text_header': TextBloks.TextHeader,
   'text_lead': TextBloks.TextLead,
+  'rich_text_blok': TextBloks.RichTextBlok,
 
-  'button': ButtonSb,
   
+  'button': ButtonSb,
+
+  // IMAGES
+  'image-blok': ImageSb, // ???
+  'image_blok': ImageBlokSb,
+
+  google_map: GoogleMap,
   
 }
 

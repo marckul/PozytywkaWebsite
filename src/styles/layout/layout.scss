@@ -106,7 +106,11 @@ nav { // było .navbar
 }
 
 
-
+.cookie-consent-button {
+  min-width: max-content;
+  max-width: 12rem;
+  margin-left: auto;
+}
 
 
 
@@ -222,6 +226,10 @@ nav { // było .navbar
 // HERO AREA >>
 // Styles are in components-bundle.scss
 
+// .width-1-11 {
+//   width: 100%
+// }
+
 .container-box {
   min-height: 100vh;
   display: flex;
@@ -230,6 +238,7 @@ nav { // było .navbar
 }
 
 .btn {
+  min-width: max-content;
   font-size: 1em;
   a {
     color: inherit;
@@ -413,12 +422,12 @@ a.color-shine {
     color: inherit;
     content: "";
     position: absolute;
-    // top: 0;
+    top: 0;
     bottom: -1.5em*0.1;
     right: $shift;
 
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
 
     background-image: url('/arrow-right.svg');
     background-position: bottom;
@@ -433,6 +442,28 @@ a.color-shine {
 
   margin-left: .5em;
   margin-bottom: .1em;
+}
+
+
+.arrow-link-component {
+  display: block;
+  width: fit-content;
+  font-weight: 500;
+  // font-size: $small-font-size;
+  margin-left: auto;
+
+  color: inherit;
+  text-decoration: none;
+  
+  .bi-arrow-right {
+    margin-left: .5em;
+  }
+}
+
+.link-block {
+  display: block;
+  width: fit-content;
+  // font-weight: 500;
 }
 
 // @import '../../components/article/article.scss'

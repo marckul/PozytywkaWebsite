@@ -8,6 +8,10 @@
 
 const StringTools = require('./node-tools/stringTools')
 
+console.log("\n\n\n!!!!!!!!!!!!!!!!!!!!!!");
+console.log(`.env.${process.env.NODE_ENV}`); // production
+console.log("\n!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
+
 
 /* 
   HOW TO ALLOW ES6 IMPORTS IN GATSBY-NODE.JS
@@ -31,7 +35,6 @@ exports.createPages = async function ({ actions, graphql }) {
           full_slug
           slug
           is_startpage
-          path
         }
       }
     }

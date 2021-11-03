@@ -65,7 +65,7 @@ function CardBoot({number}) {
 
 function MyCarousel({children, ...props}) {
   return(
-    <div className="react-carousel-container my-5" >
+    <div className="react-carousel-container mt-4" >
       <small className="react-carousel-info d-block text-muted">
         <em>
           <p className="info my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij kartę</p>

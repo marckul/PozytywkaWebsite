@@ -10,7 +10,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
+function Seo({ description, lang, meta, title, type }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -19,6 +19,7 @@ function Seo({ description, lang, meta, title }) {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -27,6 +28,7 @@ function Seo({ description, lang, meta, title }) {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const metaUrl = site.siteMetadata.siteUrl
 
   return (
     <Helmet
@@ -34,7 +36,8 @@ function Seo({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      // titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      titleTemplate={defaultTitle ? `%s` : null}
       meta={[
         {
           name: `description`,
@@ -48,10 +51,19 @@ function Seo({ description, lang, meta, title }) {
           property: `og:description`,
           content: metaDescription,
         },
-        {
+        { 
           property: `og:type`,
-          content: `website`,
+          content: type,
         },
+        { // static data
+          property: `og:locale`, 
+          content: "pl_PL",
+        },
+        { // static data
+          property: `og:url`, 
+          content: metaUrl, 
+        },
+        /* 
         {
           name: `twitter:card`,
           content: `summary`,
@@ -68,15 +80,16 @@ function Seo({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        */
       ].concat(meta)}
     />
   )
 }
-
 Seo.defaultProps = {
-  lang: `en`,
+  lang: `pl`,
   meta: [],
   description: ``,
+  type: `website`,
 }
 
 Seo.propTypes = {

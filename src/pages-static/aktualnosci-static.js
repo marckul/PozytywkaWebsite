@@ -1,9 +1,9 @@
-import * as React from "react"
-import PropTypes from 'prop-types'
+import * as React from "./react"
+import PropTypes from './prop-types'
 // import  Container from "react-bootstrap/Container"
 
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { Link } from "./gatsby"
+import { StaticImage } from "./gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"

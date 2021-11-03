@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from './react'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 
 import { HeroImageArea, Container } from '../components/components-bundle/components-bundle'
-import { Link } from 'gatsby'
+import { Link } from './gatsby'
 
 import HeroImage from '../assets/images/offer-page-hero--prod.jpg'
 import {MyCarousel, CardBootTemplate} from '../components/cards-&-carousel/cards-&-carousel'

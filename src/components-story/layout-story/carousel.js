@@ -2,7 +2,9 @@ import * as React from 'react'
 import { DynamicComponent } from '../dynamicComponent'
 
 import { MyCarousel, CardBootTemplate } from '../../components/cards-&-carousel/cards-&-carousel'
-import { RichTextResolver } from '../rich-text-renderer'
+import { RichTextResolver } from '../rich-text-old/rich-text-renderer'
+
+import { defaultRichText } from '../rich-text-new'
 
 
 
@@ -72,9 +74,8 @@ const OfferCard = ({ blok, ...props }) => {
       topNote={blok.top_note}
       bottomNote={blok.bottom_note}
     >
-      <span
-        dangerouslySetInnerHTML={richTextResolver.createMarkup(blok.main_text)}
-      />
+      {defaultRichText.render(blok.main_text)}
+      {/* <span  dangerouslySetInnerHTML={richTextResolver.createMarkup(blok.main_text)}  /> */}
     </CardBootTemplate>
   )    
 }

@@ -7,8 +7,10 @@ import { render as defaultRender,
 
 
 import {AnchorLink} from '../components/components-bundle/components-bundle'
+
 import Img from 'gatsby-image'
 import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
+import { ImageSb } from './images'
 
 
 
@@ -39,6 +41,21 @@ const BlockQuote = (children) => {
 }
 
 const ImageNode = (children, props) => {
+
+  // // image:
+  // //   alt: ""
+  // //   copyright: ""
+  // //   fieldtype: "asset"
+  // //   filename: "https://a.storyblok.com/f/130598/1440x961/a441bc0ff8/dziewczynka-na-plazy.jpg"
+  // //   focus: null
+  // //   id: 3054416
+  // //   name: ""
+  // //   title: ""
+
+  // debugger
+  // return(
+  //   ImageSb
+  // )
 
   const filename = props.src
   const fluidProps = getFluidGatsbyImage(filename, {
@@ -148,6 +165,31 @@ class RichTextRender {
 
 let imageCounter = 1; 
 const ArticleFloatImage = (children, props) => {
+  
+
+  const blok = {
+    image: {
+      filename: props.src,
+      alt: props.alt,
+    }
+  }
+  // debugger
+  // image:
+  //   alt: ""
+  //   copyright: ""
+  //   fieldtype: "asset"
+  //   filename: "https://a.storyblok.com/f/130598/1440x961/a441bc0ff8/dziewczynka-na-plazy.jpg"
+  //   focus: null
+  //   id: 3054416
+  //   name: ""
+  //   title: ""
+
+  // debugger
+  // return(
+  //   ImageSb
+  // )
+
+
   // TODO: MAKING FIGURE WITH CAPTION IF THERE IS NOT EMPTY TITLE 
   const floatSide = imageCounter % 2 === 0 ? "float-right" : "float-left"
 
@@ -159,17 +201,23 @@ const ArticleFloatImage = (children, props) => {
 
   imageCounter++
   return (
-    <Img 
-      fluid={fluidProps} 
-      alt={props.alt}
-      title={props.title}
+    <ImageSb 
+      blok={blok} 
       className={`${floatSide} lonley-img`}
-
-      durationFadeIn={500} 
-      loading="lazy"
-      fadeIn={true}
-      placeholderClassName="img-blurred"
+      imageContext={ {imageSize: "medium"} }
     />
+
+    // <Img 
+    //   fluid={fluidProps} 
+    //   alt={props.alt}
+    //   title={props.title}
+    //   className={`${floatSide} lonley-img`}
+
+    //   durationFadeIn={500} 
+    //   loading="lazy"
+    //   fadeIn={true}
+    //   placeholderClassName="img-blurred"
+    // />
   )
 }
 
@@ -184,10 +232,10 @@ const ArticleRichText = (document) => {
 }
 
 
+const defaultRichText = new RichTextRender()
 
 
-
-export { RichTextRender, ArticleRichText }
+export { RichTextRender, ArticleRichText, defaultRichText }
 
 
 

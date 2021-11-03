@@ -71,79 +71,31 @@ $screen-size-lg: map-get($grid-breakpoints, lg);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 120vh;
+  @mixin text-shadow-filter($text-shadow-color) {
+    filter: 
+      drop-shadow(0 0 .05em $text-shadow-color)
+      drop-shadow(0 0 .1rem $text-shadow-color)
+      drop-shadow(0 0 .4rem $text-shadow-color)
+      
+      drop-shadow(0 0 .4rem $text-shadow-color)
+
+      drop-shadow(0 0 2rem $text-shadow-color);
+  }
+  
+      
+
   &.bg-dark .text-shadow {
     $readable-text-shadow-color: rgba(var(--readable-shadow-color-rgb, #{$color-teal-rgb} ), .6 );
-    // $readable-text-shadow-color: var(--readable-shadow-color-rgb, $color-teal-rgb);
-    $variant-on: 
-      drop-shadow(0 0 .05em $readable-text-shadow-color)
-      drop-shadow(0 0 .1rem $readable-text-shadow-color)
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-
-      drop-shadow(0 0 2rem $readable-text-shadow-color);
-
-    $variant-on: 
-      drop-shadow(0 0 .05em $readable-text-shadow-color)
-      drop-shadow(0 0 .1rem $readable-text-shadow-color)
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 2rem $readable-text-shadow-color)
-      drop-shadow(0 0 3rem $readable-text-shadow-color);
-    
-    $variant-3: 
-      drop-shadow(0 0 .05em $readable-text-shadow-color)
-      drop-shadow(0 0 .1rem $readable-text-shadow-color)
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 2rem $readable-text-shadow-color)
-      drop-shadow(0 0 4rem $readable-text-shadow-color);
     > * {
-      filter: 
-        $variant-on;
+      @include text-shadow-filter($readable-text-shadow-color)
     }
   }  
 
-  
-
   &.bg-light .text-shadow {
-    // --readable-shadow-color: var(--readable-text-shadow-rgb, (255, 255, 255) ) ;
     $readable-text-shadow-color: rgba(var(--readable-shadow-color-rgb, (255, 255, 255) ), .9 );
-    $variant-on: 
-      drop-shadow(0 0 .05em $readable-text-shadow-color)
-      drop-shadow(0 0 .1rem $readable-text-shadow-color)
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-
-      drop-shadow(0 0 2rem $readable-text-shadow-color);
-
-    $variant-2: 
-      drop-shadow(0 0 .05em $readable-text-shadow-color)
-      drop-shadow(0 0 .1rem $readable-text-shadow-color)
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 2rem $readable-text-shadow-color)
-      drop-shadow(0 0 3rem $readable-text-shadow-color);
-    
-    $variant-3: 
-      drop-shadow(0 0 .05em $readable-text-shadow-color)
-      drop-shadow(0 0 .1rem $readable-text-shadow-color)
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 .4rem $readable-text-shadow-color)
-      
-      drop-shadow(0 0 2rem $readable-text-shadow-color)
-      drop-shadow(0 0 4rem $readable-text-shadow-color);
+   
     > * {
-      filter: 
-        $variant-on;
+      @include text-shadow-filter($readable-text-shadow-color)
     }
   }  
 
@@ -247,6 +199,10 @@ $screen-size-lg: map-get($grid-breakpoints, lg);
 
     color: inherit;
     text-decoration: none;
+
+    .bi {
+      margin-left: .5em;
+    }
   }
 }
 

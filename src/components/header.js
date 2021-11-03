@@ -2,15 +2,15 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 
+import { useState } from "react"
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+
 // 
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-
-import { useState } from "react"
-import { useScrollPosition } from '@n8tb1t/use-scroll-position'
 
 import logoLight from '../assets/images/logo-light.png'
 import LogoSVG from '../assets/svg/logo.svg'

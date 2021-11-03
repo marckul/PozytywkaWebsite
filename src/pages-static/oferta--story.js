@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from './react'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 
 // ALL FOR STORYBLOK
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from './gatsby'
 import { DynamicComponent } from '../components-story/dynamicComponent'
 import useStoryblok from '../../lib/storyblok'
 

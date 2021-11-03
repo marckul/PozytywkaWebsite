@@ -79,6 +79,14 @@ nav .navbar-brand {
   max-width: 40rem;
 }
 
+.cookie-consent-button {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  max-width: 12rem;
+  margin-left: auto;
+}
+
 .my-navbar {
   position: absolute;
   top: 0;
@@ -178,6 +186,9 @@ nav .navbar-brand {
 }
 
 .btn {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
   font-size: 1em;
 }
 
@@ -336,10 +347,11 @@ a.color-shine {
   color: inherit;
   content: "";
   position: absolute;
+  top: 0;
   bottom: -0.15em;
   right: -1.7em;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1em;
+  height: 1em;
   background-image: url("/arrow-right.svg");
   background-position: bottom;
   background-repeat: no-repeat;
@@ -351,5 +363,27 @@ a.color-shine {
   height: 1.5em;
   margin-left: .5em;
   margin-bottom: .1em;
+}
+
+.arrow-link-component {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 500;
+  margin-left: auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+.arrow-link-component .bi-arrow-right {
+  margin-left: .5em;
+}
+
+.link-block {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 /*# sourceMappingURL=layout.css.map */
