@@ -8,13 +8,18 @@
 
 const StringTools = require('./node-tools/stringTools')
 
+console.log("\n\n\n!!!!!!!!!!!!!!!!!!!!!!");
+console.log(`.env.${process.env.NODE_ENV}`); // production
+console.log("\n!!!!!!!!!!!!!!!!!!!!!!\n\n\n");
+
 
 /* 
   HOW TO ALLOW ES6 IMPORTS IN GATSBY-NODE.JS
   https://github.com/gatsbyjs/gatsby/issues/7810
 */
 const TemplatesRegister = {
-  "Post": "artykul-template.js"
+  "Post": "artykul-template.js",
+  "page": "page-template.js",
 }
 
 exports.createPages = async function ({ actions, graphql }) {
@@ -30,7 +35,6 @@ exports.createPages = async function ({ actions, graphql }) {
           full_slug
           slug
           is_startpage
-          path
         }
       }
     }
@@ -45,7 +49,9 @@ exports.createPages = async function ({ actions, graphql }) {
     console.log(`\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`);
     console.log(`CONTENT TYPE ${story.content.component}`);
 
-    if (typeof Template !== "undefined") {
+    const toRenderPage = !StringTools.ContainString(story.slug, 'dontRenderPage')
+
+    if (typeof Template !== "undefined" && toRenderPage) {
       const templateFullPath = require.resolve(`./src/templates/${Template}`)
       
       

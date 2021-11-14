@@ -25,26 +25,14 @@
   4. Utilities
 
 */
-h1 u, h2 u, h3 u, h4 u, h5 u, h6 u {
-  position: relative;
-  z-index: 5;
-  text-decoration: none;
+body.modal-open, body.modal-open-new {
+  position: fixed;
 }
 
-h1 u::after, h2 u::after, h3 u::after, h4 u::after, h5 u::after, h6 u::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: 1em;
-  bottom: 0;
-  left: -.3em;
-  right: -.3em;
-  display: block;
-  background-image: url("/underline.svg");
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  height: 3rem;
+@media (hover: hover) {
+  body.modal-open, body.modal-open-new {
+    padding-right: 17px;
+  }
 }
 
 html, body {
@@ -72,16 +60,14 @@ main {
   min-height: 100vh;
 }
 
-nav .navbar-brand {
-  color: inherit;
-  text-transform: uppercase;
-  line-height: 0.95;
-}
-
 .btn {
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
+}
+
+.btn-outline-light:not(:hover) {
+  color: #f8f9fa !important;
 }
 
 .collapsibleNavbar {
@@ -95,6 +81,18 @@ nav .navbar-brand {
   visibility: hidden;
   opacity: 0;
   top: -4rem;
+}
+
+.smaller_container, .readable-width {
+  max-width: 40rem;
+}
+
+.cookie-consent-button {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  max-width: 12rem;
+  margin-left: auto;
 }
 
 .my-navbar {
@@ -136,6 +134,11 @@ nav .navbar-brand {
   background: rgba(255, 255, 255, 0.8);
 }
 
+nav .navbar-brand {
+  color: inherit;
+  line-height: 0.95;
+}
+
 .navbar-transparent-light .navbar-brand, .navbar-transparent-light .nav-link {
   color: inherit;
 }
@@ -163,6 +166,8 @@ nav .navbar-brand {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 0;
+  text-transform: uppercase;
 }
 
 .logo-light {
@@ -196,6 +201,9 @@ nav .navbar-brand {
 }
 
 .btn {
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
   font-size: 1em;
 }
 
@@ -204,48 +212,60 @@ nav .navbar-brand {
   text-decoration: none;
 }
 
-.btn-light, .btn-light:focus {
-  color: #6AA4AC;
-  -webkit-transition: all 200ms;
-  transition: all 200ms;
-  background-color: #f5fbff;
-  border-width: 0;
+.btn, .btn:focus {
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+  font-weight: 500;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
-.btn-light:hover, .btn-light:active, .btn-light:focus:hover, .btn-light:focus:active {
-  background-color: #f5fbff;
-  -webkit-box-shadow: rgba(17, 128, 145, 0.1) -0.1rem -0.2rem 2rem, rgba(0, 110, 255, 0.1) 0 0 0.5rem 0.2rem, rgba(0, 0, 0, 0.2) 0.1rem 0.2rem 1rem;
-          box-shadow: rgba(17, 128, 145, 0.1) -0.1rem -0.2rem 2rem, rgba(0, 110, 255, 0.1) 0 0 0.5rem 0.2rem, rgba(0, 0, 0, 0.2) 0.1rem 0.2rem 1rem;
+.btn:hover, .btn:active, .btn:focus:hover, .btn:focus:active {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
 
-.btn-light:focus:active, .btn-light:focus:focus:active {
+.btn:focus, .btn:focus:focus {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
 
-.btn-dark, .btn-dark:focus {
-  -webkit-transition: all 100ms;
-  transition: all 100ms;
-  background-color: #003759;
-  color: #f5fbff;
+.btn-dark:focus, .btn-light:focus {
+  border-width: 0;
+}
+
+.navbar-toggler:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
-  border-width: 0;
+}
+
+.btn-light, .btn-light:focus {
+  color: #003759 !important;
+  background-color: #f5fbff;
+}
+
+.btn-light:hover, .btn-light:active, .btn-light:focus:hover, .btn-light:focus:active, .btn-outline-light:hover, .btn-outline-light:active, .btn-outline-light:focus:hover, .btn-outline-light:focus:active {
+  color: #6AA4AC !important;
+  background-color: #f5fbff;
+  -webkit-box-shadow: rgba(17, 128, 145, 0.1) -0.1rem -0.2rem 2rem, rgba(0, 110, 255, 0.1) 0 0 0.5rem 0.2rem, rgba(0, 0, 0, 0.2) 0.1rem 0.2rem 1rem;
+          box-shadow: rgba(17, 128, 145, 0.1) -0.1rem -0.2rem 2rem, rgba(0, 110, 255, 0.1) 0 0 0.5rem 0.2rem, rgba(0, 0, 0, 0.2) 0.1rem 0.2rem 1rem;
+}
+
+.btn-dark:hover, .btn-dark:active, .btn-dark:focus:hover, .btn-dark:focus:active, .btn-outline-dark:hover, .btn-outline-dark:active, .btn-outline-dark:focus:hover, .btn-outline-dark:focus:active {
+  color: #b3e0ff !important;
+  -webkit-box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
+          box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
+}
+
+.btn-dark, .btn-dark:focus {
+  color: #f5fbff;
+  background-color: #003759;
+  border-color: #003759;
 }
 
 .btn-dark:hover, .btn-dark:active, .btn-dark:focus:hover, .btn-dark:focus:active {
   background-color: #003759;
-  -webkit-box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
-          box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-}
-
-.btn-dark:focus:active, .btn-dark:focus:focus:active {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
+  border-color: #003759;
 }
 
 .btn-dark:visited, .btn-dark:focus:visited {
@@ -253,26 +273,25 @@ nav .navbar-brand {
 }
 
 .btn-outline-dark {
-  font-weight: 500;
-  color: #003759;
+  color: #003759 !important;
   border-color: #003759;
 }
 
 .btn-outline-dark:hover, .btn-outline-dark:active {
-  color: #f5fbff;
   background-color: #003759;
   border-color: #003759;
   -webkit-box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
           box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
 }
 
 .btn-outline-dark:focus {
-  -webkit-transform: scale(0.95);
-          transform: scale(0.95);
   -webkit-box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
           box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
+}
+
+.img-blurred {
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
 }
 
 @-webkit-keyframes color-shine {
@@ -349,10 +368,11 @@ a.color-shine {
   color: inherit;
   content: "";
   position: absolute;
+  top: 0;
   bottom: -0.15em;
   right: -1.7em;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1em;
+  height: 1em;
   background-image: url("/arrow-right.svg");
   background-position: bottom;
   background-repeat: no-repeat;
@@ -365,4 +385,132 @@ a.color-shine {
   margin-left: .5em;
   margin-bottom: .1em;
 }
+
+.arrow-link-component {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: 500;
+  margin-left: auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+.arrow-link-component .bi-arrow-right {
+  margin-left: .5em;
+}
+
+.link-block {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.postion-relative {
+  position: relative;
+}
+
+.modal.fade.show {
+  display: block;
+}
+
+/*
+.navbar-light {
+  .logo-text {
+    font-weight: 600 !important;
+  }
+}
+.navbar-brand {
+  .logo-text {
+    span {
+      height: 2rem;
+      display: block;
+    }
+    .odt {
+      display: none;
+    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0;
+    font-weight: 500;
+    
+    font-size: map-get($font-properties, 'size-interval-sm' );
+    @media (min-width: 400px) { 
+      .odt {
+        display: block;
+      }
+    }
+    @media (min-width: 500px) { // map-get($grid-breakpoints, 'sm' )
+      .odt {
+        display: block;
+      }
+      span {
+        display: inline;
+        height: unset;
+      }
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.navbar-light .navbar-brand {
+  color: $color-primary-dark;
+}
+
+.nav-link {
+  @extend .h5;      
+  font-weight: 400;
+  // padding: map-get($spacers, 3) 0;
+  padding-bottom: map-get($spacers, 4);
+}
+.navbar-nav {
+  margin: auto;
+  padding: map-get($spacers, 5) 0;
+  // max-width: 20rem;
+}
+.navbar {
+  padding: map-get($spacers, 3) 0;
+  .container-fluid {
+    padding: 0 map-get($spacers, 3);
+  }
+}
+.navbar-collapse {
+  padding: map-get($spacers, 4) 0;
+}
+@media (min-width:  map-get($grid-breakpoints, 'md' )) { 
+  .nav-link {
+    font-size: 1rem;
+  }
+  
+  
+  .nav-link {
+    @extend .h5;      
+    font-weight: 400;
+    // padding: map-get($spacers, 3) 0;
+    padding-bottom: map-get($spacers, 4);
+  }
+  .navbar-nav {
+    margin: auto;
+    padding: map-get($spacers, 5) 0;
+    // max-width: 20rem;
+  }
+  .navbar {
+    padding: map-get($spacers, 3) 0;
+    .container-fluid {
+      padding: 0 map-get($spacers, 3);
+    }
+  }
+  .navbar-collapse {
+    padding: map-get($spacers, 4) 0;
+  }
+}
+*/
 /*# sourceMappingURL=layout.css.map */

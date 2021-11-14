@@ -30,7 +30,7 @@ const responsive = {
 
 function CardBootTemplate({title, topNote, children, bottomNote}) {
   return(
-    <div className="offer-card-col">
+    <div className="offer-card-col ">
       <div className="shadow-z1-md offer-card" >
         <div className=" card-inner">
           <div className="card-head">
@@ -38,7 +38,7 @@ function CardBootTemplate({title, topNote, children, bottomNote}) {
             <p className="small sticky-note">{topNote}</p>
           </div>
           <div className="card-body small">    
-            {children}
+            <div className="main-text">{children}</div>
             <p className="small ms-auto m-0 sticky-note">{bottomNote}</p>
           </div>
         </div>
@@ -65,11 +65,11 @@ function CardBoot({number}) {
 
 function MyCarousel({children, ...props}) {
   return(
-    <div className="react-carousel-container my-5" >
+    <div className="react-carousel-container mt-4" >
       <small className="react-carousel-info d-block text-muted">
         <em>
-          <p className="info my-0" >Aby zobaczyć dostępne opcje użyj strzałek</p>
-          <p className="info-touch my-0" >Aby zobaczyć dostępne opcje przesuwaj karty</p>
+          <p className="info my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij tytuł karty</p>
+          <p className="info-touch my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij  tytuł karty</p>
         </em>
       </small>
       <Carousel 
@@ -81,7 +81,7 @@ function MyCarousel({children, ...props}) {
         autoPlaySpeed={500}
         keyBoardControl={true}
         containerClass="react-carousel"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={[ "tablet", "mobile"]}
         itemClass="card-container"
         dotListClass="cards-dots-controls"
         renderDotsOutside={true}
@@ -106,7 +106,9 @@ function CircleImgCard({ title, imgSrc, children }) {
         <img src={imgSrc} alt="" className="img-fluid shadow-z1-md border border-5 rounded-circle" />
       </div>
       <h4>{title}</h4>
-      <p>{children}</p>
+      <p>
+        {children}
+      </p>
     </div>
   )
 }

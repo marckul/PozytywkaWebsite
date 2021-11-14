@@ -52,7 +52,7 @@ const ContactPage = () => {
           </div>
         </div>
       </Container>
-      <Container>
+      <Container id="rejestracja">
         <h1><u>Rejestracja</u></h1>
         <p className="lead pb-5">Niebawem tutaj powstanie sekcja rejestracji, dzieki której będzie mozna zarejestrować się na diagnoze lub konsultacje. Dziękujemy za cierpliwość </p>
       </Container>

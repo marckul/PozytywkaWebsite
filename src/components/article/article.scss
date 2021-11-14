@@ -3,52 +3,6 @@
 @import '../../styles/variables';
 
 
-@mixin typeScale0($font-interval-ratio, $degradation) {
-  // https://type-scale.com/
-  h1 {
-    font-size: pow($font-interval-ratio, 5 - $degradation)+em;
-  }
-  h2 {
-    font-size: pow($font-interval-ratio, 4 - $degradation)+em;
-  }  
-  h3 {
-    font-size: pow($font-interval-ratio, 3 - $degradation)+em;
-  }  
-  h4 {
-    font-size: pow($font-interval-ratio, 2 - $degradation)+em;
-  }  
-  h5 {
-    font-size: pow($font-interval-ratio, 1 - $degradation)+em;
-  }  
-}
-
-
-@mixin typeScale($tags, $font-interval-ratio, $degradation) {
-  // https://type-scale.com/
-  $counter: 6;
-  @each $tag in $tags {
-    $number: $counter - 1;
-    #{$tag} {
-      font-size: pow($font-interval-ratio, $number - $degradation)+em;
-      // color: green ;
-    }
-    $counter: $counter - 1;
-  }
-}
-
-
-@mixin getFontSize($tags, $degradation) {
-  $font-interval-ratio: map-get($font-properties, size-interval-sm);
-  @include typeScale($tags, $font-interval-ratio, $degradation);
-  
-  @media (min-width: $screen-size-lg) {
-    $font-interval-ratio: map-get($font-properties, size-interval-lg);
-    @include typeScale($tags, $font-interval-ratio, $degradation);
-  }
-}
-
-
-
 
 
 

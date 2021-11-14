@@ -1,9 +1,53 @@
 import * as React from 'react'
-import RichTextField from '../components-story/rich-text'
 
-import { Figure } from '../components/components-bundle/components-bundle';
+import SbEditable from 'storyblok-react'
+import Img from 'gatsby-image'
+import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
 
+import { ArticleRichText } from './rich-text-new'
 import * as StringTools from '../functions/stringTools'
+import { ImageSb } from './images'
+
+// window.getFluidGatsbyImage = getFluidGatsbyImage
+
+
+// const ImgBlurred = 
+
+const StoryImg = ({ blok }) => {
+  // const fluidProps = getFluidGatsbyImage(blok.image.filename, {
+  //   base64Width: 40,
+  // })
+  // console.log(fluidProps);
+
+  return (
+    <SbEditable content={blok}>
+      <ImageSb blok={blok}/>
+    </SbEditable>
+  )
+}
+
+
+
+function Figure({alt, blok, caption, indented, className, imgClassName}) {
+  // console.log("Figure src", blok);
+  if (indented) {
+    className += " indented-figure" 
+  }
+
+  return(
+    // <figure className={`figure border p-2 ${className} `}>
+    //   <figcaption class="small text-center">{caption}</figcaption>
+    // </figure>
+      <StoryImg blok={blok} className={`${imgClassName} img-fluid`} /> 
+  )
+}
+Figure.defaultProps = {
+  className: "",
+  indented: false,
+}
+
+
+
 
 
 
@@ -18,11 +62,10 @@ function IsNotEmptyField(filed) {
 
 
 
-function Header({ blok }) {
+function Header({ blok, context, ...props }) {
 
-  
   let Intro;
-  if (IsNotEmptyField(blok.intro)) {
+  if (IsNotEmptyField(blok.intro) && blok.show_intro) {
     Intro = (<p className="lead pb-3">
       {blok.intro}
     </p>)
@@ -30,27 +73,32 @@ function Header({ blok }) {
 
   let FigureContent
   if (IsNotEmptyField(blok.image.filename)) {
-    FigureContent = <Figure
-      src={blok.image.filename}
-      // caption="A caption for the above image."
-      // alt="A caption for the above image."
-    />
+    FigureContent = <Figure blok={blok} />
   }
 
-  const publish_date = blok.publish_date;
+  // debugger
+  let DateString
+  if (IsNotEmptyField(context.publish_date)) {
+    const publish_date = context.publish_date;
+    DateString = <p>{StringTools.FormatDate(publish_date)}</p>
+  }
+  else if (IsNotEmptyField(blok.publish_date)) {
+    const publish_date = blok.publish_date;
+    // let dateString = StringTools.FormatDate(publish_date);
 
-  let dateString = StringTools.FormatDate(publish_date);
+    DateString = <p>{StringTools.FormatDate(publish_date)}</p>
+  }
 
+  function ConsoleLog() {
+    console.log("I'M HEDER ONE");
+    
+  }
 
-  console.log(dateString); // 9/17/2016
-  
-
-  console.log("HELLO INTERNET! I'M HEDER ONE");
   return(
-    <div className="article-header">
+    <div className="article-header" onClick={ConsoleLog}>
       <h1 className="h2" >{blok.title}</h1>
       {Intro}
-      <p>{dateString}</p>
+      {DateString} 
       {FigureContent}
     </div>
     
@@ -59,13 +107,16 @@ function Header({ blok }) {
 
 
 function Body({ blok }) {
+
+  const content = ArticleRichText(blok.long_text)
+
   return (
-    <RichTextField
-      data={blok.long_text}
-    />
+    <div className="article-body rich-text">
+      {content}
+    </div>
+    
   ) 
 }
-
 
 export {
   Header, Body

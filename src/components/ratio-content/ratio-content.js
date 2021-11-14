@@ -1,7 +1,7 @@
 import * as React from 'react'
+import PropTypes from 'prop-types';
 
 import * as Grid from '../css-grid/css-grid'
-import PropTypes from 'prop-types';
 
 import * as CSS from './ratio-content.module.css'
 

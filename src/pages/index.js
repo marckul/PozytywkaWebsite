@@ -50,31 +50,32 @@ const IndexPage = () => {
     <Layout header="transparent-dark">
       <Seo title="Start"/>
       <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
-        <h1 className="py-4">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
+        <h1 className="">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
           Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat w wyjątkowy sposób. 
         </p>
+        <Link to="#nasze-doswiadczenie" className="btn btn-outline-light">Zobacz więcej</Link>
       </HeroImageArea>
       <BgGradient>
-        <Container>
+        <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
-          <p className="lead">Pozytywka to już 6 lat pracy z dziecmi z deficytami rozwoju, jednak nasze doświadczenie sięga  o wiele dalej.</p>
+          <p className="lead">Pozytywka została założona 7 lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
           <div className="row py-5"></div>       
           <div className="row">
             <CounterBox 
               counterClassName="h1"
-              number={14}
-              text={"Lorem ipsum"}
+              number={20}
+              text={"Lat doświadczenia terapeutów w pracy z osobami w spektrum"}
             />
             <CounterBox
               counterClassName="h1"
               number={1413}
-              text={"Lorem ipsum"}
+              text={"Godzin przeprowadzonej terapii metodą SAZ"}
             />
             <CounterBox
               counterClassName="h1"
               number={323}
-              text={"Lorem ipsum"}
+              text={"Wykonane diagnozy"}
             />
           </div> 
         </Container>
@@ -87,7 +88,7 @@ const IndexPage = () => {
             <Grid.Column position="right">
               <RatioContent childComponent={Grid.Quotation} debugMode={false}>
                 <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
-                <span>Hans Asperger <i>Neuroplemiona</i></span>
+                <span>Hans Asperger</span>
               </RatioContent>
             </Grid.Column>
           </Grid.Row>
@@ -99,7 +100,7 @@ const IndexPage = () => {
             <Grid.Column position="left">
               <h3>W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do zaoferowania światu</h3>
               <p className="lead">
-                Wiele jest serc które czekają na ewangelę, a w każdym dziecku tkwi potencjał. 
+                Wiemy, że w każdym napotykanym przez nas dziecku tkwi potencjał. 
               </p>
               <p className="lead">
                 Pomóż nam go odnaleźć. 
@@ -113,24 +114,24 @@ const IndexPage = () => {
         <WavesContainer>
           <div className="container">
             <h2>Nasze <u>usługi</u></h2>
-            <div className="row g-md-6">
+            <div className="row g-lg-5 g-xl-6">
               <CircleImgCard 
                 title="Diagnozy"
                 imgSrc={diagnozy} 
               >
-                Ex similique qui, consequuntur fuga, ad, commodi fugiat error ratione ab voluptas officia laudantium possimus. Impedit odit, illo tempora doloribus nam reiciendis.
+                Oferujemy Państwu nasze wieloletnie doświadczenie i prowadzenie procesu diagnostycznego przez zespół specjalistów.
               </CircleImgCard>
               <CircleImgCard 
-                title="Terapie"
+                title="Terapia"
                 imgSrc={terapie} 
               >
-                Autem, temporibus ea neque aspernatur molestiae sed mollitia sequi libero sit odio sapiente minus, incidunt dolorem doloribus ratione explicabo, quis rem placeat.
+                Prowadzimy spotkania terapeutyczne indywidualne i grupowe, opierające się głównie na metodzie Stosowanej Analizy Zachowania
               </CircleImgCard>
               <CircleImgCard 
                 title="Szkolenia"
                 imgSrc={szkolenia} 
               >
-                Ex similique qui, consequuntur fuga, ad, commodi fugiat error ratione ab voluptas officia laudantium possimus. Impedit odit, illo tempora doloribus nam reiciendis.
+                Oferujemy pomoc dla nauczycieli, którzy chcą lepiej zrozumieć swoich uczniów z trudnościami neurorozwojowymi.
               </CircleImgCard>
             </div>
             <Link className="d-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>

@@ -1,5 +1,5 @@
 require("dotenv").config({
-  path: `.env.development`, //${process.env.NODE_ENV}
+  path: `.env.${process.env.NODE_ENV}`, //${process.env.NODE_ENV}
 })
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
     title: `Pozytywka ODT`,
     description: `Zajmujemy się terapią autyzmu`,
     author: `@marcinkula`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://www.pozytywka.slask.pl/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -19,8 +19,23 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/src/assets`,
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    // `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: { },
+        base64Width: 40,
+        defaultQuality: 80,
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -43,10 +58,11 @@ module.exports = {
       }
     },
     {
+      // https://www.npmjs.com/package/gatsby-source-storyblok
       resolve: 'gatsby-source-storyblok',
       options: {
         accessToken: process.env.STORYBLOK_API_KEY,
-        version: 'draft',
+        version: process.env.STORYBLOK_ENV_VERSION,
         // languages: ['de', 'at'] // Optional parameter. Omission will retrieve all languages by default.
       }
     }

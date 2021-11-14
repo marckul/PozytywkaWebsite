@@ -1,9 +1,9 @@
-import * as React from "react"
-import PropTypes from 'prop-types'
+import * as React from "./react"
+import PropTypes from './prop-types'
 // import  Container from "react-bootstrap/Container"
 
-import { graphql, Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { graphql, Link } from "./gatsby"
+import { StaticImage } from "./gatsby-plugin-image"
 import * as StringTools from '../functions/stringTools'
 
 import Layout from "../components/layout"
@@ -110,14 +110,18 @@ const NewsPage = ({data}) => {
     console.log(content.article_content);
     const articleHeader = GetComponentByName(content.article_content, "article-header")
     console.log(articleHeader);
+
     if (typeof articleHeader !== "undefined") {
-      // debugger    
       const imageFilename = ImageResizing(articleHeader.image.filename, [400, 400], true)
-
       const publishDate = StringTools.FormatDate(articleHeader.publish_date)
+    
+      // const fullSlug = StringTools.GetRelativePath(story.full_slug, "aktualnosci/")
+      let fullSlug = story.full_slug;
+      if (fullSlug[0] !== "/") {
+        fullSlug = `/${fullSlug}`
+      }
 
-      const fullSlug = StringTools.GetRelativePath(story.full_slug, "aktualnosci/")
-
+      // debugger    
       const intercept = GetPostIntercept(articleHeader.intro)
 
       return(
@@ -146,29 +150,6 @@ const NewsPage = ({data}) => {
     <Container>
       <div className="posts-archive-2 row">
         {postsArchive}
-        {/* <PostShort2
-          title="Pierwszy post"
-          publishDate="Piątek, 20 Sierpnia 2020"
-          imgSrc={img1}         
-        >
-          Sunt quae impedit deleniti illum hic minima maiores est, voluptatem, perspiciatis, eius quaerat eveniet fuga! Repellendus ad voluptatem rem asperiores...
-        </PostShort2>
-
-        <PostShort2
-          title="Pierwszy post"
-          publishDate="Piątek, 20 Sierpnia 2020"
-          imgSrc={img2}         
-        >
-          Beatae eius maxime temporibus ipsam necessitatibus dolore, iste blanditiis ex architecto quidem debitis illo error inventore rerum eveniet explicabo odit suscipit!...
-        </PostShort2>
-
-        <PostShort2
-          title="Pierwszy post"
-          publishDate="Piątek, 20 Sierpnia 2020"
-          imgSrc={""}         
-        >
-          Beatae eius maxime temporibus ipsam necessitatibus dolore, iste blanditiis ex architecto quidem debitis illo error inventore rerum eveniet explicabo odit suscipit!...
-        </PostShort2> */}
       </div>
     </Container>
   </Layout>
@@ -181,7 +162,6 @@ export const query = graphql`
     allStoryblokEntry(filter: {full_slug: {regex: "/aktualnosci\/./"}}) {
       nodes {
         content
-        path
         full_slug
         slug
       }

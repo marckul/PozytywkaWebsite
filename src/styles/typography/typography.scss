@@ -114,12 +114,63 @@ $font-interval-ratio: 1.333;
   h5, .h5 {
     font-size: pow($font-interval-ratio, 1)+em;
   }  
-
 }
 
 
+$headers: h1, h2, h3, h4, h5; 
+.heading-reduce-1 {
+  @include getFontSize($headers, 1)
+}
+
+.heading-reduce-2 {
+  @include getFontSize($headers, 2)
+}
+
+
+
+
+// FANCY UNDERLINE
+
+@mixin fancy_underline($underline-height) {
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+  &::after {
+
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 1em;
+    bottom: 0;
+    left: -.3em;
+    right: -.3em;
+    display: block;
+    background-image: url("/underline.svg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: $underline-height;
+
+  }
+}
+
+@include headings {
+  u {
+    @include fancy_underline(3rem)
+  }
+}
+
+.lead {
+  u {
+    @include fancy_underline(1.5rem)
+  }
+}
+
+
+
 // TYPOGRAPHY UTILITIES
-.rich-text {
+
+.rich-text, .rich-text-blok {
   .superscript {
     top: -.5em;
   }
@@ -133,3 +184,18 @@ $font-interval-ratio: 1.333;
     vertical-align: baseline;
   }
 }
+
+
+
+.rich-text-blok {
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.lead {
+  font-weight: unset;
+}
+
+
+

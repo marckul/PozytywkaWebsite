@@ -21,11 +21,26 @@ const RootPath = (fullPath) => {
 }
 
 
+/**
+ * 
+ * @param { string } string 
+ * @param { string } subString 
+ */
+function ContainString(string, subString) {
+  if (typeof string !== 'string') return false;
+
+  const stringParts = string.split(subString)
+  return stringParts.length > 1    
+}
+
+
+
 
 // "aktualnosci/post/szablon-artykulu"
 
 exports.ContainsOnlySpaces = ContainsOnlySpaces
 exports.RootPath = RootPath
+exports.ContainString = ContainString
 
 if (IS_BROWSER) {
   window.StringTools = {

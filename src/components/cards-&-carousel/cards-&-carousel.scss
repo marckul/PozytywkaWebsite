@@ -45,7 +45,7 @@
       min-width: $width;
       max-width: $width;
       min-height: 1.618*$width;
-      max-height: 1.618*$width;
+      max-height: 1.8*$width;
     }
   }
 }
@@ -70,6 +70,7 @@
     padding: $padding;
   }
   .card-inner {
+    // position: relative;
     flex-grow: 1;
 
     display: flex;
@@ -88,7 +89,7 @@
   }
   .card-head {
     margin-bottom: map-get($spacers, 3);
-    flex: 2 1 auto;
+    flex: 0 1 auto;
   }
   .card-body {
     flex: 3 1 auto;
@@ -97,6 +98,9 @@
     justify-content: space-between;
     // margin-top: map-get($spacers, 3);
     padding: 0;
+    .main-text {
+      // font-size: small;
+    }
   }
   .sticky-note {
     background-color: desaturate(lighten($color-teal, 63%), 10%);
@@ -163,7 +167,7 @@
 
 
 .circle-image-card {
-  p {
-    text-align: justify;
-  }
+  // p {
+  //   text-align: justify;
+  // }
 }
