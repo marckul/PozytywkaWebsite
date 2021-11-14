@@ -33,30 +33,21 @@ function Layout2({children, ...props}) {
 }
 
 
-
-
-
-
 const ArticleTemplate = ({data, location}) => {
   let story = data.storyblokEntry
   story = useStoryblok(story, location)
 
   const seoData = GetSEO(story)
-  
 
   let allDynamicComponents = <NoContentAlert/>;
   if (story.content.article_content) {
     allDynamicComponents = story.content.article_content.map( blok =>  {
-      // blok
+
       const context = {}
       if (blok.component === "article-header" ) {
         context.publish_date = GetPublishDate(story, blok)
-        
       }
-      // console.log(
-      //   story
-      // );
-      // debugger
+
       return (
         <DynamicComponent blok={blok} key={blok._uid} context={context} />
       )

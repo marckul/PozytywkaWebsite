@@ -4,16 +4,6 @@
 @import '../../styles/variables';
 @import '../../../node_modules/bootstrap/scss/variables';
 
-// .svg-container {  }
-
-
-
-// .linear-gradient-1 {
-//   min-height: 80vh;
-//   background-image: linear-gradient(#E9F4F7, #FBF8E9 50%);
-//   // margin-bottom: 10rem;
-// }
-
 $screen-size-lg: map-get($grid-breakpoints, lg); 
 
 .svg-container {

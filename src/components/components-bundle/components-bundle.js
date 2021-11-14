@@ -71,45 +71,48 @@ HeroImageArea.defaultProps = {
 
 HeroImageArea.propTypes = {
   children: PropTypes.node.isRequired,
-  // PropTypes.oneOfType([
-  //   PropTypes.arrayOf(PropTypes.node),
-  //   PropTypes.node
-  // ]).isRequired, 
-
   className: PropTypes.string, 
   variant: PropTypes.string, 
   backgroundImage: PropTypes.string
 }
 
 
-class Container extends React.Component {
-// function Container({ children, rootElement, paddingY, ...props }) {
-  // debugger
-  constructor(props) {
-    super(props)
+// class Container extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
+//   render() {
+//     const { children, rootElement, paddingY, className, ...props } = this.props
+
+//     const paddingYClass = {
+//       "small": "py-5", 
+//       "medium": "py-6", 
+//       "big": "py-7"
+//     }
+
+//     const ParentComponent = rootElement;
+
+//     return(
+//       <section className="container-box">
+//         <div className="container my-5">{children}</div>
+//       </section>
+//       // <div>   </div>
+//     )
+//   }
+// }
+
+const Container = ({ children, rootElement, paddingY, className, ...props }) => {
+  const paddingYClass = {
+    "small": "py-5", 
+    "medium": "py-6", 
+    "big": "py-7"
   }
-  render() {
-    const { children, rootElement, paddingY, className, ...props } = this.props
-    // ({ children, rootElement, paddingY, ...props }) 
 
-    const paddingYClass = {
-      "small": "py-5", 
-      "medium": "py-6", 
-      "big": "py-7"
-    }
-
-    // className += ` container-box`
-    // className += ` ${paddingYClass[paddingY]}`
-
-    const ParentComponent = rootElement;
-
-    return(
-      <section className="container-box">
-        <div className="container my-5">{children}</div>
-      </section>
-      // <div>   </div>
-    )
-  }
+  return(
+    <section className={`container-box ${className}`} {...props}>
+      <div className="container my-5">{children}</div>
+    </section>
+  )
 }
 
 Container.defaultProps = {

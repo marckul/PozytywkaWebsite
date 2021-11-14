@@ -50,7 +50,6 @@ const Components = {
   // CAROUSEL
   'multi_carousel': Carousel.CarouselSb,
   'carousel_card': Carousel.OfferCard,
-  
 
   // TEXT
   'text_header': TextBloks.TextHeader,

@@ -64,7 +64,7 @@
     min-width: 20rem;
     max-width: 20rem;
     min-height: 32.36rem;
-    max-height: 32.36rem;
+    max-height: 36rem;
   }
 }
 
@@ -117,9 +117,9 @@
 
 .offer-card .card-head {
   margin-bottom: 1rem;
-  -webkit-box-flex: 2;
-      -ms-flex: 2 1 auto;
-          flex: 2 1 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
 }
 
 .offer-card .card-body {
@@ -197,9 +197,5 @@
 
 .react-carousel-container .cards-dots-controls .react-multi-carousel-dot--active button, .react-carousel-container .cards-dots-controls .react-multi-carousel-dot--active button:hover:active {
   opacity: 1;
-}
-
-.circle-image-card p {
-  text-align: justify;
 }
 /*# sourceMappingURL=cards-&-carousel.css.map */

@@ -6,7 +6,8 @@ import { render as defaultRender,
 } from 'storyblok-rich-text-react-renderer';
 
 
-import {AnchorLink} from '../components/components-bundle/components-bundle'
+// import {AnchorLink} from '../components/components-bundle/components-bundle'
+import {AnchorLink, PrepareHref} from './links/common'
 
 import Img from 'gatsby-image'
 import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
@@ -20,12 +21,10 @@ import { ImageSb } from './images'
 ============================= */
 
 const LinkNode = (children, props) => {
-  if (props.linktype === "story") {
-    return <AnchorLink  to={props.href} addRoot>{children}</AnchorLink>
-  } 
-  else if (props.linktype === "url") {
-    return <a  href={props.href} target={props.target}>{children}</a>
-  }
+  // debugger
+  const HREF = PrepareHref(props, props.linktype);
+
+  return <AnchorLink  to={HREF} link_type={props.linktype} target={props.target}>{children}</AnchorLink>
 }
 
 /* ==========================

@@ -40,7 +40,10 @@ function GetSEO(story) {
     }
   `)
 
-  const fallback = JSON.parse(storyblokEntry.content)?.seo_metadata
+  let fallback;
+  if (storyblokEntry) {
+    fallback = JSON.parse(storyblokEntry.content)?.seo_metadata
+  }
 
   /* make title template for pages without metadata title */
   if (IsEmpty(seo_metadata?.title)) {

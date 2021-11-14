@@ -34,11 +34,11 @@ import '../styles/layout/layout.css'
 
 const StyledCookieConsent = (params) => (
   <div className="fixed-bottom bg-dark ">
-    <CookieConsent disableStyles={true} 
-      // style={{backgroundColor: "#242833"}}
+    <CookieConsent 
+      disableStyles={true}
       containerClasses="container  d-flex flex-row py-3 justify-content-between flex-wrap"
       contentClasses="text-white col-md"
-      debug={process.env.NODE_ENV === "development"}
+      // debug={process.env.NODE_ENV === "development"}
 
       buttonWrapperClasses="cookie-consent-button d-flex flex-column justify-content-center col-sm-12 col-md"
       buttonClasses="btn btn-outline-light"

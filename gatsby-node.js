@@ -49,7 +49,9 @@ exports.createPages = async function ({ actions, graphql }) {
     console.log(`\n\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@`);
     console.log(`CONTENT TYPE ${story.content.component}`);
 
-    if (typeof Template !== "undefined") {
+    const toRenderPage = !StringTools.ContainString(story.slug, 'dontRenderPage')
+
+    if (typeof Template !== "undefined" && toRenderPage) {
       const templateFullPath = require.resolve(`./src/templates/${Template}`)
       
       

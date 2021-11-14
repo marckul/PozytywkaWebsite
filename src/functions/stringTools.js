@@ -89,6 +89,9 @@ function GetRelativePath(fullPath, rootPath) {
  * https://stackoverflow.com/questions/54743952/javascript-slug-working-for-non-latin-characters-also
  */
 function Slugify(text) {
+  if (!text) {
+    return ""
+  }
   text = text.toString().toLowerCase().trim();
 
   const sets = [
@@ -167,6 +170,19 @@ function HexToRgbStr(hex) {
 }
 
 
+/**
+ * 
+ * @param { string } string 
+ * @param { string } subString 
+ */
+function ContainString(string, subString) {
+  if (typeof string !== 'string') return false;
+
+  const stringParts = string.split(subString)
+  return stringParts.length > 1    
+}
+
+
 
 // "aktualnosci/post/szablon-artykulu"
 
@@ -194,5 +210,6 @@ if (IS_BROWSER) {
     Slugify,
     HexToRgb,
     HexToRgbStr,
+    ContainString,
   }  
 }

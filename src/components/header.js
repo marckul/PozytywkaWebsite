@@ -24,7 +24,8 @@ const Logo = () => {
         <LogoSVG />        
       </div>
       <div className="logo-text">
-        Pozytywka<br/>ODT
+        <span>Pozytywka{'\u00A0'}</span>
+        <span className="odt">ODT</span>
       </div>
     </Link>
   )
@@ -78,7 +79,7 @@ const Navigation = ({className, variant, ...props}) => {
   
 
   return(
-    <Navbar {...props} className={`${className} ${stateClass} px-md-5`} expand="md" bg={bg} variant={text}>
+    <Navbar {...props} className={`${className} ${stateClass}`} expand="md" bg={bg} variant={text}>
       <Container fluid>
         <Logo/>
         <Navbar.Toggle aria-controls="main-navbar"  onClickCapture={eventhandler}/>
@@ -91,7 +92,7 @@ const Navigation = ({className, variant, ...props}) => {
             <NavLink className="nav-link" to="/aktualnosci">Aktualności</NavLink>
           </Nav>
           <Nav>
-          <Link className={`btn btn-${button}`} to="/rejestracja" role="button">Rejestracja</Link>
+          <Link className={`btn btn-${button}`} to="/kontakt#rejestracja" role="button">Rejestracja</Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

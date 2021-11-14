@@ -1,11 +1,11 @@
 import * as React from 'react'
-// import { AnchorLink } from '../components/components-bundle/components-bundle'
+import { AnchorLink, PrepareHrefBlok } from './links/common'
 import { Link } from 'gatsby'
 
 import { IsNotEmpty, IsNotEmpty as String_IsNotEmpty, Slugify } from '../functions/stringTools'
 import { NoLinkTypeError } from './userInfo'
 
-import { Phone } from '../components/components-bundle/components-bundle'
+// import { Phone } from '../components/components-bundle/components-bundle'
 
 
 
@@ -30,42 +30,30 @@ const ArrowLink = ({children, className, ...linkProps}) => {
 
 
 
-function AnchorLink({ to, addRoot, children, link_type, ...props }) {
-  // let toHref = undefined
-  let toHref = to !== "" ? toHref = to : undefined
-  // if (to !== "") {
-  //   toHref = to
-  // }
+// function AnchorLink({ to, addRoot, children, link_type, ...props }) {
+//   let toHref = to !== "" ? toHref = to : undefined
 
-  if ( ["story","anchor"].includes(link_type) ) {
-    return <Link to={toHref} {...props}> {children} </Link>
-  }
+//   if ( ["story","anchor"].includes(link_type) ) {
+//     return <Link to={toHref} {...props}> {children} </Link>
+//   }
 
-  if (link_type === "phone-number") {
-    return(
-      <Phone tel={toHref} {...props}>
-        {toHref}
-      </Phone>
-    )
-  }
+//   if (link_type === "phone-number") {
+//     return(
+//       <Phone tel={toHref} {...props}>
+//         {toHref}
+//       </Phone>
+//     )
+//   }
 
-  return(
-    <a href={toHref} {...props}>
-      {children} 
-    </a>
-  )
-  
-}
-
-
-// const allHorizontalPositions = {
-//   left: "me-auto",
-//   center: "mx-auto",
-//   right: "ms-auto",
+//   return(
+//     <a href={toHref} {...props}>
+//       {children} 
+//     </a>
+//   )
 // }
 
+
 const ResolveStylesClasses = (blok) => {
-  // property: defaultClass
   const ClassesProps = {
     variant: "link-block",
     horizontal_position: "me-auto",
@@ -105,7 +93,6 @@ function CheckLinkType0(blok) {
 
 
 function CheckLinkType(blok) {
-  // debugger
   
   let type = blok.link_type
   if (typeof blok.link_type === "undefined") {
@@ -115,21 +102,16 @@ function CheckLinkType(blok) {
   else if (type === "link") {
     type = blok.link.linktype
   }
-
   return type
 }
 
 
-
-
 const ButtonSb = ({ blok, buttonContext, ...props }) => {
   
-  // debugger
   const type = CheckLinkType(blok)
   if (type === "no_link_type_error") {
     return <NoLinkTypeError/>
   }
-  // blok.link.email
 
   const linkProps = { 
     link_type: type
@@ -142,13 +124,9 @@ const ButtonSb = ({ blok, buttonContext, ...props }) => {
   }
 
   // SLUGIFY
-  const HREF = PrepareHref(blok, linkProps.link_type)   
+  const HREF = PrepareHrefBlok(blok, linkProps.link_type)   
   const htmlClasses = ResolveStylesClasses(blok)
-  // debugger
-
-  // debugger
   linkProps.to = HREF 
-
 
   if(variant === "arrow-link-component") {
     return(
@@ -158,7 +136,7 @@ const ButtonSb = ({ blok, buttonContext, ...props }) => {
     )
   }
   
-  const buttonStyle = `${variant}` //btn btn-
+  const buttonStyle = `${variant}` 
   return(
     <AnchorLink className={`${htmlClasses}`} {...linkProps} >{blok.content}</AnchorLink>
   ) 
@@ -170,44 +148,3 @@ ButtonSb.defaultProps = {
 export { ButtonSb }
 
 
-function PrepareHref(blok, link_type) {
-  // link_type: [phone-number, story, url, email, anchor]
-  let HREF = undefined;
-  if (link_type === "phone-number") {
-    HREF =  `${blok.phone_number}` // tel: jest dodawane pózniej
-  } 
-  else if (link_type === "story") {
-    const htmlId = Slugify(blok.link.anchor)
-    HREF = `${blok.link.cached_url}#${htmlId}`
-    // ADD ROOT
-    if (HREF[0] !== "/") {
-      HREF = `/${HREF}`
-    }
-  }
-  else if (link_type === "url") {
-    HREF = blok.link.cached_url
-    const subStrings = HREF.split("://")
-    if (subStrings.length === 1) {
-      HREF = `http://${HREF}`
-    }
-  }
-  else if (link_type === "email") {
-    HREF = `mailto:${blok.link.email}`
-  }
-  else if (link_type === "anchor") {
-    HREF = `#${Slugify(blok.anchor)}`
-  }
-  return HREF
-
-  
-
-  // if (String_IsNotEmpty(blok.link.cached_url)) {
-  //   const htmlId = Slugify(blok.link.anchor)
-  //   linkProps.to = `${blok.link.cached_url}#${htmlId}`
-  //   linkProps.addRoot = true
-  // }
-  // else if (String_IsNotEmpty(blok.anchor)) {
-  //   const htmlId = Slugify(blok.anchor)
-  //   linkProps.to = `#${htmlId}`
-  // }
-}
