@@ -1,9 +1,13 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`, //${process.env.NODE_ENV}
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Pozytywka ODT`,
+    description: `Zajmujemy się terapią autyzmu`,
+    author: `@marcinkula`,
+    siteUrl: `https://www.pozytywka.slask.pl/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -15,8 +19,23 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `assets`,
+        path: `${__dirname}/src/assets`,
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    // `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: { },
+        base64Width: 40,
+        defaultQuality: 80,
+      }
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -26,7 +45,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/pozytywka-logo.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-gatsby-cloud`,
@@ -36,6 +55,15 @@ module.exports = {
         rule: {
           include: /\.svg$/ // 349ns dpfb89 3tga!
         }
+      }
+    },
+    {
+      // https://www.npmjs.com/package/gatsby-source-storyblok
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: process.env.STORYBLOK_API_KEY,
+        version: process.env.STORYBLOK_ENV_VERSION,
+        // languages: ['de', 'at'] // Optional parameter. Omission will retrieve all languages by default.
       }
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

@@ -1,9 +1,9 @@
 import * as React from 'react'
-
-import * as Grid from '../css-grid/css-grid'
 import PropTypes from 'prop-types';
 
-import * as CSS from './.module.css'
+import * as Grid from '../css-grid/css-grid'
+
+import * as CSS from './ratio-content.module.css'
 
 
 // TO REMOVE 
@@ -214,7 +214,7 @@ class RatioContent extends React.Component {
    * 
    */
   constructor(props) {
-    console.log("CONSTRUCTOR CenteredContent");
+    // console.log("CONSTRUCTOR CenteredContent");
     super(props)
 
     this.refsParent = React.createRef()

@@ -75,8 +75,8 @@
 }
 
 .hero-area.bg-dark .text-shadow > * {
-  -webkit-filter: drop-shadow(0 0 0.05em rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.1rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 2rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 3rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6));
-          filter: drop-shadow(0 0 0.05em rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.1rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 2rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 3rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6));
+  -webkit-filter: drop-shadow(0 0 0.05em rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.1rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 2rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6));
+          filter: drop-shadow(0 0 0.05em rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.1rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 0.4rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6)) drop-shadow(0 0 2rem rgba(var(--readable-shadow-color-rgb, 33, 116, 122), 0.6));
 }
 
 .hero-area.bg-light .text-shadow > * {
@@ -191,6 +191,10 @@
   margin-left: auto;
   color: inherit;
   text-decoration: none;
+}
+
+.post-short--archive2 .read-more .bi {
+  margin-left: .5em;
 }
 
 .img-cover {

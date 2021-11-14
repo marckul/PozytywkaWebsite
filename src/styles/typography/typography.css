@@ -119,4 +119,147 @@ h5, .h5 {
     font-size: 1.333em;
   }
 }
+
+.heading-reduce-1 h1 {
+  font-size: 2.44141em;
+}
+
+.heading-reduce-1 h2 {
+  font-size: 1.95312em;
+}
+
+.heading-reduce-1 h3 {
+  font-size: 1.5625em;
+}
+
+.heading-reduce-1 h4 {
+  font-size: 1.25em;
+}
+
+.heading-reduce-1 h5 {
+  font-size: 1em;
+}
+
+@media (min-width: 992px) {
+  .heading-reduce-1 h1 {
+    font-size: 3.15733em;
+  }
+  .heading-reduce-1 h2 {
+    font-size: 2.36859em;
+  }
+  .heading-reduce-1 h3 {
+    font-size: 1.77689em;
+  }
+  .heading-reduce-1 h4 {
+    font-size: 1.333em;
+  }
+  .heading-reduce-1 h5 {
+    font-size: 1em;
+  }
+}
+
+.heading-reduce-2 h1 {
+  font-size: 1.95312em;
+}
+
+.heading-reduce-2 h2 {
+  font-size: 1.5625em;
+}
+
+.heading-reduce-2 h3 {
+  font-size: 1.25em;
+}
+
+.heading-reduce-2 h4 {
+  font-size: 1em;
+}
+
+.heading-reduce-2 h5 {
+  font-size: 1em;
+}
+
+@media (min-width: 992px) {
+  .heading-reduce-2 h1 {
+    font-size: 2.36859em;
+  }
+  .heading-reduce-2 h2 {
+    font-size: 1.77689em;
+  }
+  .heading-reduce-2 h3 {
+    font-size: 1.333em;
+  }
+  .heading-reduce-2 h4 {
+    font-size: 1em;
+  }
+  .heading-reduce-2 h5 {
+    font-size: 1em;
+  }
+}
+
+h1 u, h2 u, h3 u, h4 u, h5 u, h6 u {
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+}
+
+h1 u::after, h2 u::after, h3 u::after, h4 u::after, h5 u::after, h6 u::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 1em;
+  bottom: 0;
+  left: -.3em;
+  right: -.3em;
+  display: block;
+  background-image: url("/underline.svg");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 3rem;
+}
+
+.lead u {
+  position: relative;
+  z-index: 5;
+  text-decoration: none;
+}
+
+.lead u::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 1em;
+  bottom: 0;
+  left: -.3em;
+  right: -.3em;
+  display: block;
+  background-image: url("/underline.svg");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 1.5rem;
+}
+
+.rich-text .superscript, .rich-text-blok .superscript {
+  top: -.5em;
+}
+
+.rich-text .subscript, .rich-text-blok .subscript {
+  bottom: -.25em;
+}
+
+.rich-text .superscript, .rich-text .subscript, .rich-text-blok .superscript, .rich-text-blok .subscript {
+  position: relative;
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+.rich-text-blok p:last-child {
+  margin-bottom: 0;
+}
+
+.lead {
+  font-weight: unset;
+}
 /*# sourceMappingURL=typography.css.map */

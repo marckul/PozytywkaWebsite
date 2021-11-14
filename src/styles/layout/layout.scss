@@ -1,6 +1,4 @@
 @import '../variables';
-// @import '../typography';
-
 
 /* 
 
@@ -21,35 +19,7 @@
 // 
 // =================
 
-.navbar-brand {
-  
-}
 
-@include headings {
-
-  u {
-    position: relative;
-    z-index: 5;
-    text-decoration: none;
-    &::after {
-
-      content: '';
-      position: absolute;
-      z-index: -1;
-      top: 1em;
-      bottom: 0;
-      left: -.3em;
-      right: -.3em;
-      display: block;
-      background-image: url("/underline.svg");
-      background-position: bottom center;
-      background-repeat: no-repeat;
-      background-size: contain;
-      height: 3rem;
-
-    }
-  }
-}
 
 
 // =================
@@ -58,12 +28,20 @@
 // 
 // =================
 
+body.modal-open, body.modal-open-new  {
+  position: fixed;
+  @media (hover: hover) {
+    padding-right: 17px;
+  }
+}
+
 
 html, body {
   overflow-x: hidden;
   max-width: 100%;
   min-width: 100%;
   scroll-behavior: auto;
+  // padding-right: 0 !important 
 }
 
 main {
@@ -79,18 +57,12 @@ main {
 
 
 
-
-nav { // było .navbar
-  .navbar-brand {
-    color: inherit;
-    text-transform: uppercase;
-    line-height: $line-height-narrow;
-  }
-}
-
-
 .btn {
   max-width: fit-content;
+}
+
+.btn-outline-light:not(:hover) {
+  color: #f8f9fa !important;
 }
 
 .collapsibleNavbar {
@@ -104,8 +76,16 @@ nav { // było .navbar
   }  
 }
 
+.smaller_container, .readable-width { // .readable-width
+  max-width: 40rem
+}
 
 
+.cookie-consent-button {
+  min-width: max-content;
+  max-width: 12rem;
+  margin-left: auto;
+}
 
 
 
@@ -183,6 +163,14 @@ nav { // było .navbar
 }
 
 
+nav { // było .navbar
+  .navbar-brand {
+    color: inherit;
+    line-height: $line-height-narrow;
+  }
+}
+
+
 .navbar-transparent-light {
   // color: black;
   .navbar-brand, .nav-link {
@@ -200,6 +188,8 @@ nav { // było .navbar
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 0;
+    text-transform: uppercase;
   }
 }
 
@@ -221,6 +211,10 @@ nav { // było .navbar
 // HERO AREA >>
 // Styles are in components-bundle.scss
 
+// .width-1-11 {
+//   width: 100%
+// }
+
 .container-box {
   min-height: 100vh;
   display: flex;
@@ -229,6 +223,7 @@ nav { // było .navbar
 }
 
 .btn {
+  min-width: max-content;
   font-size: 1em;
   a {
     color: inherit;
@@ -237,22 +232,41 @@ nav { // było .navbar
 }
 
 // BUTTONS >>
-.btn-light, .btn-light:focus {
-  color: $color-teal--medium;
-  transition: all 200ms;
-  background-color: $color-light;
-  border-width: 0;
-
+.btn, .btn:focus {
+  transition: all 150ms;
+  font-weight: 500;
+  box-shadow: none;
   &:hover, &:active {
+    transform: scale(1.05);
+  }
+  &:focus {
+    transform: scale(.95);
+  }
+}
+
+.btn-dark, .btn-light {
+  &:focus {
+    border-width: 0;
+  }
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.btn-light, .btn-light:focus {
+  color: $color-primary-dark !important;
+  background-color: $color-light;
+}
+
+.btn-light, .btn-light:focus, .btn-outline-light, .btn-outline-light:focus {
+  &:hover, &:active {
+    color: $color-teal--medium !important;
     background-color: $color-light;
     box-shadow: 
         rgba(17, 128, 145, 0.1) -.1rem -.2rem 2rem,
         rgba(0, 110, 255, .1) 0 0 .5rem .2rem,
         rgba(0, 0, 0, 0.2) .1rem .2rem 1rem;
-    transform: scale(1.05);
-  }
-  &:focus:active {
-    transform: scale(.95);
   }
 }
 
@@ -264,44 +278,35 @@ $button-active-shadow:
   rgba(0, 0, 0, .4) 0 .1rem .2rem .05rem,
   rgba(0, 0, 0, .1) .1rem .1rem .75rem 0;
 
-.btn-dark, .btn-dark:focus {
-  transition: all 100ms;
-  background-color: $color-primary-dark;
-  color: $color-light;
-  
-  box-shadow: none;
-  border-width: 0;
+.btn-dark, .btn-dark:focus, .btn-outline-dark, .btn-outline-dark:focus {
+  &:hover, &:active {
+    color: $color-active !important;
+    box-shadow: $button-active-shadow;
+  }
+}
 
+.btn-dark, .btn-dark:focus {
+  color: $color-light;
+  background-color: $color-primary-dark;
+  border-color: $color-primary-dark;
   &:hover, &:active {
     background-color: $color-primary-dark;
-    box-shadow: $button-active-shadow;
-    transform: scale(1.05);
-  }
-  &:focus:active {
-    // background-color: red;
-    transform: scale(.95);
+    border-color: $color-primary-dark;
   }
   &:visited {
     color: $color-light;
   }
-  
 }
 
 .btn-outline-dark {
-  font-weight: 500;
-  color: $color-primary-dark;
+  color: $color-primary-dark !important;
   border-color: $color-primary-dark;
-
   &:hover, &:active {
-    color: $color-light;
     background-color: $color-primary-dark;
     border-color: $color-primary-dark;
     box-shadow: $button-active-shadow;
-    transform: scale(1.05);
   }
   &:focus {
-    // background-color: red;
-    transform: scale(.95);
     box-shadow: $button-active-shadow;
   }
 }
@@ -311,6 +316,10 @@ $button-active-shadow:
 // ================
 //   UTILITIES
 // ================
+
+.img-blurred {
+  filter: blur(10px);
+}
 
 // BORDERS
 // $numbers: (
@@ -408,12 +417,12 @@ a.color-shine {
     color: inherit;
     content: "";
     position: absolute;
-    // top: 0;
+    top: 0;
     bottom: -1.5em*0.1;
     right: $shift;
 
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
 
     background-image: url('/arrow-right.svg');
     background-position: bottom;
@@ -430,7 +439,136 @@ a.color-shine {
   margin-bottom: .1em;
 }
 
+
+.arrow-link-component {
+  display: block;
+  width: fit-content;
+  font-weight: 500;
+  // font-size: $small-font-size;
+  margin-left: auto;
+
+  color: inherit;
+  text-decoration: none;
+  
+  .bi-arrow-right {
+    margin-left: .5em;
+  }
+}
+
+.link-block {
+  display: block;
+  width: fit-content;
+  // font-weight: 500;
+}
+
+.postion-relative {
+  position: relative;
+}
+
+.modal.fade.show {
+  display: block;
+}
+
 // @import '../../components/article/article.scss'
 
 
 
+
+
+/*
+.navbar-light {
+  .logo-text {
+    font-weight: 600 !important;
+  }
+}
+.navbar-brand {
+  .logo-text {
+    span {
+      height: 2rem;
+      display: block;
+    }
+    .odt {
+      display: none;
+    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0;
+    font-weight: 500;
+    
+    font-size: map-get($font-properties, 'size-interval-sm' );
+    @media (min-width: 400px) { 
+      .odt {
+        display: block;
+      }
+    }
+    @media (min-width: 500px) { // map-get($grid-breakpoints, 'sm' )
+      .odt {
+        display: block;
+      }
+      span {
+        display: inline;
+        height: unset;
+      }
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
+}
+
+.navbar-light .navbar-brand {
+  color: $color-primary-dark;
+}
+
+.nav-link {
+  @extend .h5;      
+  font-weight: 400;
+  // padding: map-get($spacers, 3) 0;
+  padding-bottom: map-get($spacers, 4);
+}
+.navbar-nav {
+  margin: auto;
+  padding: map-get($spacers, 5) 0;
+  // max-width: 20rem;
+}
+.navbar {
+  padding: map-get($spacers, 3) 0;
+  .container-fluid {
+    padding: 0 map-get($spacers, 3);
+  }
+}
+.navbar-collapse {
+  padding: map-get($spacers, 4) 0;
+}
+@media (min-width:  map-get($grid-breakpoints, 'md' )) { 
+  .nav-link {
+    font-size: 1rem;
+  }
+  
+  
+  .nav-link {
+    @extend .h5;      
+    font-weight: 400;
+    // padding: map-get($spacers, 3) 0;
+    padding-bottom: map-get($spacers, 4);
+  }
+  .navbar-nav {
+    margin: auto;
+    padding: map-get($spacers, 5) 0;
+    // max-width: 20rem;
+  }
+  .navbar {
+    padding: map-get($spacers, 3) 0;
+    .container-fluid {
+      padding: 0 map-get($spacers, 3);
+    }
+  }
+  .navbar-collapse {
+    padding: map-get($spacers, 4) 0;
+  }
+}
+*/

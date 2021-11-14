@@ -27,45 +27,10 @@ const responsive = {
 };
 
 
-const cardStyles = {
-  minHeight: "20em",
-  maxWidth: "18em"
-  // "--card-background-image": CardBg
-}
-
-function Card({number}) {
-  return(
-    <div className="col"  style={cardStyles} >
-      <div className="offer-card" >
-        <h5 className="">Card title {number} </h5>
-        <p>Tutaj bedzie karteczka</p>
-        <p className="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" className="">Card link</a>
-        <a href="#" className="">Another link</a>
-      </div>
-    </div>
-  )
-}
-
-function CardBoot0({number}) {
-  return(
-    <div className="offer-card-col p-2 pb-5">
-      <div className="card shadow-z1-lg rounded-0 offer-card" >
-        <div className="card-inner">
-          <h5 className="card-title">Card title {number} </h5>
-          <p>Tutaj bedzie karteczka</p>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" className="card-link">Card link</a>
-          <a href="#" className="card-link">Another link</a>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function CardBootTemplate({title, topNote, children, bottomNote}) {
   return(
-    <div className="offer-card-col">
+    <div className="offer-card-col ">
       <div className="shadow-z1-md offer-card" >
         <div className=" card-inner">
           <div className="card-head">
@@ -73,7 +38,7 @@ function CardBootTemplate({title, topNote, children, bottomNote}) {
             <p className="small sticky-note">{topNote}</p>
           </div>
           <div className="card-body small">    
-            {children}
+            <div className="main-text">{children}</div>
             <p className="small ms-auto m-0 sticky-note">{bottomNote}</p>
           </div>
         </div>
@@ -82,6 +47,8 @@ function CardBootTemplate({title, topNote, children, bottomNote}) {
   )
 }
 
+// TO DELETE
+/*
 function CardBoot({number}) {
   return(
     <CardBootTemplate
@@ -94,15 +61,15 @@ function CardBoot({number}) {
     </CardBootTemplate>
   )
 }
-
+*/ 
 
 function MyCarousel({children, ...props}) {
   return(
-    <div className="react-carousel-container my-5" >
+    <div className="react-carousel-container mt-4" >
       <small className="react-carousel-info d-block text-muted">
         <em>
-          <p className="info my-0" >Aby zobaczyć dostępne opcje użyj strzałek</p>
-          <p className="info-touch my-0" >Aby zobaczyć dostępne opcje przesuwaj karty</p>
+          <p className="info my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij tytuł karty</p>
+          <p className="info-touch my-0" >Aby zobaczyć dostępne opcje przesuwaj karty, aby zobaczyć szczegóły naciśnij  tytuł karty</p>
         </em>
       </small>
       <Carousel 
@@ -114,7 +81,7 @@ function MyCarousel({children, ...props}) {
         autoPlaySpeed={500}
         keyBoardControl={true}
         containerClass="react-carousel"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
+        removeArrowOnDeviceType={[ "tablet", "mobile"]}
         itemClass="card-container"
         dotListClass="cards-dots-controls"
         renderDotsOutside={true}
@@ -126,8 +93,7 @@ function MyCarousel({children, ...props}) {
 }
 
 
-
-function CircleImgCard({ imgSrc, children }) {
+function CircleImgCard({ title, imgSrc, children }) {
   const style = {
     "--border-color": "var(--color-teal--medium)"
     // $color-teal--medium
@@ -139,8 +105,10 @@ function CircleImgCard({ imgSrc, children }) {
       <div className="pb-5">
         <img src={imgSrc} alt="" className="img-fluid shadow-z1-md border border-5 rounded-circle" />
       </div>
-      <h4>Tytuł</h4>
-      <p>Laudantium assumenda necessitatibus accusamus impedit, fuga expedita, adipisci magnam cupiditate consectetur veniam similique beatae? Debitis vero dolorum reprehenderit nihil deleniti voluptatibus optio doloribus, odit pariatur autem minus, praesentium dolor.</p>
+      <h4>{title}</h4>
+      <p>
+        {children}
+      </p>
     </div>
   )
 }

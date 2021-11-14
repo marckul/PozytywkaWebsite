@@ -21,6 +21,7 @@ function HeroArea({ children, className, ...props }) {
  * @param { string } props.className
  * @param { string } props.variant
  * @param { string } props.backgroundImage 
+ * @param { string } props.textShadow
  */
 function HeroImageArea(
     { 
@@ -29,15 +30,21 @@ function HeroImageArea(
       variant, 
       backgroundImage, 
       textShadow,
+      textShadowRGB,
       ...props 
     }
   ) {
+
   if (textShadow) {
-    const textShadow = "text-shadow"
+    textShadow = "text-shadow"
   }
   const styles = {
-    backgroundImage: `url("${backgroundImage}")`
+    backgroundImage: `url("${backgroundImage}")`,
   }
+  if (textShadowRGB) {
+    styles["--readable-shadow-color-rgb"] = textShadowRGB
+  }
+
   if (backgroundImage !== undefined) {
     // className += " text-shadow"
   }
@@ -48,7 +55,7 @@ function HeroImageArea(
       className={`hero-area ${className}`}
       style={styles}
     >
-      <div className="container hero-area-inner">
+      <div className="container py-6 hero-area-inner">
         <div className="row pb-5">
           <div className={`col-md-10  ${textShadow}`}>
             {children}
@@ -64,56 +71,64 @@ HeroImageArea.defaultProps = {
 
 HeroImageArea.propTypes = {
   children: PropTypes.node.isRequired,
-  // PropTypes.oneOfType([
-  //   PropTypes.arrayOf(PropTypes.node),
-  //   PropTypes.node
-  // ]).isRequired, 
-
   className: PropTypes.string, 
   variant: PropTypes.string, 
   backgroundImage: PropTypes.string
 }
 
 
-function Container({ children, rootElement, paddingY, ...props }) {
-  // debugger
+// class Container extends React.Component {
+//   constructor(props) {
+//     super(props)
+//   }
+//   render() {
+//     const { children, rootElement, paddingY, className, ...props } = this.props
 
+//     const paddingYClass = {
+//       "small": "py-5", 
+//       "medium": "py-6", 
+//       "big": "py-7"
+//     }
+
+//     const ParentComponent = rootElement;
+
+//     return(
+//       <section className="container-box">
+//         <div className="container my-5">{children}</div>
+//       </section>
+//       // <div>   </div>
+//     )
+//   }
+// }
+
+const Container = ({ children, rootElement, paddingY, className, ...props }) => {
   const paddingYClass = {
     "small": "py-5", 
     "medium": "py-6", 
     "big": "py-7"
   }
 
-  props.className += ` container-box`
-  props.className += ` ${paddingYClass[paddingY]}`
-
-  // const template = <div className="container my-5">{children}</div>
-  // const RootComponent = rootElement
-
-  // const element = React.createElement(
-  //   rootElement, props, template
-  // )
-  // return(element)
   return(
-    <div {...props} >
+    <section className={`container-box ${className}`} {...props}>
       <div className="container my-5">{children}</div>
-    </div>
+    </section>
   )
 }
 
 Container.defaultProps = {
   className: "",
+  children: "",
   rootElement: "div",
   paddingY: "medium"
 }
 
-Container.propTypes = {
-  paddingY: PropTypes.oneOf(["small", "medium", "big"]),
-}
+// Container.propTypes = {
+//   paddingY: PropTypes.oneOf(["small", "medium", "big"]),
+// }
 
 
 
-function Phone({ children, tel, size }) {
+function Phone({ children, tel, size, className, ...props }) {
   let propsSize = ""
   if (size === undefined) {
     propsSize = "16"
@@ -123,14 +138,20 @@ function Phone({ children, tel, size }) {
 
   // debugger;
   return (
-    <a href={`tel:${tel}`} className=" text-nowrap mr-4 d-block">
+    <a href={`tel:${tel}`} className={`${className} text-nowrap mr-4 d-block`} {...props} >
       {/* link-light */}
       <svg xmlns="http://www.w3.org/2000/svg" width={propsSize} height={propsSize} fill="currentColor" className="bi bi-telephone-fill" viewBox="0 0 16 16">
         <path fillRule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
       </svg>
-      <p className="ml-2 m-0 d-inline">{children}</p>
+      <p className="ms-1 m-0 d-inline">{children}</p>
     </a>
   )
+}
+Phone.propTypes = {
+  tel: PropTypes.string,
+}
+Phone.defauleProps = {
+  className: "",
 }
 
 
@@ -173,13 +194,14 @@ function WavesContainer({ children }) {
 
 
 function Figure({alt, src, caption, indented, className, imgClassName}) {
+  console.log("Figure src", src);
   if (indented) {
     className += " indented-figure" 
   }
 
   return(
     <figure className={`figure border p-2 ${className} `}>
-      <img src={src} alt={alt} className={`${imgClassName} figure-img img-fluid`}/>
+      <img src={src} alt={alt} className={`${imgClassName} img-fluid`}/> {/* figure-img */}
       <figcaption class="small text-center">{caption}</figcaption>
     </figure>
   )
@@ -188,7 +210,6 @@ Figure.defaultProps = {
   className: "",
   indented: false,
 }
-
 
 
 
@@ -211,21 +232,27 @@ AspectRatio.defaultProps = {
   aspectRatio: 1
 }
 
-const PostShort2 = ({title, publishDate, imgSrc, children}) => {
 
+const PostShort2 = ({ title, publishDate, imgSrc, imgAlt, postSlug, children }) => {
+  
   const ImageElement = () => {
     if (imgSrc && imgSrc !== "") {
       return(
         <div className="post-img-container "> 
           <AspectRatio aspectRatio={1}>
-            <img src={imgSrc} alt="" className="post-img" />
+            <img src={imgSrc} alt={imgAlt} className="post-img" />
           </AspectRatio>
         </div>
       )
     } else {
-      return ""
+      return(
+        <div className="post-img-container "> 
+          <AspectRatio aspectRatio={1}></AspectRatio>
+        </div>
+      )
     }
   }
+  // debugger  
 
   return(
     <div className="col-sm-6 col-md-12">
@@ -242,7 +269,7 @@ const PostShort2 = ({title, publishDate, imgSrc, children}) => {
               <p>
                 {children}
               </p>
-              <Link className="read-more" to="/artykul">
+              <Link className="read-more" to={postSlug}>
                 Czytaj więcej 
                 <svg className="arrow-link-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                   <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
@@ -257,11 +284,63 @@ const PostShort2 = ({title, publishDate, imgSrc, children}) => {
     </div>
   )
 }
-
+PostShort2.defaultTypes = {
+  imgSrc: "",
+  imgAlt: "",
+}
 PostShort2.propsTypes = {
   imgSrc: PropTypes.string,
+  imgAlt: PropTypes.string,
 }
 
+
+/** Checks if URL is  External URL
+ * @param { string } url 
+ */
+function IsExternalURL(url) {
+  const subStrings = url.split("://")
+  if (subStrings.length > 1) {
+    return true;  
+  }
+  return false;
+}
+
+
+
+/**
+ * 
+ * @param {*} props
+ * @param { boolean } props.addRoot - makes to prop a root relativ path (adds 
+ * / to start of string)
+ */
+function AnchorLink({ to, addRoot, children, linkProps, ...props }) {
+  if (IsExternalURL(to)) {
+    return <a href={to} {...props}>{children}</a>
+  }
+
+  const writeProps = { }
+  
+  let toHref = undefined
+  if (to !== "") {
+    toHref = to
+  }
+  // debugger
+  if (addRoot) {
+    if (toHref[0] !== "/") {
+      toHref = `/${toHref}`
+    }
+  }
+
+
+  return <Link to={toHref} {...props}>{children} {linkProps.link_type} {toHref} </Link>
+}
+AnchorLink.defaultProps = {
+  addRoot: false,
+  to: "",
+}
+AnchorLink.propTypes = {
+  addRoot: PropTypes.bool
+}
 
 
 
@@ -274,5 +353,6 @@ export {
   BgGradient, 
   WavesContainer,
   Figure,
-  PostShort2
+  PostShort2,
+  AnchorLink
 } 

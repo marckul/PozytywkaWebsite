@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+
+.story-row {
+  $this-spacer: map-get($spacers, 3);
+  margin-top: -$this-spacer;
+  margin-bottom: -$this-spacer;
+  padding-top: $this-spacer;
+  padding-bottom: $this-spacer;
+}
+
+.story-column {
+  position: relative;
+  
+}
+
+.auto-margin {
+  &>* {
+    margin: 0;
+  }
+  &>* + * {
+    margin-top: 1em;
+  }
+}
+
+.rich-text-blok + * {
+  margin-top: 1em;
+}
+
+.story-column {
+  a + a {
+    margin-top: 0;
+  }
+}
