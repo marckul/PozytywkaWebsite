@@ -63,7 +63,7 @@ function CardBoot({number}) {
 }
 */ 
 
-function MyCarousel({children, ...props}) {
+function MyCarousel({children, containerClass, ...props}) {
   return(
     <div className="react-carousel-container mt-4" >
       <small className="react-carousel-info d-block text-muted">
@@ -80,7 +80,7 @@ function MyCarousel({children, ...props}) {
         infinite={true}
         autoPlaySpeed={500}
         keyBoardControl={true}
-        containerClass="react-carousel"
+        containerClass={`react-carousel ${containerClass}`}
         removeArrowOnDeviceType={[ "tablet", "mobile"]}
         itemClass="card-container"
         dotListClass="cards-dots-controls"

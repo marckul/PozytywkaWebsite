@@ -311,6 +311,19 @@ $button-active-shadow:
   }
 }
 
+.btn-close {
+  opacity: 1;
+  color: inherit;
+}
+
+.modal-content {
+  &.custom {
+    .modal-header {
+      padding-bottom: 0; 
+      border-bottom-width: 0;
+    }
+  }
+}
 
 
 // ================
@@ -445,7 +458,8 @@ a.color-shine {
   width: fit-content;
   font-weight: 500;
   // font-size: $small-font-size;
-  margin-left: auto;
+  // margin-left: auto;
+  margin-bottom: map-get($spacers, 2);
 
   color: inherit;
   text-decoration: none;
@@ -465,8 +479,20 @@ a.color-shine {
   position: relative;
 }
 
+.modal-body {
+  min-height: 50vh;
+  @media (min-width: map-get($grid-breakpoints, 'md')) {
+    padding: map-get($spacers, 4);
+  }
+  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+    padding: map-get($spacers, 5);
+  }
+}
 .modal.fade.show {
   display: block;
+}
+a {
+  cursor: pointer;
 }
 
 // @import '../../components/article/article.scss'
