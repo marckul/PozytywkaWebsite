@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { AnchorLink, PrepareHrefBlok } from './links/common'
+import { AnchorLink, PrepareHrefBlok } from './common'
 import { Link } from 'gatsby'
 
-import { IsNotEmpty, IsNotEmpty as String_IsNotEmpty, Slugify } from '../functions/stringTools'
-import { NoLinkTypeError } from './userInfo'
+import { IsNotEmpty, IsNotEmpty as String_IsNotEmpty, Slugify } from '../../functions/stringTools'
+import { NoLinkTypeError } from '../userInfo'
 
 // import { Phone } from '../components/components-bundle/components-bundle'
 
@@ -30,28 +30,6 @@ const ArrowLink = ({children, className, ...linkProps}) => {
 
 
 
-// function AnchorLink({ to, addRoot, children, link_type, ...props }) {
-//   let toHref = to !== "" ? toHref = to : undefined
-
-//   if ( ["story","anchor"].includes(link_type) ) {
-//     return <Link to={toHref} {...props}> {children} </Link>
-//   }
-
-//   if (link_type === "phone-number") {
-//     return(
-//       <Phone tel={toHref} {...props}>
-//         {toHref}
-//       </Phone>
-//     )
-//   }
-
-//   return(
-//     <a href={toHref} {...props}>
-//       {children} 
-//     </a>
-//   )
-// }
-
 
 const ResolveStylesClasses = (blok) => {
   const ClassesProps = {
@@ -64,6 +42,9 @@ const ResolveStylesClasses = (blok) => {
   for (const key in ClassesProps) {
     if (Object.hasOwnProperty.call(blok, key)) {
       const htmlClassesSet = blok[key];
+      if (key === 'horizontal_position') {
+        classesArray.push('d-block')
+      }
       classesArray.push(htmlClassesSet)
     } 
     else {
@@ -106,7 +87,7 @@ function CheckLinkType(blok) {
 }
 
 
-const ButtonSb = ({ blok, buttonContext, ...props }) => {
+const LinkSb = ({ blok, buttonContext, ...props }) => {
   
   const type = CheckLinkType(blok)
   if (type === "no_link_type_error") {
@@ -114,7 +95,8 @@ const ButtonSb = ({ blok, buttonContext, ...props }) => {
   }
 
   const linkProps = { 
-    link_type: type
+    link_type: type,
+    onClick: props.onClick,
   }
   const variant = blok.variant
   
@@ -135,16 +117,17 @@ const ButtonSb = ({ blok, buttonContext, ...props }) => {
       </ArrowLink>
     )
   }
+  // debugger
   
   const buttonStyle = `${variant}` 
   return(
     <AnchorLink className={`${htmlClasses}`} {...linkProps} >{blok.content}</AnchorLink>
   ) 
 }
-ButtonSb.defaultProps = {
+LinkSb.defaultProps = {
   
 }
 
-export { ButtonSb }
+export { LinkSb }
 
 
