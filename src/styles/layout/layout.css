@@ -289,6 +289,16 @@ nav .navbar-brand {
           box-shadow: inset rgba(var(--bs-dark-rgb), 0.1) 0.3rem 0.3rem 0.5rem, inset rgba(255, 255, 255, 0.1) -0.3rem -0.3rem 1rem, white -0.1rem -0.1rem 0.2rem, rgba(0, 0, 0, 0.4) 0 0.1rem 0.2rem 0.05rem, rgba(0, 0, 0, 0.1) 0.1rem 0.1rem 0.75rem 0;
 }
 
+.btn-close {
+  opacity: 1;
+  color: inherit;
+}
+
+.modal-content.custom .modal-header {
+  padding-bottom: 0;
+  border-bottom-width: 0;
+}
+
 .img-blurred {
   -webkit-filter: blur(10px);
           filter: blur(10px);
@@ -392,7 +402,7 @@ a.color-shine {
   width: -moz-fit-content;
   width: fit-content;
   font-weight: 500;
-  margin-left: auto;
+  margin-bottom: 0.5rem;
   color: inherit;
   text-decoration: none;
 }
@@ -412,8 +422,28 @@ a.color-shine {
   position: relative;
 }
 
+.modal-body {
+  min-height: 50vh;
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-body {
+    padding: 3rem;
+  }
+}
+
 .modal.fade.show {
   display: block;
+}
+
+a {
+  cursor: pointer;
 }
 
 /*

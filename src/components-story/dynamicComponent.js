@@ -16,7 +16,8 @@ import * as Carousel from './layout-story/carousel'
 import * as LayoutContainers from './layout-story/various-containers'
 import { ColumnsGridSb, ColumnSb } from './layout-story/column-grid'
 
-import { ButtonSb } from './buttons--story'
+import { LinkSb } from './links/links--story'
+import { ModalSb } from './modal-sb'
 
 import { ImageSb, ImageBlokSb } from './images'
 import GoogleMap from './google-map'
@@ -57,13 +58,14 @@ const Components = {
   'rich_text_blok': TextBloks.RichTextBlok,
 
   
-  'button': ButtonSb,
+  'link-blok': LinkSb,
+  'modal': ModalSb,
 
   // IMAGES
   'image-blok': ImageSb, // ???
   'image_blok': ImageBlokSb,
 
-  google_map: GoogleMap,
+  'google_map': GoogleMap,
   
 }
 

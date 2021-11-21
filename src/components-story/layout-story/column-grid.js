@@ -32,7 +32,7 @@ const ColumnSb = ({ blok, columnContext, ...props }) => {
   
   const columnSizes = {
     3: "col-12 col-md-6 col-lg-3",
-    4: "col-12 col-lg-4",
+    4: "col-12 col-lg-4 col-md-6",
     6: "col-12 col-lg-6",
   }
 

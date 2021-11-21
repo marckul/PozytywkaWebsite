@@ -37,6 +37,9 @@ function PrepareHrefBlok(blok, link_type) {
   else if (link_type === "anchor") {
     HREF = `#${Slugify(blok.anchor)}`
   }
+  else if (link_type === "modal-link") {
+    HREF = ''
+  }
   return HREF
 }
 
