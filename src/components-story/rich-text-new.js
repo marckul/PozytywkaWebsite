@@ -21,7 +21,6 @@ import { ImageSb } from './images'
 ============================= */
 
 const LinkNode = (children, props) => {
-  // debugger
   const HREF = PrepareHref(props, props.linktype);
 
   return <AnchorLink  to={HREF} link_type={props.linktype} target={props.target}>{children}</AnchorLink>
@@ -41,21 +40,6 @@ const BlockQuote = (children) => {
 
 const ImageNode = (children, props) => {
 
-  // // image:
-  // //   alt: ""
-  // //   copyright: ""
-  // //   fieldtype: "asset"
-  // //   filename: "https://a.storyblok.com/f/130598/1440x961/a441bc0ff8/dziewczynka-na-plazy.jpg"
-  // //   focus: null
-  // //   id: 3054416
-  // //   name: ""
-  // //   title: ""
-
-  // debugger
-  // return(
-  //   ImageSb
-  // )
-
   const filename = props.src
   const fluidProps = getFluidGatsbyImage(filename, {
     base64Width: 40,
@@ -74,8 +58,6 @@ const ImageNode = (children, props) => {
 }
 
 const Paragraph = (children) => {
-  // let children = RichTextResolver(nodes, props)
-  // debugger
 
   if (typeof children === "undefined" || children === null) {
     children = [<span>{'\u00A0'}</span>] // to make empty parahgraph
@@ -172,22 +154,6 @@ const ArticleFloatImage = (children, props) => {
       alt: props.alt,
     }
   }
-  // debugger
-  // image:
-  //   alt: ""
-  //   copyright: ""
-  //   fieldtype: "asset"
-  //   filename: "https://a.storyblok.com/f/130598/1440x961/a441bc0ff8/dziewczynka-na-plazy.jpg"
-  //   focus: null
-  //   id: 3054416
-  //   name: ""
-  //   title: ""
-
-  // debugger
-  // return(
-  //   ImageSb
-  // )
-
 
   // TODO: MAKING FIGURE WITH CAPTION IF THERE IS NOT EMPTY TITLE 
   const floatSide = imageCounter % 2 === 0 ? "float-right" : "float-left"

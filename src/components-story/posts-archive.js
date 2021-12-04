@@ -86,8 +86,6 @@ function GetPostIntercept(text) {
   if (lastSign === ".") {
     firstWords[lastWordIdx] = lastWord.slice(0,lastWord.length - 1)
   }
-
-  // debugger
   
   // if (lastWord)
   return firstWords.join(" ")    
@@ -120,9 +118,7 @@ const PostsArchive = () => {
   
   const nodes2sort = []
   for (let i = 0; i < nodes.length; i++) {
-
     const story = nodes[i];
-    // debugger
 
     const content = JSON.parse(story.content)
     const publish_date = GetPublishDate(story, content)

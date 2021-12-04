@@ -64,8 +64,6 @@ const OfferCard = ({ blok, ...props }) => {
   const topNote = blok.top_note
   const bottomNote = blok.bottom_note
 
-  // debugger
-
   let modal_components = []
   const ModalContent = []
   if (blok.modal_body && blok?.modal_body?.length > 0) { // && blok.modal_body?.length > 0

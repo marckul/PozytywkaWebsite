@@ -59,7 +59,6 @@ const IndexPage = ({location}) => {
   )
   const story = useStoryblok(storyblokEntry, location);
   const seoData = GetSEO(story)
-  debugger
 
   return(
     <Layout header="transparent-dark">

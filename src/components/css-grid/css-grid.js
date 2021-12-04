@@ -33,7 +33,6 @@ const Column = React.forwardRef(
     }
   }
 
-  // debugger;
   const style = {
     "--grid-column-position": position
   }

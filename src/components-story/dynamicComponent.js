@@ -77,7 +77,6 @@ const Components = {
  * @param {*} props.blok 
  */
 const DynamicComponent = ({ blok, ComponentsRegister, ...props }) => {
-  // debugger
   let Component = null
 
   if (typeof ComponentsRegister[blok.component] !== 'undefined') {

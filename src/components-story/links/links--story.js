@@ -57,7 +57,6 @@ const ResolveStylesClasses = (blok) => {
 
 
 function CheckLinkType0(blok) {
-  // debugger
   let type = ""
   if (IsNotEmpty(blok.phone_number)) {
     type = "phone-number"
@@ -117,7 +116,6 @@ const LinkSb = ({ blok, buttonContext, ...props }) => {
       </ArrowLink>
     )
   }
-  // debugger
   
   const buttonStyle = `${variant}` 
   return(

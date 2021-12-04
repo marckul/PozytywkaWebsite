@@ -37,7 +37,6 @@ const PageTemplate = ({data, location}) => {
   let hasHeroImageArea = false
   let headerVariant = `light`
   
-  // debugger
   let components = <NoContentAlert/>;
   if (story.content.body && story.content.body.length > 0) {
     components = story.content.body.map( blok =>  {
