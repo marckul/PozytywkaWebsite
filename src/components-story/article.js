@@ -52,7 +52,6 @@ Figure.defaultProps = {
 
 
 function IsNotEmptyField(filed) {
-  // debugger;
   if (filed === null || filed === undefined || filed === "") {
     return false    
   } 
@@ -76,7 +75,6 @@ function Header({ blok, context, ...props }) {
     FigureContent = <Figure blok={blok} />
   }
 
-  // debugger
   let DateString
   if (IsNotEmptyField(context.publish_date)) {
     const publish_date = context.publish_date;

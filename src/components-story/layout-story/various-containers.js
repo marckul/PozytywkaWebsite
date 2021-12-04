@@ -87,13 +87,7 @@ const ContainerSb = ({ blok, context, ...props }) => {
       default_container = context.default_container
     }
   }
-  // if (!default_container) {
-  //   default_container = "container"
-  // }
-  // debugger
 
-
-  // debugger
   const components = blok.body.map( blok => (
     <DynamicComponent 
       blok={blok} 
@@ -103,8 +97,6 @@ const ContainerSb = ({ blok, context, ...props }) => {
     />
   ))
 
-  // debugger
-  
   return(
     <div className={`${default_container} py-5`} >{components}</div>
   )    

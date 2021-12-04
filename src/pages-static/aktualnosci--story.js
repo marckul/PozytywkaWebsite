@@ -73,7 +73,6 @@ const ImageResizing = (imgSource, size, smartCropping) => {
     return newImgSource
   }
   return ""
-  // debugger
 }
 /**
  * 
@@ -92,10 +91,6 @@ function GetPostIntercept(text) {
   if (lastSign === ".") {
     firstWords[lastWordIdx] = lastWord.slice(0,lastWord.length - 1)
   }
-
-  // debugger
-  
-  // if (lastWord)
   return firstWords.join(" ")    
 }
 
@@ -121,7 +116,6 @@ const NewsPage = ({data}) => {
         fullSlug = `/${fullSlug}`
       }
 
-      // debugger    
       const intercept = GetPostIntercept(articleHeader.intro)
 
       return(

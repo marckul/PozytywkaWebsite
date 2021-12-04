@@ -28,13 +28,6 @@ function GetPublishDate(post, content) {
     publish_date = post.created_at
   }
   
-  // story.content = story.content
-  // post.full_slug = post.full_slug
-
-
-  // if (story.slug === "post-czwarty") {
-  //   debugger
-  // }
   return publish_date
 }
 

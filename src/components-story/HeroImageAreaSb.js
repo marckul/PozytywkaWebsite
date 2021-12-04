@@ -29,9 +29,7 @@ const HeroImageAreaSb = ({ blok, ...props }) => {
   if (blok.shadow_color) {
     textShadowRGB = HexToRgbStr(blok.shadow_color.color)
   }
-  
 
-  // debugger
   const components = blok.body.map( blok => (
     <DynamicComponent 
       blok={blok} 

@@ -15,7 +15,6 @@ const HeaderRichText = new RichTextRender({nodeResolvers})
 
 
 const H1 = (props) => {
-  // debugger
   return(
     <h1 {...props} />
   )
@@ -58,8 +57,6 @@ const TextHeader = ({ blok, context, rootTag, ...props }) => {
   else if (blok.header_type) {    
     Header = TitlesRegister[blok.header_type];
   }
-  // debugger
-  // console.log(Header);
   
   return(
     <Header> {/* className="py-4" */}

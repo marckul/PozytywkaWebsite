@@ -32,6 +32,7 @@ exports.createPages = async function ({ actions, graphql }) {
       allStoryblokEntry {
         nodes {
           content
+          path
           full_slug
           slug
           is_startpage
@@ -56,26 +57,22 @@ exports.createPages = async function ({ actions, graphql }) {
       
       
       console.log(`FULL SLUG: ${story.full_slug}`);
-      
+      console.log(`REAL PATH: ${story.path} ${StringTools.IsNotEmpty(story.path)}` );
+      const path = StringTools.IsNotEmpty(story.path) ? story.path : story.full_slug;
       // const slug = story.slug
       // const fullSlug = story.full_slug
       // const rootPath = StringTools.RootPath(fullSlug)
       // console.log(`ROOT PATH: ${rootPath}`);
 
       actions.createPage({
-        path: story.full_slug,
+        path: path, // story.full_slug
         component: templateFullPath,
         context: { 
           slug: story.slug,
-          fullSlug: story.full_slug
+          fullSlug: story.full_slug,
         },
       })
-      
     }
-    
-
-
-
   })
 
 }

@@ -57,9 +57,10 @@ const Footer = () => {
               <p>odt.pozytywka@gmail.com</p>
 
               <h6><b>Telefon</b></h6>
-              <Phone tel="543 254 767">543 254 767</Phone>
-              <Phone tel="235 578 673">235 578 673</Phone>
-              <Phone tel="767 423 525">767 423 525</Phone>
+              <i>telefon-rejestracja:</i>
+              <Phone tel="739 025 642">739 025 642</Phone>
+              <i>telefon dla osób korzystających z naszego ośrodka</i>
+              <Phone tel="666 540 156">666 540 156</Phone>
             </Col>
             <CopyrightInfo/>
 

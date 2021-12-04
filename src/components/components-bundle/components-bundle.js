@@ -136,7 +136,6 @@ function Phone({ children, tel, size, className, ...props }) {
     propsSize = size
   }
 
-  // debugger;
   return (
     <a href={`tel:${tel}`} className={`${className} text-nowrap mr-4 d-block`} {...props} >
       {/* link-light */}
@@ -252,7 +251,6 @@ const PostShort2 = ({ title, publishDate, imgSrc, imgAlt, postSlug, children }) 
       )
     }
   }
-  // debugger  
 
   return(
     <div className="col-sm-6 col-md-12">
@@ -324,7 +322,6 @@ function AnchorLink({ to, addRoot, children, linkProps, ...props }) {
   if (to !== "") {
     toHref = to
   }
-  // debugger
   if (addRoot) {
     if (toHref[0] !== "/") {
       toHref = `/${toHref}`

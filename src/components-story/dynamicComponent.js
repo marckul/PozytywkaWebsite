@@ -21,6 +21,7 @@ import { ModalSb } from './modal-sb'
 
 import { ImageSb, ImageBlokSb } from './images'
 import GoogleMap from './google-map'
+import IndexPageContent from './index-page-content'
 
 
 
@@ -66,7 +67,7 @@ const Components = {
   'image_blok': ImageBlokSb,
 
   'google_map': GoogleMap,
-  
+  'all_start_page_content': IndexPageContent, 
 }
 
 
@@ -76,7 +77,6 @@ const Components = {
  * @param {*} props.blok 
  */
 const DynamicComponent = ({ blok, ComponentsRegister, ...props }) => {
-  // debugger
   let Component = null
 
   if (typeof ComponentsRegister[blok.component] !== 'undefined') {
