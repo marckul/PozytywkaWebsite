@@ -10,13 +10,13 @@ const CopyrightInfo = () => (
   <div className="col-12 col-lg-10 col-xl-7 d-flex flex-row justify-content-center">
     <div className="row flex-grow-1  justify-content-center">
       <div className="col-12 col-sm-5" style={{minWidth: "max-content"}}>
-        <p className="text-center text-sm-end ">Copyright © 2021 Pozytywka ODT</p>
+        <p className="text-center text-sm-end ">Copyright © {(new Date).getFullYear()} Pozytywka ODT</p>
       </div>
       <div className="d-none d-sm-block col-1 col-sm-1">
         <p className="text-center"> - </p>
       </div>
       <div className="col-12 col-sm-5">
-        <p className="text-center text-sm-start"> Created by: Marcin Kula</p>
+        <p className="text-center text-sm-start"> Created by Marcin Kula</p>
       </div>
     </div>
   </div>
@@ -63,10 +63,7 @@ const Footer = () => {
               <Phone tel="666 540 156">666 540 156</Phone>
             </Col>
             <CopyrightInfo/>
-
             <div className="col-12">
-              {/* <p className="text-center">Copyright © 2021 Pozytywka ODT &nbsp;&nbsp; - &nbsp;&nbsp; Created by: Marcin Kula</p> */}
-              {/* <p className="d-block smaller text-center ">Created by: Marcin Kula</p> */}
               <p className="text-center"><Link to="/regulamin-strony">Regulamin Strony</Link></p>
             </div>
           </Row>
