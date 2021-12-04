@@ -57,12 +57,9 @@ function SimpleCard({ imgSrc, title, children }) {
       <div className="p-4 ">
         <img src={imgSrc} alt="" className="img-fluid border" />
       </div>
-
-
       <div className="card-body p-4">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{children}</p>
-
       </div>
     </div>
   )
@@ -97,7 +94,7 @@ const IndexPage = ({location}) => {
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
           <p className="lead">Pozytywka została założona 7 lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
-          <div className="row pt-6">
+          <div className="row pt-5">
             <CounterBox 
               counterClassName="h1"
               number={counterNums.years}
