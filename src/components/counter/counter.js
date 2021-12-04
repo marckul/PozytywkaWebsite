@@ -7,8 +7,6 @@ import './counter.css'
 
 const IS_BROWSER = typeof window !== `undefined`;
 
-
-
 class Counter extends React.Component {
   constructor(props) {
     super(props)
@@ -21,7 +19,6 @@ class Counter extends React.Component {
 
     const number = this.props.number // 
     const fullTime = Math.pow(number, .1) + .1 // [s]
-    // const delta = fullTime/Math.pow(this.props.number, 0.5)
     
     const delta = number / (Math.pow(number, .6)+20)
     const interval = fullTime*delta/number
@@ -29,7 +26,6 @@ class Counter extends React.Component {
     this.interval = Math.round(interval*1000)
     this.delta = Math.ceil(delta)
 
-    // this.HandleChange = this.HandleChange.bind(this)
   }
   InitTick() {
     this.IntervalID = setInterval( () => {
@@ -84,10 +80,7 @@ const offset = {
   top: 0,
   bottom: 0
 }
-if (IS_BROWSER) {
-  offset.bottom = window.innerHeight*0.25
-} 
-
+// if (IS_BROWSER) offset.bottom = window.innerHeight*0.25;
 
 const CounterBox = ({number, text, counterClassName}) => {
   const [isVisible, setIsVisible] = React.useState(false)
