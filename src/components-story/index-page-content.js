@@ -46,25 +46,9 @@ function SimpleCard({ imgSrc, title, children }) {
 }
 
 
-const IndexPage = ({location}) => {
-  const { storyblokEntry } = useStaticQuery(
-    graphql`
-      query {
-        storyblokEntry(full_slug: {eq: "start-dontRenderPage"}) {
-          content
-          name
-        }
-      }
-    `
-  )
-  const story = useStoryblok(storyblokEntry, location);
-  const seoData = GetSEO(story)
-  debugger
-
+const IndexPageContent = () => {
   return(
-    <Layout header="transparent-dark">
-      <Seo title={seoData.title} description={seoData.description}/>
-      {/* <Seo title="Start"/> */}
+    <>
       <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
         <h1 className="">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
@@ -153,9 +137,9 @@ const IndexPage = ({location}) => {
             <Link className="d-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
           </div>
         </WavesContainer>
-    </Layout>
+    </>
   )
 }
 
-export default IndexPage
+export default IndexPageContent
 

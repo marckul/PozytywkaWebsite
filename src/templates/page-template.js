@@ -23,14 +23,10 @@ const getPageContext = (story) => {
 }
 
 const PageTemplate = ({data, location}) => { 
-
-  
-
   let story = data.storyblokEntry
   story = useStoryblok(story, location)
 
   const seoData = GetSEO(story)
-  // debugger
 
   const pageContext = getPageContext(story)
   const mainClassNames = story.content.headings_reduction
@@ -45,11 +41,14 @@ const PageTemplate = ({data, location}) => {
   let components = <NoContentAlert/>;
   if (story.content.body && story.content.body.length > 0) {
     components = story.content.body.map( blok =>  {
-      if (blok.component === "hero_image_area") {
+      if (blok.component === 'hero_image_area') {
         hasHeroImageArea = true
         headerVariant = `transparent-${blok.variant}`
       }
-      
+      else if(blok.component === 'all_start_page_content') {
+        hasHeroImageArea = true
+        headerVariant = `transparent-dark`
+      }
       return <DynamicComponent blok={blok} key={blok._uid} context={pageContext}/> 
     })
   } 

@@ -304,6 +304,10 @@ nav .navbar-brand {
           filter: blur(10px);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @-webkit-keyframes color-shine {
   0% {
     background-position: center right;
