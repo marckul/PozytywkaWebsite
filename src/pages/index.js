@@ -63,7 +63,6 @@ const IndexPage = ({location}) => {
   return(
     <Layout header="transparent-dark">
       <Seo title={seoData.title} description={seoData.description}/>
-      {/* <Seo title="Start"/> */}
       <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
         <h1 className="">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
@@ -75,8 +74,7 @@ const IndexPage = ({location}) => {
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
           <p className="lead">Pozytywka została założona 7 lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
-          <div className="row py-5"></div>       
-          <div className="row">
+          <div className="row pt-6">
             <CounterBox 
               counterClassName="h1"
               number={20}
