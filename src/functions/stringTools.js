@@ -23,6 +23,14 @@ const IsNotEmpty = (string) => {
   return  string.replace(/\s/g, '').length !== 0 
 }
 
+/** Checks if string is empty, that means if contains only spaces, tabs, newlines or is undefined
+ * 
+ * @param { string } string 
+ * @returns { boolean } boolean
+ */
+function IsEmpty(string) {
+  return !IsNotEmpty(string)
+}
 
 /** Returns root path of fullPath
  * @param { string } fullPath
@@ -31,9 +39,6 @@ const RootPath = (fullPath) => {
   // const rootPath = fullPath.split("/")[0]
   return fullPath.split("/")[0]
 }
-
-
-
 
 /**
  * 
@@ -165,7 +170,6 @@ function HexToRgb(hex) {
  */
 function HexToRgbStr(hex) {
   const {r, g, b} = HexToRgb(hex)
-  // debugger
   return `${r}, ${g}, ${b}`
 }
 
@@ -182,34 +186,31 @@ function ContainString(string, subString) {
   return stringParts.length > 1    
 }
 
-
-
-// "aktualnosci/post/szablon-artykulu"
-
-
-
 export { 
   ContainsOnlySpaces, 
-  IsNotEmpty, 
   FormatDate, 
-  WordsSentenceCase, 
   GetRelativePath, 
-  Slugify,
   HexToRgb,
   HexToRgbStr,
+  IsEmpty,
+  IsNotEmpty, 
+  Slugify,
+  WordsSentenceCase, 
 }
 
 if (IS_BROWSER) {
   window.StringTools = {
-    RootPath,
     ContainsOnlySpaces, 
-    IsNotEmpty, 
     FormatDate, 
-    WordsSentenceCase, 
     GetRelativePath, 
-    Slugify,
     HexToRgb,
     HexToRgbStr,
+    IsEmpty,
+    IsNotEmpty, 
+    Slugify,
+    WordsSentenceCase, 
+
+    RootPath,
     ContainString,
   }  
 }

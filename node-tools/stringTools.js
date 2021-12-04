@@ -34,6 +34,17 @@ function ContainString(string, subString) {
 }
 
 
+/** Checks if string is not empty, that means if contains something besides spaces, tabs, newlines
+ * @param { string } string 
+ */
+const IsNotEmpty = (string) => {
+  if (typeof string === "undefined" || string === null) {
+    return false    
+  }
+  // https://stackoverflow.com/questions/10261986/how-to-detect-string-which-contains-only-spaces/50971250
+  
+  return  string.replace(/\s/g, '').length !== 0 
+}
 
 
 // "aktualnosci/post/szablon-artykulu"
@@ -41,6 +52,8 @@ function ContainString(string, subString) {
 exports.ContainsOnlySpaces = ContainsOnlySpaces
 exports.RootPath = RootPath
 exports.ContainString = ContainString
+exports.IsNotEmpty = IsNotEmpty
+
 
 if (IS_BROWSER) {
   window.StringTools = {

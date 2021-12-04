@@ -20,12 +20,10 @@ const ImageSb = ({ blok, imageContext, ...props }) => {
    * Dojśc do tego dlaczego w Rich text renderuje się dyży obraz mimo że jset ustawiony średni obraz
    */
   let { maxWidth, imageSize } = imageContext
-  // debugger
 
   if (typeof maxWidth === "undefined") {
     maxWidth = allImageSizes[imageSize]
   }
-  // debugger
 
   const fluidProps = getFluidGatsbyImage(blok.image.filename, {
     base64Width: 40,
@@ -34,10 +32,6 @@ const ImageSb = ({ blok, imageContext, ...props }) => {
     maxWidth: maxWidth,
     width: maxWidth,
   })
-
-  // debugger
-
-  console.log("fluidProps", fluidProps);
   
   return (
     <Img 
@@ -60,8 +54,6 @@ const ImageStatic = ({ blok }) => {
   const fluidProps = getFluidGatsbyImage(blok.image.filename, {
     base64Width: 40,
   })
-
-  // debugger
   
   return (
     <Img 

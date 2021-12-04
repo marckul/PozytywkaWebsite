@@ -26,7 +26,6 @@ const Heading = ({ node: nodes, ...props }) => {
 }
 
 const Paragraph = ({ node: nodes, ...props }) => {
-  // console.log("Paragraph nodes", nodes);
   let components = RichTextResolver(nodes, props)
   if (components.length === 0) {
     components = [<span>{'\u00A0'}</span>] // to make empty parahgraph
@@ -37,14 +36,12 @@ const Paragraph = ({ node: nodes, ...props }) => {
 }
 
 const OrderedList = ({ node: nodes, ...props }) => {
-  // debugger
   let components = RichTextResolver(nodes, props)
   return(
     <ol>{components}</ol>
   )    
 }
 const BulletList = ({ node: nodes, ...props }) => {
-  // debugger
   let components = RichTextResolver(nodes, props)
   return(
     <ul>{components}</ul>
@@ -52,22 +49,18 @@ const BulletList = ({ node: nodes, ...props }) => {
 }
 
 const ListItem = ({ node: nodes, ...props }) => {
-  // debugger
   let components = RichTextResolver(nodes, props)
   return(
     <li>{components}</li>
   )    
 }
 const HardBreak = ({ node: nodes, ...props }) => {
-  // debugger
-  // let components = NodesResolver(nodes, props)
   return(
     <br/>
   )    
 }
 
 const BlockQuote = ({ node: nodes, ...props }) => {
-  // debugger
   let components = RichTextResolver(nodes, props)
   return(
     <blockquote class="blockquote">
@@ -92,7 +85,6 @@ const Image = ({node, innerContent, mark}) => {
 
 const CodeBlock = ({ node: nodes, ...props }) => {
   let components = RichTextResolver(nodes, props)
-  // debugger
   
   return( <pre><code> {components} </code></pre> )    
 }
@@ -101,24 +93,9 @@ const CodeBlock = ({ node: nodes, ...props }) => {
  * @param {*} param0 
  */
 const Blok = ({ node: nodes, ...props }) => {
-  let components = RichTextResolver(nodes, props)
-  debugger
-  
+  let components = RichTextResolver(nodes, props)  
   return( <pre><code> {components} </code></pre> )    
 }
-
-
-
-
-// const CodeBlock = ({node, innerContent, mark}) => {
-//   // debugger
-//   return <pre> <code>{innerContent}</code> </pre>
-// }
-
-
-
-
-
 
 /* NODES
   blockquote: t=>({tag:"blockquote"})
@@ -152,7 +129,6 @@ const Nodes = {
  * @param {*} props.node 
  */
 const DynamicNode = ({ node, NodesRegister, ...props }) => {
-  // debugger
   let Node = null
 
   if (typeof NodesRegister[node.type] !== 'undefined') {
@@ -211,8 +187,6 @@ const ReactRichText = ({ data, ...props }) => {
 function RichTextResolver(nodes, props) {
   let idx = 0
   let components = null
-
-  debugger
 
   if (typeof nodes.content !== "undefined") {
     components = nodes.content.map(node => {

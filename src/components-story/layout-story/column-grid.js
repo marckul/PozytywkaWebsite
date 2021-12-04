@@ -70,13 +70,11 @@ ColumnSb.propTypes = {
 
 
 const ColumnsGridSb = ({ blok, ...props }) => {
-  // debugger
 
   const columnContext = {
     colWidthLg: 4,
     columnsNumber: blok.body.length
   }
-  // debugger
   if (blok.column_width_lg) {
     columnContext.colWidthLg = blok.column_width_lg    
   }

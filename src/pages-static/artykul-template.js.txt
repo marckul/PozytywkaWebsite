@@ -36,9 +36,7 @@ const ArticleTemplate = ({data, location}) => {
   let story = data.storyblokEntry
   story = useStoryblok(story, location)
   
-  
   const allDynamicComponents = story.content.article_content.map( blok =>  {
-    // debugger;
     return (
       <DynamicComponent blok={blok} key={blok._uid} />
     )

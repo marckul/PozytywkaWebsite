@@ -137,7 +137,6 @@ class CenteredContent0 extends React.Component {
     const ChildTag = this.props.childTag
 
     console.log(ParentTag);
-    // debugger;
 
     return(
       <ParentTag ref={this.refsParent} className="centered-content some-class">
@@ -366,7 +365,6 @@ class RatioContent extends React.Component {
     
     this.printLogs("ratio", ratio);
 
-    // debugger
     const childStyle = getComputedStyle(this.refsChild.current);
     // this.printLogs("childStyle", childStyle);
     

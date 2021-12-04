@@ -44,7 +44,6 @@ const ModalSb = ({ blok, ...props }) => {
       </>
     )
   }
-  // debugger
   blok.link_type = 'modal-link'
 
   return(

@@ -1,24 +1,9 @@
 
 
 import { useStaticQuery, graphql } from 'gatsby'
-import { IsNotEmpty } from '../../functions/stringTools'
-
-
-/* 
-Pozytywka ODT - Diagnoza i Terapia autyzmu
-*/
-
-/** Checks if string is empty, that means if contains only spaces, tabs, newlines or is undefined
- * 
- * @param { string } string 
- * @returns { boolean } boolean
- */
-function IsEmpty(string) {
-  return !IsNotEmpty(string)
-}
+import { IsEmpty, IsNotEmpty } from '../../functions/stringTools'
 
 function GetSEO(story) {
-  // debugger
   let seo_metadata = story?.content?.seo_metadata
   if (!seo_metadata) {
     seo_metadata = {}    
@@ -33,7 +18,7 @@ function GetSEO(story) {
           author
         }
       }
-      storyblokEntry(full_slug: {eq: "start"}) {
+      storyblokEntry(full_slug: {eq: "start-dontRenderPage"}) {
         content
         name
       }
@@ -46,7 +31,7 @@ function GetSEO(story) {
   }
 
   /* make title template for pages without metadata title */
-  if (IsEmpty(seo_metadata?.title)) {
+  if (story && IsEmpty(seo_metadata?.title)) {
     seo_metadata.title = `${story.name} - ${site.siteMetadata.title}`
   }
 
@@ -54,7 +39,6 @@ function GetSEO(story) {
     
     for (const key in fallback) {
       if (Object.hasOwnProperty.call(fallback, key)) {
-        // debugger
 
         const emptyMetadata = IsEmpty(seo_metadata[key])
         if ( emptyMetadata && IsNotEmpty(fallback[key])) {
@@ -71,19 +55,7 @@ function GetSEO(story) {
     seo_metadata.description = site.siteMetadata.description
   }
   
-  // debugger
-
-  
-  
-  // const query = useStaticQuery(graphql`
-  //   query SEOQuery {
-  //     storyblokEntry(full_slug: {eq: "start"}) {
-  //       content
-  //       name
-  //     }
-  //   }
-  // `)
-return seo_metadata
+  return seo_metadata
 }
 
 
