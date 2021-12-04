@@ -26,7 +26,30 @@ import szkolenia from '../assets/images/start-offer-section/light-bulb--producti
 
 import "../styles/labor/labor.css"
 
+const counterUpdate = () => {
+  /* Approximations -> 10 months of work (without holidays)
+    Saz 40/w * 10/12 = 188/m * 10/12 = 133
+    Diag 4/ w = 16 /m * 10/12 = 14
+  */
+  const sazPerMonth = 133;
+  const diagPerMonth = 14;
+  const secPerMonth = 86400*30.5;
+  const start = new Date(2021, 10, 4);
+  const now = new Date();
+  const diffMonth = (now - start)/1000/secPerMonth;
+  
+  const numbers = {
+    years: 20 + diffMonth/12,
+    saz: 7413 + sazPerMonth*diffMonth,
+    diagnosis: 323 + diagPerMonth*diffMonth,
+  };
+  for (const key in numbers) {
+    numbers[key] = Math.floor(numbers[key]);
+  };
+  return numbers;
+}
 
+const counterNums = counterUpdate();
 
 function SimpleCard({ imgSrc, title, children }) {
   return (
@@ -34,12 +57,9 @@ function SimpleCard({ imgSrc, title, children }) {
       <div className="p-4 ">
         <img src={imgSrc} alt="" className="img-fluid border" />
       </div>
-
-
       <div className="card-body p-4">
         <h5 className="card-title">{title}</h5>
         <p className="card-text">{children}</p>
-
       </div>
     </div>
   )
@@ -63,7 +83,6 @@ const IndexPage = ({location}) => {
   return(
     <Layout header="transparent-dark">
       <Seo title={seoData.title} description={seoData.description}/>
-      {/* <Seo title="Start"/> */}
       <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
         <h1 className="">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
@@ -75,21 +94,20 @@ const IndexPage = ({location}) => {
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
           <p className="lead">Pozytywka została założona 7 lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
-          <div className="row py-5"></div>       
-          <div className="row">
+          <div className="row pt-5">
             <CounterBox 
               counterClassName="h1"
-              number={20}
+              number={counterNums.years}
               text={"Lat doświadczenia terapeutów w pracy z osobami w spektrum"}
             />
             <CounterBox
               counterClassName="h1"
-              number={1413}
+              number={counterNums.saz}
               text={"Godzin przeprowadzonej terapii metodą SAZ"}
             />
             <CounterBox
               counterClassName="h1"
-              number={323}
+              number={counterNums.diagnosis}
               text={"Wykonane diagnozy"}
             />
           </div> 
