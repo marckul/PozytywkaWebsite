@@ -26,7 +26,30 @@ import szkolenia from '../assets/images/start-offer-section/light-bulb--producti
 
 import "../styles/labor/labor.css"
 
+const counterUpdate = () => {
+  /* Approximations -> 10 months of work (without holidays)
+    Saz 40/w * 10/12 = 188/m * 10/12 = 133
+    Diag 4/ w = 16 /m * 10/12 = 14
+  */
+  const sazPerMonth = 133;
+  const diagPerMonth = 14;
+  const secPerMonth = 86400*30.5;
+  const start = new Date(2021, 10, 4);
+  const now = new Date();
+  const diffMonth = (now - start)/1000/secPerMonth;
+  
+  const numbers = {
+    years: 20 + diffMonth/12,
+    saz: 7413 + sazPerMonth*diffMonth,
+    diagnosis: 323 + diagPerMonth*diffMonth,
+  };
+  for (const key in numbers) {
+    numbers[key] = Math.floor(numbers[key]);
+  };
+  return numbers;
+}
 
+const counterNums = counterUpdate();
 
 function SimpleCard({ imgSrc, title, children }) {
   return (
@@ -77,17 +100,17 @@ const IndexPage = ({location}) => {
           <div className="row pt-6">
             <CounterBox 
               counterClassName="h1"
-              number={20}
+              number={counterNums.years}
               text={"Lat doświadczenia terapeutów w pracy z osobami w spektrum"}
             />
             <CounterBox
               counterClassName="h1"
-              number={1413}
+              number={counterNums.saz}
               text={"Godzin przeprowadzonej terapii metodą SAZ"}
             />
             <CounterBox
               counterClassName="h1"
-              number={323}
+              number={counterNums.diagnosis}
               text={"Wykonane diagnozy"}
             />
           </div> 
