@@ -122,12 +122,6 @@ Container.defaultProps = {
   paddingY: "medium"
 }
 
-// Container.propTypes = {
-//   paddingY: PropTypes.oneOf(["small", "medium", "big"]),
-// }
-
-
-
 function Phone({ children, tel, size, className, ...props }) {
   let propsSize = ""
   if (size === undefined) {
