@@ -92,7 +92,9 @@ const Navigation = ({className, variant, ...props}) => {
             <NavLink className="nav-link" to="/aktualnosci">Aktualności</NavLink>
           </Nav>
           <Nav>
-          <Link className={`btn btn-${button}`} to="/kontakt#rejestracja" role="button">Rejestracja</Link>
+          <div className="btn-block">
+            <Link className={`btn btn-${button}`} to="/kontakt#rejestracja" role="button">Rejestracja</Link>
+          </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
