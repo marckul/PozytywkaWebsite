@@ -98,15 +98,17 @@ const IndexPageContent = () => {
               <img src={`${spacerWGorach}`} alt="" className=""/>
             </Grid.Column>
             <Grid.Column position="left">
-              <h3>W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do zaoferowania światu</h3>
-              <p className="lead">
-                Wiemy, że w każdym napotykanym przez nas dziecku tkwi potencjał. 
-              </p>
-              <p className="lead">
-                Pomóż nam go odnaleźć. 
-              </p>
-              <p>Umów się na konsultacje lub na diagnozę</p>
-              <Link className="btn btn-dark" to="/kontakt">Zarejestruj się</Link>
+              <div>
+                <h3>W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do zaoferowania światu</h3>
+                <p className="lead">
+                  Wiemy, że w każdym napotykanym przez nas dziecku tkwi potencjał. 
+                </p>
+                <p className="lead">
+                  Pomóż nam go odnaleźć. 
+                </p>
+                <p>Umów się na konsultacje lub na diagnozę</p>
+                <Link className="btn btn-dark" to="/kontakt">Zarejestruj się</Link>
+              </div>
             </Grid.Column>
           </Grid.Row>
         </div>
@@ -134,7 +136,9 @@ const IndexPageContent = () => {
                 Oferujemy pomoc dla nauczycieli, którzy chcą lepiej zrozumieć swoich uczniów z trudnościami neurorozwojowymi.
               </CircleImgCard>
             </div>
-            <Link className="d-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
+            <div>
+              <Link className="d-block btn-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
+            </div>
           </div>
         </WavesContainer>
     </>

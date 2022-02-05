@@ -38,7 +38,7 @@ const ResolveStylesClasses = (blok) => {
     stretched_link: "",
   }
 
-  const classesArray = []
+  const classesArray = ['btn-block'];
   for (const key in ClassesProps) {
     if (Object.hasOwnProperty.call(blok, key)) {
       const htmlClassesSet = blok[key];

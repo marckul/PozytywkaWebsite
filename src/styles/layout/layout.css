@@ -60,12 +60,6 @@ main {
   min-height: 100vh;
 }
 
-.btn {
-  max-width: -webkit-fit-content;
-  max-width: -moz-fit-content;
-  max-width: fit-content;
-}
-
 .btn-outline-light:not(:hover) {
   color: #f8f9fa !important;
 }
@@ -200,10 +194,16 @@ nav .navbar-brand {
           justify-content: center;
 }
 
-.btn {
+.btn-block {
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.btn {
   font-size: 1em;
 }
 
