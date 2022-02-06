@@ -10,11 +10,9 @@ import { LinkSb } from './links/links--story'
 
 const ModalSb = ({ blok, ...props }) => {
   // https://stackoverflow.com/questions/53146575/storing-non-state-variables-in-functional-components
-  console.log("CarouselSb");
 
   const [show, setShow] = useState(false);
   const handleModalShow = () => {
-    console.log("Modal");
     setShow(true)
   }
   

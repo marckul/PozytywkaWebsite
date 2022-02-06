@@ -44,7 +44,6 @@ const ImageNode = (children, props) => {
   const fluidProps = getFluidGatsbyImage(filename, {
     base64Width: 40,
   })
-  console.log(fluidProps);
 
   return (
     <Img 
@@ -162,7 +161,6 @@ const ArticleFloatImage = (children, props) => {
   const fluidProps = getFluidGatsbyImage(filename, {
     base64Width: 40,
   })
-  // console.log(fluidProps);
 
   imageCounter++
   return (
@@ -171,18 +169,6 @@ const ArticleFloatImage = (children, props) => {
       className={`${floatSide} lonley-img`}
       imageContext={ {imageSize: "medium"} }
     />
-
-    // <Img 
-    //   fluid={fluidProps} 
-    //   alt={props.alt}
-    //   title={props.title}
-    //   className={`${floatSide} lonley-img`}
-
-    //   durationFadeIn={500} 
-    //   loading="lazy"
-    //   fadeIn={true}
-    //   placeholderClassName="img-blurred"
-    // />
   )
 }
 

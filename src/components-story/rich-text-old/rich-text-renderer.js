@@ -65,8 +65,6 @@ class RichTextResolver {
     if (typeof window !== "undefined") {
       window.richTextResolver = Storyblok.richTextResolver
     }
-
-    console.log("Storyblok.richTextResolver", Storyblok.richTextResolver);
     
 
     this.Storyblok.richTextResolver.renderNode = (tag) => {

@@ -42,8 +42,6 @@ function GetSEO(story) {
 
         const emptyMetadata = IsEmpty(seo_metadata[key])
         if ( emptyMetadata && IsNotEmpty(fallback[key])) {
-          console.log(key);
-          console.log(fallback[key]);
           seo_metadata[key] = fallback[key]
         } 
       }

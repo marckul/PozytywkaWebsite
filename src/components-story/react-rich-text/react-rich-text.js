@@ -16,7 +16,7 @@ const HeadingLevels = {
   5: ({children}) => (<h5>{children}</h5>),
 }
 const Heading = ({ node: nodes, ...props }) => {
-  // console.log("Heading nodes", nodes);
+  // 
   const HX = HeadingLevels[nodes.attrs.level]
 
   let components = RichTextResolver(nodes, props)
@@ -160,7 +160,7 @@ DynamicNode.defaultProps = {
 
 const ReactRichText = ({ data, ...props }) => {
   imageCounter = 1; // reseting image counter
-  console.log("ReactRichText");
+  
 
   const components = RichTextResolver(data, props)
   

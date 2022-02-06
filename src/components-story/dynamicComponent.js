@@ -28,13 +28,6 @@ import IndexPageContent from './index-page-content'
 
 
 
-// const SectionSb = ({ blok }) => {
-//   console.log("HELLO INTERNET! I'M Section ONE");
-//   return(
-//     <h1>HELLO INTERNET! I'M HEDER ONE</h1>
-//   )  
-// }
-
 const Components = {
   'teaser': GoogleMap,
   'article-header': Article.Header,

@@ -26,7 +26,6 @@ const Column = React.forwardRef(
   if (children !== undefined ) {
     if (children.type === "img") {
       className += " img-grid"
-      console.log("I'm image!");    
     }
     else {
       className += " text"

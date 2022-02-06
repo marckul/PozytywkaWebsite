@@ -70,10 +70,12 @@ yarn-error.log
 
 
 # My ignores files
-.*
 
 
 # Exceptions
 # https://stackoverflow.com/questions/2415873/exceptions-in-gitignore
 
 !node_modules/bootstrap/scss/_variables.scss
+
+# src/styles/labor/laboratory-2.css.map
+*.css.map

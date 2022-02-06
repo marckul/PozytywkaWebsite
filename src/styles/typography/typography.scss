@@ -148,7 +148,8 @@ $headers: h1, h2, h3, h4, h5;
     background-image: url("/underline.svg");
     background-position: bottom center;
     background-repeat: no-repeat;
-    background-size: contain;
+    // background-size does not work with 'contain' in Firefox
+    background-size: 100% 100%;
     height: $underline-height;
 
   }

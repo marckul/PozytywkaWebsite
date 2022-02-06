@@ -21,9 +21,6 @@ const Components = {
  * @param { array } props.blok.Body
  */
 const HeroImageAreaSb = ({ blok, ...props }) => {
-  console.log("HeroImageAreaSb");
-
-  // blok
 
   let textShadowRGB
   if (blok.shadow_color) {
