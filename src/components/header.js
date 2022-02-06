@@ -71,7 +71,6 @@ const Navigation = ({className, variant, ...props}) => {
 
   const eventhandler = data => {
     setNavbarCollapsed(!navbarCollapsed)
-    console.log("eventhandler", data)
   }
 
   const stateClass = collapseStates[+navbarCollapsed]
@@ -153,7 +152,6 @@ const HeaderCollapsible = ({ siteTitle, screensOnHide }) => {
         }
         setCurrentPosition(newPosition)
       }
-      console.log("currentPosition", currentPosition);
     } 
   }, [hideOnScroll, currentPosition])
 

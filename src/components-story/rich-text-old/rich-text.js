@@ -40,7 +40,6 @@ function Image(tag) {
   const floatSide = imageCounter % 2 == 0 ? "float-right" :  "float-left"
   imageCounter++
 
-  console.log(imageCounter);
   const attrs = tag.attrs
   return `
     <img alt="${attrs.alt}" src="${attrs.src}" title="${attrs.title}" class="${floatSide} lonley-img" />
@@ -58,7 +57,7 @@ function Paragraph(tag) {
       const attrs = tag.content[0].attrs
 
       const getConsoleLog = () => {
-        console.log("FigureHTML")
+        
       }
 
       const FigureHTML = ReactDOMServer.renderToString(

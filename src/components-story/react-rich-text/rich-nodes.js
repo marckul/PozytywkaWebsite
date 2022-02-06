@@ -59,7 +59,6 @@ const Code = ({node, innerContent, mark}) => {
 // Tomożna rozwinąć tak samo jak DynamicNodes
 const Text = ({ node, ...props }) => {
   // const node = 1
-  console.log("Text nodes", node);
   // debugger
 
   let idx = 0;
@@ -83,25 +82,7 @@ const Text = ({ node, ...props }) => {
         {...props}
       />
     )
-    /*
-    // WERSJA 1
-    node.innerContent = node.text
 
-    const innerContent = [node.text]
-    let idx = 0;
-    for (; idx < node.marks.length; idx++) {
-      const mark = node.marks[idx];
-
-      if (typeof mark === "undefined") {
-        debugger
-      }
-      if (mark === "bold") {
-      }
-      console.log(mark);
-      innerContent.push(MarkContent({node, innerContent: innerContent[idx], mark, idx, ...props})) 
-    }
-    content = innerContent[idx]
-    */ 
 
 
     // WERSJA 2
@@ -121,10 +102,7 @@ const Text = ({ node, ...props }) => {
   } else {
     content = node.text
     
-  }
-  console.log(content);
-
-  
+  }  
 
   return(content)    
 }
@@ -164,7 +142,6 @@ const Marks = {
  */
 function DynamicMark({ node, mark, MarksRegister, ...props }) {
   let Node = null
-  // console.log("@@@@@ DynamicMark \n", mark);
   if (typeof MarksRegister[mark.type] !== 'undefined') {
     Node = MarksRegister[mark.type]
   }

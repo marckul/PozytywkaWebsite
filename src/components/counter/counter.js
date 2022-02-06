@@ -34,7 +34,6 @@ class Counter extends React.Component {
     
   }
   Tick() {
-    console.log("I'M TURN ON")
     const delta = this.delta
     const counter = this.state.counter
     let newCounter = counter + delta
@@ -58,10 +57,6 @@ class Counter extends React.Component {
   }
   componentWillUnmount() {
     clearInterval(this.IntervalID)
-
-  }
-  HandleChange(e) {
-    console.log("HandleChange");
   }
 
   render() {

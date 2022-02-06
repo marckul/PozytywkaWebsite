@@ -49,8 +49,6 @@ const StyledCookieConsent = (params) => (
   </div>
 )
 
-// console.log("$$$$$ underline", underline);
-
 /**
  * 
  * @param {*} props

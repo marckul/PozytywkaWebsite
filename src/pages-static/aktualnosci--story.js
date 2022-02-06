@@ -102,9 +102,7 @@ const NewsPage = ({data}) => {
     
     const content = JSON.parse(story.content)
     
-    console.log(content.article_content);
     const articleHeader = GetComponentByName(content.article_content, "article-header")
-    console.log(articleHeader);
 
     if (typeof articleHeader !== "undefined") {
       const imageFilename = ImageResizing(articleHeader.image.filename, [400, 400], true)

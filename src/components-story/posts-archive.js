@@ -151,10 +151,7 @@ const PostsArchive = () => {
     
 
     if (content.article_content) {
-      console.log(content.article_content);
-      const articleHeader = GetComponentByName(content.article_content, "article-header")
-      console.log(articleHeader);
-  
+      const articleHeader = GetComponentByName(content.article_content, "article-header")  
       if (typeof articleHeader !== "undefined") {
         imageFilename = ImageResizing(articleHeader.image.filename, [400, 400], true)
         publishDate = StringTools.FormatDate(node.publish_date)
