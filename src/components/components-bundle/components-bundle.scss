@@ -229,19 +229,19 @@ $screen-size-lg: map-get($grid-breakpoints, lg);
   $dist2: $dist + 1px;
   $dist3: -#{$dist};
   $result: 
-    // inset  $dist $dist 0 rgba($color-primary-dark, 0.05),
     inset  $dist2 $dist2 5px white,
-    inset  $dist3 $dist3 0 rgba($color-primary-dark, 0.15),
+    // inset  $dist3 $dist3 100px rgba($color-primary-dark, 0.05),
   ;
   @return $result;
 }
 
 .shadow-z2-md--card {
+  border: none !important;
   // https://codepen.io/sdthornton/pen/wBZdXq
   box-shadow: 
     shadow-z2-md-inset(),
-    0 10px 28px rgba($color-darker,0.2), 
-    0 5px 10px 1px rgba($color-darker,0.3);
+    0 .5rem 1rem rgba($color-darker, 0.2), 
+    0 .05rem .25rem rgba($color-darker, 0.3);
 }
 
 
