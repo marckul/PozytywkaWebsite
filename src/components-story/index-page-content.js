@@ -1,13 +1,6 @@
 import * as React from "react"
 
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { StaticImage } from "gatsby-plugin-image"
-import useStoryblok from '../../lib/storyblok'
-
-
-import Seo from "../components/seo"
-import { GetSEO } from '../components-story/SEO/seo'
-import Layout from "../components/layout"
+import { Link } from 'gatsby'
 
 import { HeroImageArea, Container, BgGradient, WavesContainer } from '../components/components-bundle/components-bundle'
 import { CounterBox } from '../components/counter/counter'
@@ -28,9 +21,9 @@ import "../styles/labor/labor.css"
 
 const counterUpdate = () => {
   // Approximations -> 10 months of work (without holidays)
-  // Saz 40/w * 4 * 10/12 = 133/m
-  // Diag 4/w = 16 /m * 10/12 = 14/m
-  const sazPerMonth = 133;
+    // Saz 40/w * 4 * 10/12 = 133/m
+    // Diag 4/w = 16 /m * 10/12 = 14/m
+    const sazPerMonth = 133;
   const diagPerMonth = 14;
   const secPerMonth = 86400 * 30.5;
 
@@ -55,24 +48,6 @@ const counterUpdate = () => {
 };
 
 const counterNums = counterUpdate();
-
-function SimpleCard({ imgSrc, title, children }) {
-  return (
-    <div className="card shadow-z1-md" style={{ maxWidth: "20rem" }}>
-      <div className="p-4 ">
-        <img src={imgSrc} alt="" className="img-fluid border" />
-      </div>
-
-
-      <div className="card-body p-4">
-        <h5 className="card-title">{title}</h5>
-        <p className="card-text">{children}</p>
-
-      </div>
-    </div>
-  )
-}
-
 
 const IndexPageContent = () => {
   return(
