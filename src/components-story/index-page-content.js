@@ -26,7 +26,35 @@ import szkolenia from '../assets/images/start-offer-section/light-bulb--producti
 
 import "../styles/labor/labor.css"
 
+const counterUpdate = () => {
+  // Approximations -> 10 months of work (without holidays)
+  // Saz 40/w * 4 * 10/12 = 133/m
+  // Diag 4/w = 16 /m * 10/12 = 14/m
+  const sazPerMonth = 133;
+  const diagPerMonth = 14;
+  const secPerMonth = 86400 * 30.5;
 
+  const birthDay = new Date(2014, 8, 0);
+  const start = new Date(2021, 10, 4);
+  const now = Date.now();
+
+  const diffMonth = (now - start) / 1000 / secPerMonth;
+  
+  const numbers = {
+    posYears: new Date((now - birthDay)).getUTCFullYear() - 1970,
+    expYears: 20 + diffMonth/12,
+    saz: 7413 + sazPerMonth*diffMonth,
+    diagnosis: 323 + diagPerMonth*diffMonth,
+  };
+
+  for (const key in numbers) {
+    numbers[key] = Math.floor(numbers[key]);
+  };
+
+  return numbers;
+};
+
+const counterNums = counterUpdate();
 
 function SimpleCard({ imgSrc, title, children }) {
   return (
@@ -59,22 +87,21 @@ const IndexPageContent = () => {
       <BgGradient>
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
-          <p className="lead">Pozytywka została założona 7 lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
-          <div className="row py-5"></div>       
-          <div className="row">
+          <p className="lead">Pozytywka została założona {counterNums.posYears} lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
+          <div className="row py-6">
             <CounterBox 
               counterClassName="h1"
-              number={20}
+              number={counterNums.expYears}
               text={"Lat doświadczenia terapeutów w pracy z osobami w spektrum"}
             />
             <CounterBox
               counterClassName="h1"
-              number={1413}
+              number={counterNums.saz}
               text={"Godzin przeprowadzonej terapii metodą SAZ"}
             />
             <CounterBox
               counterClassName="h1"
-              number={323}
+              number={counterNums.diagnosis}
               text={"Wykonane diagnozy"}
             />
           </div> 
