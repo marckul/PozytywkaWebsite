@@ -60,7 +60,7 @@ class Counter extends React.Component {
   }
 
   render() {
-    return <>{this.state.counter}</>
+    return <>{this.state.counter.toLocaleString()}</>
   }
 }
 
