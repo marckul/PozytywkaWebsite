@@ -79,11 +79,15 @@ const offset = {
 
 const CounterBox = ({number, text, counterClassName}) => {
   const [isVisible, setIsVisible] = React.useState(false)
+  const numLength = number.toLocaleString().length;
 
   return (
     <VisibilitySensor onChange={setIsVisible} offset={offset} >
       <div className={`dynamic-counter-box col-md text-center ${counterClassName}`}>
-        <p className={`number `}>
+        <p
+          className={`number`}
+          style={{minWidth: `${numLength}ch`, maxWidth: '100%'}}
+        >
           <Counter number={number} toTurnOn={isVisible} onChange={isVisible} />
         </p>
         <p className="lead">{text}</p>
