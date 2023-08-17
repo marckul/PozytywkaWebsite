@@ -21,9 +21,9 @@ import "../styles/labor/labor.css"
 
 const counterUpdate = () => {
   // Approximations -> 10 months of work (without holidays)
-    // Saz 40/w * 4 * 10/12 = 133/m
-    // Diag 4/w = 16 /m * 10/12 = 14/m
-    const sazPerMonth = 133;
+  // Saz 40/w * 4 * 10/12 = 133/m
+  // Diag 4/w = 16 /m * 10/12 = 14/m
+  const therapyPerMonth = 133;
   const diagPerMonth = 14;
   const secPerMonth = 86400 * 30.5;
 
@@ -36,7 +36,7 @@ const counterUpdate = () => {
   const numbers = {
     posYears: new Date((now - birthDay)).getUTCFullYear() - 1970,
     expYears: 20 + diffMonth/12,
-    saz: 7413 + sazPerMonth*diffMonth,
+    therapyHrs: 7413 + therapyPerMonth*diffMonth,
     diagnosis: 323 + diagPerMonth*diffMonth,
   };
 
@@ -71,8 +71,8 @@ const IndexPageContent = () => {
             />
             <CounterBox
               counterClassName="h1"
-              number={counterNums.saz}
-              text={"Godzin przeprowadzonej terapii metodą SAZ"}
+              number={counterNums.therapyHrs}
+              text={"Godzin przeprowadzonej terapii"}
             />
             <CounterBox
               counterClassName="h1"
