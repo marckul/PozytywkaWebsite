@@ -53,16 +53,23 @@ const IndexPageContent = () => {
   return(
     <>
       <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
-        <h1 className="">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
+        <h1 className="h1">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
-          Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat w wyjątkowy sposób. 
+          Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej 
+          neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat 
+          w wyjątkowy sposób. 
         </p>
-        <Link to="#nasze-doswiadczenie" className="btn btn-outline-light">Zobacz więcej</Link>
+        <Link to="#nasze-doswiadczenie" className="btn btn-outline-light">
+          Zobacz więcej
+        </Link>
       </HeroImageArea>
       <BgGradient>
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
-          <p className="lead">Pozytywka została założona {counterNums.posYears} lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
+          <p className="lead">Pozytywka została założona {counterNums.posYears} 
+            lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak 
+            nasze doświadczenie sięga o wiele dalej
+          </p>
           <div className="row py-6">
             <CounterBox 
               counterClassName="h1"
@@ -89,7 +96,14 @@ const IndexPageContent = () => {
             </Grid.Column>
             <Grid.Column position="right">
               <RatioContent childComponent={Grid.Quotation} debugMode={false}>
-                <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
+                <span>
+                  Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce 
+                  nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie 
+                  osiągnąć sukces, niezbędna może okazać się konieczność 
+                  odłączenia od świata, od domeny praktycznej, przemyślenia 
+                  konkretnej koncepcji i wykazania się oryginalnością, by móc 
+                  stworzyć coś nowego
+                </span>
               </RatioContent>
             </Grid.Column>
           </Grid.Row>
@@ -100,7 +114,10 @@ const IndexPageContent = () => {
             </Grid.Column>
             <Grid.Column position="left">
               <div>
-                <h3>W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do zaoferowania światu</h3>
+                <h3>
+                  W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do 
+                  zaoferowania światu
+                </h3>
                 <p className="lead">
                   Wiemy, że w każdym napotykanym przez nas dziecku tkwi potencjał. 
                 </p>
@@ -108,7 +125,9 @@ const IndexPageContent = () => {
                   Pomóż nam go odnaleźć. 
                 </p>
                 <p>Umów się na konsultacje lub na diagnozę</p>
-                <Link className="btn btn-dark" to="/kontakt">Zarejestruj się</Link>
+                <Link className="btn btn-dark" to="/kontakt">
+                  Zarejestruj się
+                </Link>
               </div>
             </Grid.Column>
           </Grid.Row>
@@ -122,23 +141,31 @@ const IndexPageContent = () => {
                 title="Diagnozy"
                 imgSrc={diagnozy} 
               >
-                Oferujemy Państwu nasze wieloletnie doświadczenie i prowadzenie procesu diagnostycznego przez zespół specjalistów.
+                Oferujemy Państwu nasze wieloletnie doświadczenie i prowadzenie 
+                procesu diagnostycznego przez zespół specjalistów.
               </CircleImgCard>
               <CircleImgCard 
                 title="Terapia"
                 imgSrc={terapie} 
               >
-                Prowadzimy spotkania terapeutyczne indywidualne i grupowe, opierające się głównie na metodzie Stosowanej Analizy Zachowania
+                Prowadzimy spotkania terapeutyczne indywidualne i grupowe, 
+                opierające się głównie na metodzie Stosowanej Analizy Zachowania
               </CircleImgCard>
               <CircleImgCard 
                 title="Szkolenia"
                 imgSrc={szkolenia} 
               >
-                Oferujemy pomoc dla nauczycieli, którzy chcą lepiej zrozumieć swoich uczniów z trudnościami neurorozwojowymi.
+                Oferujemy pomoc dla nauczycieli, którzy chcą lepiej zrozumieć 
+                swoich uczniów z trudnościami neurorozwojowymi.
               </CircleImgCard>
             </div>
             <div>
-              <Link className="d-block btn-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
+              <Link 
+                className="d-block btn-block btn btn-outline-dark mx-auto" 
+                to="/oferta"
+              >
+                Zobacz Więcej
+              </Link>
             </div>
           </div>
         </WavesContainer>
@@ -147,4 +174,3 @@ const IndexPageContent = () => {
 }
 
 export default IndexPageContent
-
