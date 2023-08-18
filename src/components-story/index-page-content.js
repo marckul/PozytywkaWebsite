@@ -66,9 +66,9 @@ const IndexPageContent = () => {
       <BgGradient>
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
-          <p className="lead">Pozytywka została założona {counterNums.posYears} 
-            lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak 
-            nasze doświadczenie sięga o wiele dalej
+          <p className="lead">Pozytywka została założona {counterNums.posYears}
+            {' '} lat temu, by wspierać rodziny dzieci w spektrum autyzmu, 
+            jednak nasze doświadczenie sięga o wiele dalej
           </p>
           <div className="row py-6">
             <CounterBox 
