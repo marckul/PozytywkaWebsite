@@ -79,3 +79,6 @@ yarn-error.log
 
 # src/styles/labor/laboratory-2.css.map
 *.css.map
+
+localhost.pem
+localhost-key.pem

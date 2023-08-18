@@ -1,6 +1,13 @@
 # Local environment
 
+## Node version
 * Current node version that is known to be working with the website is node v15.14.0
+
+## HTTPS
+* Set up use HTTPS follow these instructions:  
+  https://www.storyblok.com/faq/setup-dev-server-https-proxy
+* After intalling local-ssl-proxy to run website with https use  
+  `local-ssl-proxy --source 8080 --target 8000 --cert localhost.pem --key localhost-key.pem`
 
 # Before start
 Project requires change in Bootstrap before start
