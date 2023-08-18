@@ -1,3 +1,6 @@
+# Local environment
+
+* Current node version that is known to be working with the website is node v15.14.0
 
 # Before start
 Project requires change in Bootstrap before start
