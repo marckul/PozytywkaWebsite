@@ -71,7 +71,6 @@ const Navigation = ({className, variant, ...props}) => {
 
   const eventhandler = data => {
     setNavbarCollapsed(!navbarCollapsed)
-    console.log("eventhandler", data)
   }
 
   const stateClass = collapseStates[+navbarCollapsed]
@@ -92,7 +91,9 @@ const Navigation = ({className, variant, ...props}) => {
             <NavLink className="nav-link" to="/aktualnosci">Aktualności</NavLink>
           </Nav>
           <Nav>
-          <Link className={`btn btn-${button}`} to="/kontakt#rejestracja" role="button">Rejestracja</Link>
+          <div className="btn-block">
+            <Link className={`btn btn-${button}`} to="/kontakt#rejestracja" role="button">Rejestracja</Link>
+          </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -151,7 +152,6 @@ const HeaderCollapsible = ({ siteTitle, screensOnHide }) => {
         }
         setCurrentPosition(newPosition)
       }
-      console.log("currentPosition", currentPosition);
     } 
   }, [hideOnScroll, currentPosition])
 

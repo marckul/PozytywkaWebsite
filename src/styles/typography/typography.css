@@ -214,7 +214,7 @@ h1 u::after, h2 u::after, h3 u::after, h4 u::after, h5 u::after, h6 u::after {
   background-image: url("/underline.svg");
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   height: 3rem;
 }
 
@@ -236,7 +236,7 @@ h1 u::after, h2 u::after, h3 u::after, h4 u::after, h5 u::after, h6 u::after {
   background-image: url("/underline.svg");
   background-position: bottom center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   height: 1.5rem;
 }
 

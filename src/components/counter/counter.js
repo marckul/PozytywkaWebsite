@@ -34,7 +34,6 @@ class Counter extends React.Component {
     
   }
   Tick() {
-    console.log("I'M TURN ON")
     const delta = this.delta
     const counter = this.state.counter
     let newCounter = counter + delta
@@ -58,14 +57,10 @@ class Counter extends React.Component {
   }
   componentWillUnmount() {
     clearInterval(this.IntervalID)
-
-  }
-  HandleChange(e) {
-    console.log("HandleChange");
   }
 
   render() {
-    return <>{this.state.counter}</>
+    return <>{this.state.counter.toLocaleString()}</>
   }
 }
 
@@ -84,11 +79,15 @@ const offset = {
 
 const CounterBox = ({number, text, counterClassName}) => {
   const [isVisible, setIsVisible] = React.useState(false)
+  const numLength = number.toLocaleString().length;
 
   return (
     <VisibilitySensor onChange={setIsVisible} offset={offset} >
       <div className={`dynamic-counter-box col-md text-center ${counterClassName}`}>
-        <p className={`number `}>
+        <p
+          className={`number`}
+          style={{minWidth: `${numLength}ch`, maxWidth: '100%'}}
+        >
           <Counter number={number} toTurnOn={isVisible} onChange={isVisible} />
         </p>
         <p className="lead">{text}</p>

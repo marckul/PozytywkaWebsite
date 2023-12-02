@@ -47,8 +47,6 @@ const TitlesRegister = {
 }
 
 const TextHeader = ({ blok, context, rootTag, ...props }) => {
-  // console.log("TextHeader", rootTag);
-
   
   let Header = HeadersRegister[rootTag];
   if (blok.force_header_type) {    

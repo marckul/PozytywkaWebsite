@@ -1,13 +1,6 @@
 import * as React from "react"
 
-import { Link, useStaticQuery, graphql } from 'gatsby'
-import { StaticImage } from "gatsby-plugin-image"
-import useStoryblok from '../../lib/storyblok'
-
-
-import Seo from "../components/seo"
-import { GetSEO } from '../components-story/SEO/seo'
-import Layout from "../components/layout"
+import { Link } from 'gatsby'
 
 import { HeroImageArea, Container, BgGradient, WavesContainer } from '../components/components-bundle/components-bundle'
 import { CounterBox } from '../components/counter/counter'
@@ -26,55 +19,71 @@ import szkolenia from '../assets/images/start-offer-section/light-bulb--producti
 
 import "../styles/labor/labor.css"
 
+const counterUpdate = () => {
+  // Approximations -> 10 months of work (without holidays)
+  // Saz 40/w * 4 * 10/12 = 133/m
+  // Diag 4/w = 16 /m * 10/12 = 14/m
+  const therapyPerMonth = 133;
+  const diagPerMonth = 14;
+  const secPerMonth = 86400 * 30.5;
 
+  const birthDay = new Date(2014, 8, 0);
+  const start = new Date(2021, 10, 4);
+  const now = Date.now();
 
-function SimpleCard({ imgSrc, title, children }) {
-  return (
-    <div className="card shadow-z1-md" style={{ maxWidth: "20rem" }}>
-      <div className="p-4 ">
-        <img src={imgSrc} alt="" className="img-fluid border" />
-      </div>
+  const diffMonth = (now - start) / 1000 / secPerMonth;
+  
+  const numbers = {
+    posYears: new Date((now - birthDay)).getUTCFullYear() - 1970,
+    expYears: 20 + diffMonth/12,
+    therapyHrs: 7413 + therapyPerMonth*diffMonth,
+    diagnosis: 323 + diagPerMonth*diffMonth,
+  };
 
+  for (const key in numbers) {
+    numbers[key] = Math.floor(numbers[key]);
+  };
 
-      <div className="card-body p-4">
-        <h5 className="card-title">{title}</h5>
-        <p className="card-text">{children}</p>
+  return numbers;
+};
 
-      </div>
-    </div>
-  )
-}
-
+const counterNums = counterUpdate();
 
 const IndexPageContent = () => {
   return(
     <>
       <HeroImageArea variant="dark" backgroundImage={boyImg}  textShadow={true}>
-        <h1 className="">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
+        <h1 className="h1">Wsparcie dla dzieci ze spektrum <em>autyzmu</em></h1>
         <p className="lead">
-          Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat w wyjątkowy sposób. 
+          Wierzymy, że spektrum autyzmu jest efektem ewolucyjnej 
+          neuroróżnorodności, dzięki której osoby z autyzmem postrzegają świat 
+          w wyjątkowy sposób. 
         </p>
-        <Link to="#nasze-doswiadczenie" className="btn btn-outline-light">Zobacz więcej</Link>
+        <Link to="#nasze-doswiadczenie" className="btn btn-outline-light">
+          Zobacz więcej
+        </Link>
       </HeroImageArea>
       <BgGradient>
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
-          <p className="lead">Pozytywka została założona 7 lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak nasze doświadczenie sięga o wiele dalej</p>
-          <div className="row py-5"></div>       
-          <div className="row">
+          <p className="lead">Pozytywka została założona {counterNums.posYears}
+            {' '} lat temu, by wspierać rodziny dzieci w spektrum autyzmu, 
+            jednak nasze doświadczenie sięga o wiele dalej
+          </p>
+          <div className="row py-6">
             <CounterBox 
               counterClassName="h1"
-              number={20}
+              number={counterNums.expYears}
               text={"Lat doświadczenia terapeutów w pracy z osobami w spektrum"}
             />
             <CounterBox
               counterClassName="h1"
-              number={1413}
-              text={"Godzin przeprowadzonej terapii metodą SAZ"}
+              number={counterNums.therapyHrs}
+              text={"Godzin przeprowadzonej terapii"}
             />
             <CounterBox
               counterClassName="h1"
-              number={323}
+              number={counterNums.diagnosis}
               text={"Wykonane diagnozy"}
             />
           </div> 
@@ -87,8 +96,10 @@ const IndexPageContent = () => {
             </Grid.Column>
             <Grid.Column position="right">
               <RatioContent childComponent={Grid.Quotation} debugMode={false}>
-                <span>Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie osiągnąć sukces, niezbędna może okazać się konieczność odłączenia od świata, od domeny praktycznej, przemyślenia konkretnej koncepcji i wykazania się oryginalnością, by móc stworzyć coś nowego</span>
-                <span>Hans Asperger</span>
+                <span>
+                  Najciekawsze osoby, jakie znajdziesz, to te, które nie mieszczą się w przeciętnym kartonowym pudełku. Zrobią to, czego potrzebują. Zrobią własne pudełka.
+                </span>
+                <span>Doktor Temple Grandin</span>
               </RatioContent>
             </Grid.Column>
           </Grid.Row>
@@ -98,15 +109,22 @@ const IndexPageContent = () => {
               <img src={`${spacerWGorach}`} alt="" className=""/>
             </Grid.Column>
             <Grid.Column position="left">
-              <h3>W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do zaoferowania światu</h3>
-              <p className="lead">
-                Wiemy, że w każdym napotykanym przez nas dziecku tkwi potencjał. 
-              </p>
-              <p className="lead">
-                Pomóż nam go odnaleźć. 
-              </p>
-              <p>Umów się na konsultacje lub na diagnozę</p>
-              <Link className="btn btn-dark" to="/kontakt">Zarejestruj się</Link>
+              <div>
+                <h3>
+                  W Pozytywce wierzymy, że <u>każdy</u> człowiek ma coś do 
+                  zaoferowania światu
+                </h3>
+                <p className="lead">
+                  Wiemy, że w każdym napotykanym przez nas dziecku tkwi potencjał. 
+                </p>
+                <p className="lead">
+                  Pomóż nam go odnaleźć. 
+                </p>
+                <p>Umów się na konsultacje lub na diagnozę</p>
+                <Link className="btn btn-dark" to="/kontakt">
+                  Zarejestruj się
+                </Link>
+              </div>
             </Grid.Column>
           </Grid.Row>
         </div>
@@ -119,22 +137,31 @@ const IndexPageContent = () => {
                 title="Diagnozy"
                 imgSrc={diagnozy} 
               >
-                Oferujemy Państwu nasze wieloletnie doświadczenie i prowadzenie procesu diagnostycznego przez zespół specjalistów.
+                Oferujemy Państwu nasze wieloletnie doświadczenie i prowadzenie 
+                procesu diagnostycznego przez zespół specjalistów.
               </CircleImgCard>
               <CircleImgCard 
                 title="Terapia"
-                imgSrc={terapie} 
+                imgSrc={terapie}
               >
-                Prowadzimy spotkania terapeutyczne indywidualne i grupowe, opierające się głównie na metodzie Stosowanej Analizy Zachowania
+                W naszym ośrodku prowadzimy spotkania terapeutyczne indywidualne i grupowe.
               </CircleImgCard>
               <CircleImgCard 
                 title="Szkolenia"
                 imgSrc={szkolenia} 
               >
-                Oferujemy pomoc dla nauczycieli, którzy chcą lepiej zrozumieć swoich uczniów z trudnościami neurorozwojowymi.
+                Oferujemy pomoc dla nauczycieli, którzy chcą lepiej zrozumieć 
+                swoich uczniów z trudnościami neurorozwojowymi.
               </CircleImgCard>
             </div>
-            <Link className="d-block btn btn-outline-dark mx-auto" to="/oferta">Zobacz Więcej</Link>
+            <div>
+              <Link 
+                className="d-block btn-block btn btn-outline-dark mx-auto" 
+                to="/oferta"
+              >
+                Zobacz Więcej
+              </Link>
+            </div>
           </div>
         </WavesContainer>
     </>
@@ -142,4 +169,3 @@ const IndexPageContent = () => {
 }
 
 export default IndexPageContent
-

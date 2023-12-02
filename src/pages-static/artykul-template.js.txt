@@ -54,7 +54,6 @@ const ArticleTemplate = ({data, location}) => {
   ]
 
   // getContent(story.content, includeKeys)
-  // console.log(story.content.title);
   // debugger
   
 

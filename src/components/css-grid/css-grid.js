@@ -26,7 +26,6 @@ const Column = React.forwardRef(
   if (children !== undefined ) {
     if (children.type === "img") {
       className += " img-grid"
-      console.log("I'm image!");    
     }
     else {
       className += " text"
@@ -54,27 +53,18 @@ const Quotation = React.forwardRef(
 
     const { children } = props
     const quote = children[0] ? children[0] : children
-    const caption = children[1] ? children[1] : "Nieznany autor"
-
-    const Caption = () => {
-      if (children[1]) {
-        return(
-          <figcaption className="blockquote-footer lead">
-            {caption}
-          </figcaption>
-        )        
-      } 
-
-      return ""      
-    }
+    const caption = children[1] || null;
     
     return(
       <figure ref={ref} {...props} className="h4 big-blockquote">
-        {/* <h3> </h3> */}
-        <blockquote  className="blockquote">
+        <blockquote  className={`blockquote ${!caption && 'pb-0'}`}>
           {quote}
         </blockquote >
-        <Caption/>
+        {caption &&
+          <figcaption className="blockquote-footer lead">
+            {caption}
+          </figcaption>
+        }
       </figure>
     )
   }

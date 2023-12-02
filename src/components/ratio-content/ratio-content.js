@@ -35,10 +35,7 @@ class CenteredContent0 extends React.Component {
   childRequiredArea = undefined
 
   componentDidMount() {
-    console.log("COMPONENT DID MOUNT");
     if (typeof window !== 'undefined') {
-      console.log("component Did Mount");
-
       // this.setMeasureState()
       // this.addRatioWidth()      
       this.getMeasures()
@@ -66,10 +63,6 @@ class CenteredContent0 extends React.Component {
     })
   }
   componentDidUpdate( prevProps, prevState) {    
-    console.log("COMPONENT DID UPDATE");
-    console.log(prevState);
-    console.log(this.state);
-
     if (this.state.lifeState === this.lifeStates.MEASURE) {
       this.getMeasures()
       this.addRatioWidth()    
@@ -107,12 +100,9 @@ class CenteredContent0 extends React.Component {
       const childRequiredArea = parseFloat(childStyles.width) * parseFloat(childStyles.height)
 
       this.measures.childArea = childRequiredArea
-      console.log("MEASURES", this.measures);
-      
     }
   }
   updateRatioWidth() {
-    console.log("UPDATE RATIO WIDTH");    
     this.setMeasureState()
 
   }
@@ -120,7 +110,6 @@ class CenteredContent0 extends React.Component {
     /*     
       1. Wyznaczenie szerokości dziecka na podstawie proporcji
     */ 
-    console.log("ADD RATIO WIDTH");
     const ratio =  this.measures.parentRatio
     const childArea = this.measures.childArea
 
@@ -135,8 +124,6 @@ class CenteredContent0 extends React.Component {
     // const ParentTag = this.props.parentComponent
     const ParentTag = "section"
     const ChildTag = this.props.childTag
-
-    console.log(ParentTag);
 
     return(
       <ParentTag ref={this.refsParent} className="centered-content some-class">
@@ -168,7 +155,7 @@ function randomNumber(lower = 0, upper = 1) {
 class RatioContent extends React.Component {
 
   static propTypes = {
-    children: PropTypes.string,
+    children: PropTypes.array,
     childComponent: PropTypes.elementType,
     debugMode: PropTypes.bool,
   }
@@ -213,7 +200,6 @@ class RatioContent extends React.Component {
    * 
    */
   constructor(props) {
-    // console.log("CONSTRUCTOR CenteredContent");
     super(props)
 
     this.refsParent = React.createRef()
@@ -221,12 +207,10 @@ class RatioContent extends React.Component {
 
     this.state.step = this.algoSteps.step1
     this.childStyles = {}
-    // this.setStep(this.algoSteps.step1)
   }
 
   printLogs(...args) {
     if (this.props.debugMode) {
-      console.log(...args)
     }
   }
 
@@ -429,7 +413,7 @@ class RatioContent extends React.Component {
 
   render() {
     const ParentTag = "div"
-    const {children, childComponent, ...props} = this.props
+    const {children, childComponent, debugMode, ...props} = this.props
     const ChildComponent = childComponent;
 
     return(

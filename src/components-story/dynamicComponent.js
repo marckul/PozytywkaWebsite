@@ -22,18 +22,12 @@ import { ModalSb } from './modal-sb'
 import { ImageSb, ImageBlokSb } from './images'
 import GoogleMap from './google-map'
 import IndexPageContent from './index-page-content'
+import BookingDiagnosesWidget from './BookingDiagnosesWidget/BookingDiagnosesWidget'
 
 
 
 
 
-
-// const SectionSb = ({ blok }) => {
-//   console.log("HELLO INTERNET! I'M Section ONE");
-//   return(
-//     <h1>HELLO INTERNET! I'M HEDER ONE</h1>
-//   )  
-// }
 
 const Components = {
   'teaser': GoogleMap,
@@ -67,7 +61,8 @@ const Components = {
   'image_blok': ImageBlokSb,
 
   'google_map': GoogleMap,
-  'all_start_page_content': IndexPageContent, 
+  'all_start_page_content': IndexPageContent,
+  booking_widget: BookingDiagnosesWidget,
 }
 
 

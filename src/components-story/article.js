@@ -14,11 +14,6 @@ import { ImageSb } from './images'
 // const ImgBlurred = 
 
 const StoryImg = ({ blok }) => {
-  // const fluidProps = getFluidGatsbyImage(blok.image.filename, {
-  //   base64Width: 40,
-  // })
-  // console.log(fluidProps);
-
   return (
     <SbEditable content={blok}>
       <ImageSb blok={blok}/>
@@ -29,7 +24,6 @@ const StoryImg = ({ blok }) => {
 
 
 function Figure({alt, blok, caption, indented, className, imgClassName}) {
-  // console.log("Figure src", blok);
   if (indented) {
     className += " indented-figure" 
   }
@@ -87,13 +81,8 @@ function Header({ blok, context, ...props }) {
     DateString = <p>{StringTools.FormatDate(publish_date)}</p>
   }
 
-  function ConsoleLog() {
-    console.log("I'M HEDER ONE");
-    
-  }
-
   return(
-    <div className="article-header" onClick={ConsoleLog}>
+    <div className="article-header" >
       <h1 className="h2" >{blok.title}</h1>
       {Intro}
       {DateString} 

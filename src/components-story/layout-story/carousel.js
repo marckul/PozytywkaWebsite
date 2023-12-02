@@ -21,7 +21,6 @@ const NewWindowIcon = ({onClick}) => (
 )
 
 const CarouselSb = ({ blok, ...props }) => {
-  console.log("CarouselSb");
   const components = blok.body.map( blok => (
     <DynamicComponent 
       blok={blok} 
@@ -47,7 +46,6 @@ const richTextResolver = new RichTextResolver()
 
 const OfferCard = ({ blok, ...props }) => {
   // https://stackoverflow.com/questions/53146575/storing-non-state-variables-in-functional-components
-  console.log("CarouselSb");
 
   const [show, setShow] = useState(false);
   const handleModalShow = () => {

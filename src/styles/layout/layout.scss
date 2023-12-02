@@ -57,10 +57,6 @@ main {
 
 
 
-.btn {
-  max-width: fit-content;
-}
-
 .btn-outline-light:not(:hover) {
   color: #f8f9fa !important;
 }
@@ -222,8 +218,12 @@ nav { // było .navbar
   justify-content: center;
 }
 
-.btn {
+.btn-block {
   min-width: max-content;
+  max-width: fit-content;
+}
+
+.btn {
   font-size: 1em;
   a {
     color: inherit;

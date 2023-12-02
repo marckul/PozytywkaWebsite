@@ -187,7 +187,6 @@ function WavesContainer({ children }) {
 
 
 function Figure({alt, src, caption, indented, className, imgClassName}) {
-  console.log("Figure src", src);
   if (indented) {
     className += " indented-figure" 
   }

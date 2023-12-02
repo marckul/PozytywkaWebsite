@@ -53,7 +53,6 @@ const SectionSb = ({ blok, ...props }) => {
   
   const htmlClassesStr = GetStyleClass(blok).join(" ")
   
-  console.log("SectionSb");
   const sectionProps = {}
   if (String_IsNotEmpty(blok.html_id)) {
     sectionProps.id = Slugify(blok.html_id)
@@ -79,7 +78,6 @@ const SectionSb = ({ blok, ...props }) => {
 
 
 const ContainerSb = ({ blok, context, ...props }) => {
-  console.log("ContainerSb");
   
   let default_container = "container"
   if (context) {
