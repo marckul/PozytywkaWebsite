@@ -97,13 +97,9 @@ const IndexPageContent = () => {
             <Grid.Column position="right">
               <RatioContent childComponent={Grid.Quotation} debugMode={false}>
                 <span>
-                  Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce 
-                  nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie 
-                  osiągnąć sukces, niezbędna może okazać się konieczność 
-                  odłączenia od świata, od domeny praktycznej, przemyślenia 
-                  konkretnej koncepcji i wykazania się oryginalnością, by móc 
-                  stworzyć coś nowego
+                  Najciekawsze osoby, jakie znajdziesz, to te, które nie mieszczą się w przeciętnym kartonowym pudełku. Zrobią to, czego potrzebują. Zrobią własne pudełka.
                 </span>
+                <span>Doktor Temple Grandin</span>
               </RatioContent>
             </Grid.Column>
           </Grid.Row>
