@@ -155,7 +155,7 @@ function randomNumber(lower = 0, upper = 1) {
 class RatioContent extends React.Component {
 
   static propTypes = {
-    children: PropTypes.string,
+    children: PropTypes.array,
     childComponent: PropTypes.elementType,
     debugMode: PropTypes.bool,
   }
@@ -413,7 +413,7 @@ class RatioContent extends React.Component {
 
   render() {
     const ParentTag = "div"
-    const {children, childComponent, ...props} = this.props
+    const {children, childComponent, debugMode, ...props} = this.props
     const ChildComponent = childComponent;
 
     return(

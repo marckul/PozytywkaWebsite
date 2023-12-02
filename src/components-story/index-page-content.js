@@ -66,9 +66,9 @@ const IndexPageContent = () => {
       <BgGradient>
         <Container id="nasze-doswiadczenie">
           <h2>Zaufaj naszemu <u>doświadczeniu</u></h2>
-          <p className="lead">Pozytywka została założona {counterNums.posYears} 
-            lat temu, by wspierać rodziny dzieci w spektrum autyzmu, jednak 
-            nasze doświadczenie sięga o wiele dalej
+          <p className="lead">Pozytywka została założona {counterNums.posYears}
+            {' '} lat temu, by wspierać rodziny dzieci w spektrum autyzmu, 
+            jednak nasze doświadczenie sięga o wiele dalej
           </p>
           <div className="row py-6">
             <CounterBox 
@@ -97,13 +97,9 @@ const IndexPageContent = () => {
             <Grid.Column position="right">
               <RatioContent childComponent={Grid.Quotation} debugMode={false}>
                 <span>
-                  Wydaje mi się, że do osiągnięcia sukcesu w nauce czy sztuce 
-                  nieodzowna jest pewna doza autyzmu. Jeżeli ktoś pragnie 
-                  osiągnąć sukces, niezbędna może okazać się konieczność 
-                  odłączenia od świata, od domeny praktycznej, przemyślenia 
-                  konkretnej koncepcji i wykazania się oryginalnością, by móc 
-                  stworzyć coś nowego
+                  Najciekawsze osoby, jakie znajdziesz, to te, które nie mieszczą się w przeciętnym kartonowym pudełku. Zrobią to, czego potrzebują. Zrobią własne pudełka.
                 </span>
+                <span>Doktor Temple Grandin</span>
               </RatioContent>
             </Grid.Column>
           </Grid.Row>
@@ -146,10 +142,9 @@ const IndexPageContent = () => {
               </CircleImgCard>
               <CircleImgCard 
                 title="Terapia"
-                imgSrc={terapie} 
+                imgSrc={terapie}
               >
-                Prowadzimy spotkania terapeutyczne indywidualne i grupowe, 
-                opierające się głównie na metodzie Stosowanej Analizy Zachowania
+                W naszym ośrodku prowadzimy spotkania terapeutyczne indywidualne i grupowe.
               </CircleImgCard>
               <CircleImgCard 
                 title="Szkolenia"
