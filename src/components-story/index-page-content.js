@@ -142,10 +142,9 @@ const IndexPageContent = () => {
               </CircleImgCard>
               <CircleImgCard 
                 title="Terapia"
-                imgSrc={terapie} 
+                imgSrc={terapie}
               >
-                Prowadzimy spotkania terapeutyczne indywidualne i grupowe, 
-                opierające się głównie na metodzie Stosowanej Analizy Zachowania
+                W naszym ośrodku prowadzimy spotkania terapeutyczne indywidualne i grupowe.
               </CircleImgCard>
               <CircleImgCard 
                 title="Szkolenia"
