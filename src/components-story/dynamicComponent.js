@@ -62,7 +62,7 @@ const Components = {
 
   'google_map': GoogleMap,
   'all_start_page_content': IndexPageContent,
-  booking_diagnoses_widget: BookingDiagnosesWidget,
+  booking_widget: BookingDiagnosesWidget,
 }
 
 
