@@ -51,7 +51,10 @@ const Footer = () => {
             </Col>
             <Col md={4} className="p-4"> 
               <h5><b>Kontakt</b></h5> 
-              <p>Wolności 256/3, 41-800 Zabrze <br/> Ośrodek Diagnostyczno-Terapeutyczny “Pozytywka”</p>
+              <p>
+                Przemysłowa 6, 41-800 Zabrze <br/>
+                Ośrodek Diagnostyczno-Terapeutyczny &quot;Pozytywka&quot;
+              </p>
 
               <h6><b>Email</b></h6>
               <p>odt.pozytywka@gmail.com</p>
